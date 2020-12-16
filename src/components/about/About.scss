@@ -1,0 +1,54 @@
+@import '../../styles/variables'; 
+
+.about-container {
+    // width:100%;
+    //global style for all pages 
+    .subpage-title {
+        background-color:$lilac;
+        color:$forest-green;
+        padding:2rem 2rem 0.5rem 1rem;
+        margin:0; 
+    }
+    .about-info {
+        display: flex; 
+        flex-direction: row;
+        .submenu {
+            height:40vh;
+            width:50%;
+            padding-left:1rem; //1rem for left padding should be global 
+            ul {
+                list-style-type: none;
+                padding-left:0;
+                color:$text-color; 
+                a {
+                    text-decoration: none;
+                    color:$text-color; 
+                } 
+            }
+            //create button style mixin
+            button {
+                width:50%;
+                border:solid 3px $cta-orange; 
+                background:transparent; 
+                color: $cta-orange; 
+                padding:0.3rem; 
+            }
+        }
+        .placeholder {
+            border: solid grey;
+            height:40vh;
+            width:50%;
+        }
+    }
+    .text-placeholder {
+        height:30vh; //height for testimonial card? 
+        background-color: $yellow;
+        text-align:center;
+        p {
+            padding:50px;
+            margin:0; //add margin back?  
+            font-size:1rem;
+            font-style:italic; 
+        }
+    }
+}

@@ -1,0 +1,29 @@
+@import './variables'; 
+//set font variables, and styles here 
+$font-size-text: 14pt; 
+$font-size-hero: 60pt; 
+$font-size-menu: 20pt; 
+$font-size-mobile: 18pt;  
+
+$font-headline: 'Space Grotesk', sans-serif;
+//weight: bold 700
+$font-text: 'Lato', sans-serif;;
+//weight: thin 100/italic, light 300, regular 400 
+
+html,body {
+    font-size:$font-size-text; 
+    font-family: $font-text;
+    color: $text-color; 
+}
+
+h2, h3 {
+    font-family: $font-headline;
+    font-weight: bolder; 
+    font-size: 3rem;
+} 
+
+h4, h5, h6 {
+    font-family: $font-headline;
+    font-weight: bolder; 
+    font-size: 2rem;
+}

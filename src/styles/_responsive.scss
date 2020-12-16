@@ -1,0 +1,23 @@
+$desktop:1224px;
+$padlet:1024px;
+$mobile:800px;
+$mobileXs:600px; 
+
+
+body {
+    display: flex; 
+    flex-direction: column;
+    //set height to 100%
+    //padlet
+    @media screen and (min-width: $padlet) {
+       
+    }
+
+    //desktop
+    @media screen and (min-width: $desktop) {
+        
+    }
+    footer {
+        border: solid red; 
+    }
+}

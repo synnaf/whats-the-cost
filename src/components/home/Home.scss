@@ -1,0 +1,26 @@
+@import '../../styles/typography'; 
+@import '../../styles/variables';
+
+
+.hero-section {
+    // border:solid grey; 
+    max-width:95%; //even spacing left/right
+    height:80vh; //set's height of header 
+    margin:auto; //centers section
+    padding:1rem; 
+    font-family: $font-headline;
+    
+    .animated-hero-text {
+        font-size:$font-size-hero;
+        text-align: center;
+        //place text in center of hero
+        color:$lilac;
+    } & .main-text {
+        color:$forest-green; 
+    }
+    //doesnt work 
+    .button {
+        width:100px; 
+        @include primarybutton; 
+    }
+}

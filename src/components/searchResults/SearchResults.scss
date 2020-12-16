@@ -1,0 +1,54 @@
+@import '../../styles/variables'; 
+
+.subpage-container {
+    // width:100%;
+    //global style for all pages 
+    .subpage-title {
+        background-color:$lilac;
+        color:$forest-green;
+        padding:2rem 2rem 0.5rem 1rem;
+
+        margin:0; 
+        position: fixed;
+        top: 0;
+        left:0;
+        width: 100%; 
+        opacity:0.9; 
+    }
+    .product-list {
+        padding-top: 60px; //move page content below menu 
+        margin:2rem; 
+        .product-card {
+            background-color: white;
+            box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
+            margin-bottom:2rem; 
+            //product image 
+            .placeholder {
+                background-color: gray;
+                // height:auto;
+            }
+            .product-card-info {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content:flex-end; 
+                margin:0.5rem; 
+                h6 {
+                    margin:0; 
+                    width:60%;
+                    color: $forest-green; 
+                }
+                span {
+                    width:35%;
+                    text-align:right;
+                    //add svg illustration?
+                }
+                button {
+                    //add button style 
+                    width:30%; 
+                    margin-bottom:0.5rem; 
+                }
+            }
+
+        }
+    }
+}
