@@ -7,7 +7,10 @@ $mobileXs:600px;
 body {
     display: flex; 
     flex-direction: column;
+    width:100%; 
+    margin:0; //content to fill entire page width 
     //set height to 100%
+    //push footer to the end of page
     //padlet
     @media screen and (min-width: $padlet) {
        
@@ -17,7 +20,12 @@ body {
     @media screen and (min-width: $desktop) {
         
     }
+    .page-container { 
+        // background-color: yellow;
+        // z-index:2; 
+        height:100%;  
+    }
     footer {
-        border: solid red; 
+    
     }
 }

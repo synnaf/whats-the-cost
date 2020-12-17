@@ -1,0 +1,87 @@
+@import '../../styles/variables'; 
+
+//should have z-index above menu and blur background? 
+
+.product-card-details {
+     
+    border:solid red; 
+    // position:relative;
+    margin:2rem;
+    background-color: white;
+    box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
+    margin-bottom:2rem; 
+    .product-card-info {
+        display: flex; 
+        flex-direction:column; 
+        align-items:flex-start ;
+        margin:0.5rem; 
+        .card-header {
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between; 
+            width:100%; 
+            h6 {
+                margin:0;
+                color:$forest-green;  
+            }
+        }
+        .value-wrapper {
+            width:100%; 
+            ul {
+                list-style-type: none;
+                padding-left:0; 
+                li {
+                    margin-bottom:2rem; 
+                    label {
+                        width:100%;
+                    }
+                    input[type=range] {
+                        appearance: none; //remove default mstyle
+                        width:90%; 
+                        height:5px;
+                        background: #d3d3d3;
+                        outline: none;
+                        // opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+                        // // -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+                        // transition: opacity .2s;
+
+                        &::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: 15px; 
+                            height: 15px;
+                            border-radius: 50%;
+                            background: $cta-orange; //different for diffrente types? 
+                            cursor: pointer; 
+                          }
+                        &::-moz-range-thumb {
+                            width: 20px; /* Set a specific slider handle width */
+                            height: 20px; /* Slider handle height */
+                            background: $cta-orange; /* Green background */
+                            cursor: pointer;
+                          }
+                    }
+                }
+
+            }
+        }
+    }
+    .placeholder {
+        position:relative; 
+        background-color: rgba(128, 128, 128, 0.365);
+        img {
+            opacity:0.3; 
+            // // height:100%;
+            // // width:100%;
+        }
+        h5 {
+            position:absolute;
+            right:1rem; 
+            top:1rem; 
+            margin:0;
+            color: $cta-orange;             
+            z-index:999; //put text over img 
+        }
+    }
+}
+

@@ -1,0 +1,17 @@
+//subpage title ? same for all pages 
+@import '../../styles/variables'; 
+
+.page-title {
+    background-color:$lilac;
+    color:$forest-green;
+    padding:2rem 0.5rem 0.5rem 1rem;
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%; 
+    opacity:0.9; 
+    z-index:1; //set on top of content, so scroll goes under 
+    h2 {
+        margin-bottom:0;
+    }
+} 

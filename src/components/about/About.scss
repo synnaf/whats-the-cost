@@ -1,15 +1,9 @@
 @import '../../styles/variables'; 
 
-.about-container {
-    // width:100%;
+.page-container {
     //global style for all pages 
-    .subpage-title {
-        background-color:$lilac;
-        color:$forest-green;
-        padding:2rem 2rem 0.5rem 1rem;
-        margin:0; 
-    }
     .about-info {
+        padding-top:9rem; //find a way to do this smarter? 
         display: flex; 
         flex-direction: row;
         .submenu {
@@ -40,7 +34,7 @@
             width:50%;
         }
     }
-    .text-placeholder {
+    .yellow-section {
         height:30vh; //height for testimonial card? 
         background-color: $yellow;
         text-align:center;

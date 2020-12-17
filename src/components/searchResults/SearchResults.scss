@@ -1,22 +1,10 @@
 @import '../../styles/variables'; 
 
-.subpage-container {
-    // width:100%;
+.page-container {
     //global style for all pages 
-    .subpage-title {
-        background-color:$lilac;
-        color:$forest-green;
-        padding:2rem 2rem 0.5rem 1rem;
-
-        margin:0; 
-        position: fixed;
-        top: 0;
-        left:0;
-        width: 100%; 
-        opacity:0.9; 
-    }
     .product-list {
-        padding-top: 60px; //move page content below menu 
+        //move page content below menu 
+        padding-top:8rem;
         margin:2rem; 
         .product-card {
             background-color: white;

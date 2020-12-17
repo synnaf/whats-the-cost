@@ -1,0 +1,65 @@
+@import '../../styles/variables'; 
+
+.search-product {
+    display: flex; 
+    flex-direction: column;
+    margin:1rem;
+    padding-top:9rem; 
+    p {
+
+    }
+    input[type=text] {
+        width: 80%; 
+        border: 3px solid $cta-orange; 
+        color: $text-color;  
+        padding:0.6rem; //same as buttons? 
+        background-image: url('../../assets/searchicon.svg');
+        background-position: 10px 10px;
+        background-repeat: no-repeat;
+        padding-left: 40px;
+        &:focus {
+            border: solid blue; 
+        }
+    }
+    //cta-search button? 
+    button {
+        margin-top:1rem; 
+
+        width:30%;
+        border:solid 3px $cta-orange; 
+        background:$cta-orange; 
+        color: $yellow; 
+        padding:0.3rem; 
+
+    }
+}
+
+.yellow-section {
+    display: flex; 
+    flex-direction: row; 
+    .placeholder {
+        width:30%;
+        overflow:hidden; 
+        img {
+           width: 100%; //should be 100% of its container
+        }
+    }
+    .test {
+       text-align:left; 
+       margin-left:auto; 
+       width:60%;
+        // margin-left:2rem; //basic padding/margin style 
+        p {
+            padding-left:0; 
+            text-align:left; 
+        }
+        button {
+            //secondary button style 
+            width:30%;
+            border:solid 3px $cta-orange; 
+            background:transparent; 
+            color: $cta-orange; 
+            padding:0.3rem; 
+        }
+    }
+}
