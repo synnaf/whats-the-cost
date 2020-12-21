@@ -1,0 +1,19 @@
+@import '../../styles/variables'; 
+
+footer {
+    background-color:$light-gray; 
+    margin-top:2rem;
+    padding:2rem; 
+    font-size:0.7rem; 
+    color: $text-color; //global default?  
+    //more height? 
+    .footer-contact-info {
+        h6 {
+            font-size:0.7rem; 
+        }
+        ul {
+            margin:0; 
+            list-style-type: none;
+        }
+    }
+}

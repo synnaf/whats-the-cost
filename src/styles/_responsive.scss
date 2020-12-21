@@ -9,23 +9,76 @@ body {
     flex-direction: column;
     width:100%; 
     margin:0; //content to fill entire page width 
+    
     //set height to 100%
     //push footer to the end of page
+    
     //padlet
     @media screen and (min-width: $padlet) {
        
     }
-
     //desktop
     @media screen and (min-width: $desktop) {
         
     }
+    .page-title {
+        h2 {
+            line-height: 1rem;
+        //padlet
+        @media screen and (min-width: $padlet) {
+            margin-top:0; 
+        }  
+        }
+    }
     .page-container { 
-        // background-color: yellow;
         // z-index:2; 
-        height:100%;  
+        height:100%; 
+        //padlet
+        @media screen and (min-width: $padlet) {
+            width:95%; 
+            margin:auto; 
+            display:flex;
+            flex-direction: row;
+            font-size:1.5rem;
+        }
+        .search-product, .yellow-section {
+            @media screen and (min-width: $padlet) {
+                width:50%;
+                margin-left:0; 
+            }
+        }
+        .product-list {
+            @media screen and (min-width: $mobile) {
+                display:flex; 
+                flex-direction: row; 
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            @media screen and (min-width: $padlet) {
+                justify-content: space-evenly; 
+            }  
+            .product-card { 
+                //align first card to left? 
+                width: 100%; 
+                @media screen and (min-width: $mobile) {
+                    width:35%;
+                    margin:0.5rem;
+                }
+                @media screen and (min-width: $padlet) {
+                    width:22%;         
+                }   
+            }
+        }
+        
     }
     footer {
-    
+        //more height? 
+        display: flex; 
+        flex-direction: column;
+        justify-content: space-evenly;
+        @media screen and (min-width: $padlet) {
+            //less height? 
+            flex-direction: row;
+        }  
     }
 }

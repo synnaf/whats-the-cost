@@ -18,7 +18,7 @@ const prepare = () => {
     let bearerToken = storage.getItem(STORAGE_KEY)
     let bearerTokenDate = storage.getItem(STORAGE_KEY_SET_DATE)
     let bearerTokenType = storage.getItem(STORAGE_GRANTED_TYPE)
-     console.log('prepping with ' + bearerTokenType)
+    //  console.log('prepping with ' + bearerTokenType)
     if (
       !bearerToken ||
       !bearerTokenDate ||
@@ -38,7 +38,7 @@ const prepare = () => {
     // TODO: Funktion som loggar ut / rensar localStorage ifall token gått ut!
   }
   
-  // NOTE: funktionerna nedan används i samband med att skapa/logga in en användare 
+  //NOTE: funktionerna nedan används i samband med att skapa/logga in en användare 
 
   const packageData = data => {
     const form = new FormData()
@@ -48,65 +48,65 @@ const prepare = () => {
     return form
   }
   
-  const getUserToken = (username, password) => {
-    const data = {
-      grant_type: GRANT_TYPE_USER,
-      client_id: CLIENT_ID,
-      client_secret: API_KEY,
-      username: username,
-      password: password
-    }; 
-    return new Promise((resolve, reject) => {
-      axios({
-        method: 'post',
-        url: TOKEN_URL,
-        data: packageData(data),
-        config: {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        }
-      })
-        .then(response => {
-          storage.setItem(STORAGE_KEY, response.data.access_token); 
-          storage.setItem(STORAGE_KEY_SET_DATE, Math.floor(Date.now() / 1000)); 
-          storage.setItem(STORAGE_GRANTED_TYPE, GRANT_TYPE_USER); 
-          const bearerToken = response.data.access_token
+  // const getUserToken = (username, password) => {
+  //   const data = {
+  //     grant_type: GRANT_TYPE_USER,
+  //     client_id: CLIENT_ID,
+  //     client_secret: API_KEY,
+  //     username: username,
+  //     password: password
+  //   }; 
+  //   return new Promise((resolve, reject) => {
+  //     axios({
+  //       method: 'post',
+  //       url: TOKEN_URL,
+  //       data: packageData(data),
+  //       config: {
+  //         headers: {
+  //           'Access-Control-Allow-Origin': '*',
+  //           'Content-Type': 'application/x-www-form-urlencoded'
+  //         }
+  //       }
+  //     })
+  //       .then(response => {
+  //         storage.setItem(STORAGE_KEY, response.data.access_token); 
+  //         storage.setItem(STORAGE_KEY_SET_DATE, Math.floor(Date.now() / 1000)); 
+  //         storage.setItem(STORAGE_GRANTED_TYPE, GRANT_TYPE_USER); 
+  //         const bearerToken = response.data.access_token
 
-          resolve(bearerToken); 
-        })
-        .catch(error => {
-          console.log('error ' + error)
-          reject(error); 
-        }); 
-    }); 
-  }
-  const createUser = obj => {
-    const data = obj
-    return prepare().then(token => {
-      return new Promise((resolve, reject) => {
-        axios({
-          method: 'post',
-          url: API_URL + 'signup',
-          data: packageData(data),
-          config: {
-            headers: {
-              Accept: 'application/json',
-              Authorization: 'Bearer ' + token
-            }
-          }
-        })
-          .then(response => {
-            resolve(response)
-          })
-          .catch(error => {
-            console.log('error signup' + error)
-            reject(error)
-          })
-      })
-    })
-  }
+  //         resolve(bearerToken); 
+  //       })
+  //       .catch(error => {
+  //         console.log('error ' + error)
+  //         reject(error); 
+  //       }); 
+  //   }); 
+  // }
+  // const createUser = obj => {
+  //   const data = obj
+  //   return prepare().then(token => {
+  //     return new Promise((resolve, reject) => {
+  //       axios({
+  //         method: 'post',
+  //         url: API_URL + 'signup',
+  //         data: packageData(data),
+  //         config: {
+  //           headers: {
+  //             Accept: 'application/json',
+  //             Authorization: 'Bearer ' + token
+  //           }
+  //         }
+  //       })
+  //         .then(response => {
+  //           resolve(response)
+  //         })
+  //         .catch(error => {
+  //           console.log('error signup' + error)
+  //           reject(error)
+  //         })
+  //     })
+  //   })
+  // }
   const getClientToken = id => {
     const data = {
       grant_type: GRANT_TYPE,
@@ -143,9 +143,9 @@ const prepare = () => {
    * @param {code} ean or other barcode
    * @returns {object} product object
    */
-  const getProductByCode = code => {
-    return makeApiRequest(API_URL + 'products?page=1&per_page=1&gtin=' + code)
-  }
+  // const getProductByCode = code => {
+  //   return makeApiRequest(API_URL + 'products?page=1&per_page=1&gtin=' + code)
+  // }
 
 
   /**
@@ -178,25 +178,25 @@ const prepare = () => {
    * @param {ID} product ID
    * @returns {object} product object
    */
-  const getStudentProduct = id => {
-    return makeApiRequest(
-      'https://consupedia.se/api/' + 'students/products/' + id
-    )
-  }
+  // const getStudentProduct = id => {
+  //   return makeApiRequest(
+  //     'https://consupedia.se/api/' + 'students/products/' + id
+  //   )
+  // }
   /**
    * Get current user details
    * @returns {object} logged in user object
    */
-  const getUser = id => {
-    return makeApiRequest(API_URL + 'currentuser')
-  }
+  // const getUser = id => {
+  //   return makeApiRequest(API_URL + 'currentuser')
+  // }
   /**
    * Get a users primary consumer details
    * @returns {object} consumer details
    */
-  const getUserPrimary = id => {
-    return makeApiRequest(API_URL + 'users/' + id + '/primaryconsumer')
-  }
+  // const getUserPrimary = id => {
+  //   return makeApiRequest(API_URL + 'users/' + id + '/primaryconsumer')
+  // }
   const getItemById = (endpoint, id) => {
     return makeApiRequest(API_URL + endpoint + '/' + id)
   }
@@ -225,45 +225,45 @@ const prepare = () => {
     })
   }
 
-  const makePostRequest = (url, data) => {
-    return prepare().then(token => {
-      return axios.post(url, data, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          Accept: 'application/json',
-          Authorization: 'Bearer ' + token
-        }
-      })
-    })
-  }
-  const makeDeleteRequest = (url, data) => {
-    return prepare().then(token => {
-      return axios.delete(API_URL + url, data, {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          Accept: 'application/json',
-          Authorization: 'Bearer ' + token
-        }
-      })
-    })
-  }; 
+  // const makePostRequest = (url, data) => {
+  //   return prepare().then(token => {
+  //     return axios.post(url, data, {
+  //       headers: {
+  //         'Access-Control-Allow-Origin': '*',
+  //         Accept: 'application/json',
+  //         Authorization: 'Bearer ' + token
+  //       }
+  //     })
+  //   })
+  // }
+  // const makeDeleteRequest = (url, data) => {
+  //   return prepare().then(token => {
+  //     return axios.delete(API_URL + url, data, {
+  //       headers: {
+  //         'Access-Control-Allow-Origin': '*',
+  //         Accept: 'application/json',
+  //         Authorization: 'Bearer ' + token
+  //       }
+  //     })
+  //   })
+  // }; 
   
 
 // export default Search;
 export {
-    getProductByCode,
+    // getProductByCode,
     searchIngredient,
     getItemById,
-    getUserToken,
+    // getUserToken,
     getByEndPoint,
-    makePostRequest,
-    makeDeleteRequest,
+    // makePostRequest,
+    // makeDeleteRequest,
     makeApiRequest,
     getProduct,
     searchProduct,
-    getUser,
+    // getUser,
     clearStorage,
-    getUserPrimary,
-    createUser,
-    getStudentProduct
+    // getUserPrimary,
+    // createUser,
+    // getStudentProduct
   }; 

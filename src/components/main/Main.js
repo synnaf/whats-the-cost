@@ -13,11 +13,24 @@ const Main = () => {
   const [page, setPage] = useState('test'); 
   classNames({ page: true }, { bar: true });
 
-  //dynamic assignment of className? 
   let buttonType = 'primary';
-  classNames({ [`btn-${buttonType}`]: true });
+  classNames({ [`btn-${buttonType}`]: true }); 
+  //vad är buttontupe och vart tar den vägen? 
+  /*
+  kör en funktion som tar emot buttonType, 
+  och den kör en spread in i komponenten? 
+  */
+
+//  function renderTheCat(mouse) {
+//     return <Cat mouse={mouse} />;
+//   }; 
+
+//   <Mouse render={this.renderTheCat} /> 
+
+
 
   return (
+    <>
     <Switch> 
     {/* add 404. ot found */}
       <Route exact path='/' component={Home}></Route>
@@ -29,9 +42,17 @@ const Main = () => {
       />
       <Route exact path='/search' component={SearchPage}></Route>
       <Route exact path='/search/searchresults' component={SearchResults}></Route>
+          {/* pass down a children prop? 
+            children={mouse => (
+              <Compontnet props={mouse} /> ? 
+            )}
+          */}
+
       <Route exact path='/search/searchresults/product' component={Product}></Route>
     </Switch>
 
+      {/* <SearchResults /> */}
+    </>
 
   );
 }

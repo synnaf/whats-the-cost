@@ -1,15 +1,42 @@
 @import '../../styles/variables'; 
+@import '../../styles/responsive'; 
 
-.page-container {
-    //global style for all pages 
+.page-container.productlist {
+    //should be global style for all pages 
+    // border:solid red; 
+    padding-top:4rem; //calc this value? 
+    flex-direction: column;
+    //TODO: change flex-direction here, add className .productlist
+    // .page-container > .productList
+    @media screen and (max-width: $mobile) {
+        padding:2rem;//same as card
+    }
+    .sort-products {
+        text-align:right;
+        margin-bottom:0; 
+        margin-top:1rem; 
+        margin-right:1.2rem; 
+        @media screen and (max-width: $mobile) {
+           margin-right: 0;
+        }
+        .sort-options {
+            border:solid $lilac; 
+            padding:0.5rem 1rem;  
+            width:40%; //same as card 
+            @media screen and (min-width: $mobile) {
+                width:20%; //same as card
+            }
+        }
+    }
     .product-list {
         //move page content below menu 
-        padding-top:8rem;
-        margin:2rem; 
+        // padding-top:4rem;
+        margin-top:1rem;
+        width:100%; 
         .product-card {
             background-color: white;
             box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
-            margin-bottom:2rem; 
+            margin-bottom:1.5rem; 
             //product image 
             .placeholder {
                 background-color: gray;
@@ -19,7 +46,7 @@
                 display: flex;
                 flex-wrap: wrap;
                 justify-content:flex-end; 
-                margin:0.5rem; 
+                margin-right:0.5rem; 
                 h6 {
                     margin:0; 
                     width:60%;
@@ -38,5 +65,10 @@
             }
 
         }
+        //move last child to align left? 
+        //should align left if xxxx ? how 
+        // .product-card:nth-child(5) {
+        //     border:solid red; 
+        // }
     }
 }

@@ -1,22 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../header/Header'; 
 import './About.scss'; 
 
 
 const About = (props) => {    
    
-    console.log(props); 
+    console.log(props); //props is 'test', same as value in page
+    const [showNotes, setShowNotes] = useState(false); 
+    
+    // function showInfo() {
+    //     setShowNotes(true);
+    // }
 
   return (
       <>
-        <Header props='About' />
+      {/* ta emot props för vad man klickat på??? */}
+        <Header props='About' /> 
         <section className="page-container">
             <section className="about-info">
             <div className="submenu">
                 {/* add accordion for submenu */}
                 <ul className="accordion">
                     <li>
-                        <a href="#">About</a>
+                        <a href="#" onClick={()=> {
+                            setShowNotes(!showNotes);
+                        }}>About</a>
                     </li>
                     <li>
                         <a href="#">Our values</a>
@@ -29,15 +37,15 @@ const About = (props) => {
                     Click
                 </button>
             </div>
-            <div className="placeholder">
-                Placeholder img
-            </div>
+            {/* TODO: how should this be displayed? all at once? */}
+            { showNotes ? 
+                <div className="submenu-info">
+                {/* add accordion for submenu */}
+                    <span>Some info text</span>
+                </div>
+                : null
+            }
             </section>
-            <div className="yellow-section">
-                <p>
-                    Here is some text 
-                </p>
-            </div>
         </section>
       </>
   );

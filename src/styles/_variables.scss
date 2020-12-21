@@ -2,10 +2,16 @@ $yellow:#FFEFCC;
 $lilac:#DAD9FF; 
 $cta-orange:#FA6333;
 $forest-green:#003B36;
-
+$light-gray: #F2F2F2; 
 $text-color:#5A5A5A;
-//create a map for colors 
+ 
 
+//TODO: 
+/*
+- create a map for colors?
+- color variables: add opacity where it's used, lilac backgrounds, gray body
+- create working mixins for buttons 
+*/
 
 //doesnt work 
 @mixin primarybutton {
@@ -17,5 +23,14 @@ $text-color:#5A5A5A;
     cursor: pointer; 
     background-color:$cta-orange;
     color:$yellow; 
+}
+@mixin secondarybutton {
+    border:3px solid $cta-orange;
+    font-weight: 400;
+    font-style: normal;
+    transition: all 0.25s; 
+    text-align: center; 
+    cursor: pointer; 
+    color:$cta-orange; 
 }
 

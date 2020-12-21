@@ -2,22 +2,37 @@
 
 .page-container {
     //global style for all pages 
+
     .about-info {
         padding-top:9rem; //find a way to do this smarter? 
+        width:100%; 
         display: flex; 
         flex-direction: row;
+        justify-content: center;
+      
         .submenu {
-            height:40vh;
+            height:40vh; //find a way to do this smarter
+     
             width:50%;
             padding-left:1rem; //1rem for left padding should be global 
             ul {
                 list-style-type: none;
                 padding-left:0;
                 color:$text-color; 
-                a {
-                    text-decoration: none;
-                    color:$text-color; 
-                } 
+                li {
+                  
+                    a {
+                        text-decoration: none;
+                        color:$text-color; 
+                    }:hover {
+                        color:$cta-orange; 
+                    }::after {
+                        content:url('../../assets/method-draw-image.svg');
+                        display:inline;
+                        // background:url('../../assets/method-draw-image.svg'); 
+                    } 
+                }
+
             }
             //create button style mixin
             button {
@@ -28,21 +43,13 @@
                 padding:0.3rem; 
             }
         }
-        .placeholder {
-            border: solid grey;
-            height:40vh;
-            width:50%;
-        }
-    }
-    .yellow-section {
-        height:30vh; //height for testimonial card? 
-        background-color: $yellow;
-        text-align:center;
-        p {
-            padding:50px;
-            margin:0; //add margin back?  
-            font-size:1rem;
-            font-style:italic; 
+        .submenu-info {
+            // display:; 
+            font-size:1rem; 
+            background-color:$lilac; 
+            padding:2rem;
+            min-height:20%;
+            min-width:30%;
         }
     }
 }

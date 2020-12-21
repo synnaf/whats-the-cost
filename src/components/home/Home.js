@@ -19,6 +19,8 @@ const Home = () => {
             What's
         </h1>
         <h1 className="animated-hero-text">The Cost</h1>
+        {/* <h1 className="animated-hero-text">The Price</h1>
+        <h1 className="animated-hero-text">The Value</h1> */}
         </section>
       </>
 
