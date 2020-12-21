@@ -13,7 +13,7 @@ const SearchResults = (results) => {
     /* destructure props till enbart det vi vill ha  
         const { data.data } = results; 
     */
-    console.log(results, 'these are results'); 
+    console.log(results, 'these are results test'); 
 
 
   return (
