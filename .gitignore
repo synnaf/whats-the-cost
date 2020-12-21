@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # api
-/search/.Search.js
-/search/.test.js
+search/.Search.js
+search/.test.js
