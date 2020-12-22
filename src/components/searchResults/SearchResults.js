@@ -10,10 +10,19 @@ import './SearchResults.scss';
 //recieve props from parent Search component 
 const SearchResults = (results) => {
 
-    /* destructure props till enbart det vi vill ha  
-        const { data.data } = results; 
-    */
-    console.log(results, 'these are results test'); 
+    /* destructure props till enbart det vi vill ha   */
+        const { props } = results; 
+   
+
+   //results är ett objekt som innehåller en array 
+    console.log(props, 'these are results test'); 
+    let item2 = props.map((item)=> {
+        console.log(item); 
+        return <li className="product-card" key={item.id}>{item}</li>
+    }); 
+
+
+    console.log(item2, 'this is var item');  //this is undefined
 
 
   return (
@@ -33,31 +42,14 @@ const SearchResults = (results) => {
                     </option>
                 </select>
             </div>
-            <section className="product-list">
-                <div className="product-card">
-                    <div className="placeholder">
-                        <img src="https://picsum.photos/200/300"/>
-                    </div>
-                    <div className="product-card-info">
-                        <h6>Namn</h6>
-                        <span>X X X</span>
-                        <button type="button"                             
-                            onClick={''}>More</button>
-                    </div>
-                </div>
-                <div className="product-card">
-                    <div className="placeholder">
-                        <img src="https://picsum.photos/200/300"/>
-                    </div>
-                    <div className="product-card-info">
-                        <h6>Namn</h6>
-                        <span>X X X</span>
-                        <button type="button"                             
-                            onClick={(e) => (
-                                <Product props={e} />
-                        )}>More</button>
-                    </div>
-                </div>
+            <ul className="product-list">
+                { 
+                    props.map((item)=> {
+                        console.log(item); 
+                        return <li className="product-card" key={item.id}>{item}</li>
+                    })  
+                }
+
                 <div className="product-card">
                     <div className="placeholder">
                         <img src="https://picsum.photos/200/300"/>
@@ -71,33 +63,7 @@ const SearchResults = (results) => {
                         )}>More</button>
                     </div>
                 </div>
-                <div className="product-card">
-                    <div className="placeholder">
-                        <img src="https://picsum.photos/200/300"/>
-                    </div>
-                    <div className="product-card-info">
-                        <h6>Namn</h6>
-                        <span>X X X</span>
-                        <button type="button" 
-                            onClick={(e) => (
-                                <Product props={e} />
-                        )}>More</button>
-                    </div>
-                </div>
-                <div className="product-card">
-                    <div className="placeholder">
-                        <img src="https://picsum.photos/200/300"/>
-                    </div>
-                    <div className="product-card-info">
-                        <h6>Namn</h6>
-                        <span>X X X</span>
-                        <button type="button" 
-                            onClick={(e) => (
-                                <Product props={e} />
-                            )}>More</button>
-                    </div>
-                </div>
-            </section>  
+            </ul>  
         </section>
       </>
 

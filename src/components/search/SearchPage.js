@@ -3,41 +3,40 @@ import Header from '../header/Header';
 import './SearchPage.scss'; 
 
 
-//create seatch form Search.js 
-import { searchProduct } from './Search';
+//create search form Search.js 
+import { searchProduct } from './api';
 import SearchResults from '../searchResults/SearchResults';
-
 
 
 const SearchPage = () => {
 
-    const [search, setSearch] = useState(false); 
-
-    searchProduct('ketchup').then((req, res)=> {
-        console.log('this is req', req.data.data); //this contains the search results in data-array! 
-        console.log('this is res', res);  //empty 
-    }); 
+    const [search, setSearch] = useState(false);
+    const [results, setResults] = useState([]);  
 
     function loadSearch() {
-        setSearch(true); 
+
+        searchProduct('ketchup')
+        .then((req, res)=> {
+            let list = [...req.data.data]; //this contains the search results in data-array! 
+            console.log(list);  
+
+            setSearch(true);
+            return list; 
+        })
+        .then((test) => {
+            console.log(test); 
+            return setResults(test) 
+            // console.log('results state', results);  //varför loggas inte den här? n
+        })
     }
 
-    //när man klickar på knappen så görs sökningen 
-    //resultatet skickas till resultat komponenten, som laddas när man trycker på knappen? 
-    //resultatsidan är således ett barn till searchPage, och tar emot datan genom props 
-    //hur skickar vi datan till barnet?
-    //skapa upp ett interface för hur vårt props ska se ut  
-    
-    // function runRedirect() {
-    //     // https://stackoverflow.com/questions/50644976/react-button-onclick-redirect-page
-    // }
   return (
       <>
         {/* skicka med props vilken page det är?  */}
         {/* <Header props='Search' /> */}
 
         {search 
-        ?   <SearchResults />
+        ?   <SearchResults props={results} />
         :    <section className="page-container">
                 <section className="search-product">
                     <p className="">
