@@ -1,14 +1,190 @@
+@import '../../styles/variables'; 
 //TODO: add nav menu + mobile v. 
+$mobileMenu: 1024px; // 1024px;
 
-.subpage-menu {
-    background-color:transparent;
-    color:$cta-orange; //which one is this?? 
-    padding:2rem 2rem 0.5rem 1rem;
-    
-    margin:0; 
-    position: fixed;
-    top: 0;
-    left:0;
-    width: 100%; 
-    opacity:0.9; 
+// .subpage-menu {
+//     background-color:transparent;
+//     color:$cta-orange; //which one is this?? 
+//     padding:2rem 2rem 0.5rem 1rem;
+//     margin:0; 
+//     position: fixed;
+//     top: 0;
+//     left:0;
+//     width: 100%; 
+//     opacity:0.9; 
+// }
+
+
+.site-header {
+  position: fixed;
+  z-index: 999;
+  width: 100%;
+  .brand-logo {
+  }
 }
+
+//menu wrapper 
+.main-navigation {
+    padding:1rem; 
+    margin-left: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+
+  //list in menu 
+    ul {
+        display: none;
+        list-style: none;
+        margin-left: auto;
+        padding-left: 0;
+    li {
+        position: relative;
+        padding: 0;
+        padding-right: 2rem;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        color:$cta-orange;
+        a {
+            animation: fadeIn ease 1s;
+            padding: 0.4rem 0;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-align: center;
+            cursor:pointer; 
+            &:hover {
+            transition: all ease-in 0.2s;
+            }
+        }
+    }
+  }
+}
+
+
+
+/* Mobile menu */
+.menu-toggle {
+    margin-left: auto;
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index: 999;
+    padding: 0;
+    span {
+        display: block;
+        height: 4px;
+        width: 100%;
+        border-radius: 9px;
+        margin-bottom: 5px;
+        background-color: $cta-orange;
+        transition: all 0.2s ease;
+        transform-origin: center center;
+    }
+    span:nth-child(2){
+        width: 60%;
+    }
+    span:nth-child(3){
+        width: 40%;
+    }
+}
+
+//TODO: ADD TOGGLE CLASS IN MOBILE THROUGH JS? 
+/*Mobile menu is toggled*/
+.main-navigation.toggled {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  flex-direction: column;
+  // min-height: 100vh; // check if buggy
+  overflow-y: scroll;
+  padding: 1rem 1.5rem 3rem 1.5rem;
+
+//   background-color: $color-menu-background; //green
+//   --color: white;
+
+  .menu-toggle {
+    margin-left: auto;
+    & span {
+      opacity: 0;
+      margin: 0;
+      &:first-child {
+        opacity: 1;
+        transform: translateY(calc(50% + 3px)) rotate(-45deg);
+      }
+      &:last-child {
+        opacity: 1;
+        transform: translateY(-50%) rotate(45deg);
+      }
+    }
+  }
+  .menu-main-container {
+    ul {
+      display: flex;
+      flex-direction: column;
+      text-align: left;
+      li {
+        align-self: left;
+        color: white;
+        a {
+          // padding-bottom: 1rem;
+          text-align: unset;
+          text-decoration: none;
+          font-size: 2rem;
+        }
+      }
+    }
+    padding-bottom: 1.8rem;
+  }
+  .cta-container-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    form,
+    .cta {
+      margin: auto;
+      margin-bottom: 1.5rem;
+    }
+    .search-field {
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+/* Sets toggle in mobile view */
+@media screen and (min-width: $mobileMenu) {
+    .menu-toggle {
+      display: none;
+    }
+    .main-navigation {
+      order: unset;
+    }
+    .main-navigation ul {
+      display: flex;
+    }
+    .main-navigation .cta-container-menu {
+      display: flex;
+    }
+  }
+  
+  @keyframes fadeInMenu {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+  
