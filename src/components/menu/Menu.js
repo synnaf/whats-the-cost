@@ -2,8 +2,9 @@ import React from 'react';
 import './Menu.scss';  
 
 const Menu = () => {
+
     return (
-        <nav className="main-navigation">
+        <nav className="main-navigation toggled">
             <button className="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
                 <span></span>
                 <span></span>

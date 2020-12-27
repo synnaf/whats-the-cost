@@ -96,34 +96,35 @@ $mobileMenu: 1024px; // 1024px;
 //TODO: ADD TOGGLE CLASS IN MOBILE THROUGH JS? 
 /*Mobile menu is toggled*/
 .main-navigation.toggled {
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  flex-direction: column;
-  // min-height: 100vh; // check if buggy
-  overflow-y: scroll;
-  padding: 1rem 1.5rem 3rem 1.5rem;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    flex-direction: column;
+    // min-height: 100vh; // check if buggy
+    overflow-y: scroll;
+    background-color: $cta-orange; //green
+    color: white;
 
-//   background-color: $color-menu-background; //green
-//   --color: white;
-
-  .menu-toggle {
-    margin-left: auto;
-    & span {
-      opacity: 0;
-      margin: 0;
-      &:first-child {
-        opacity: 1;
-        transform: translateY(calc(50% + 3px)) rotate(-45deg);
-      }
-      &:last-child {
-        opacity: 1;
-        transform: translateY(-50%) rotate(45deg);
-      }
+    //if menu is toggled, toggle button 
+    .menu-toggle {
+        margin: auto;
+        border:solid red; 
+        & span {
+        opacity: 0;
+        margin: 0;
+        background-color:white; 
+        &:first-child {
+            opacity: 1;
+            transform: translateY(calc(50% + 3px)) rotate(-45deg);
+        }
+        &:last-child {
+            opacity: 1;
+            transform: translateY(-50%) rotate(45deg);
+        }
+        }
     }
-  }
-  .menu-main-container {
+    //menu nav + ul
     ul {
       display: flex;
       flex-direction: column;
@@ -140,20 +141,6 @@ $mobileMenu: 1024px; // 1024px;
       }
     }
     padding-bottom: 1.8rem;
-  }
-  .cta-container-menu {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    form,
-    .cta {
-      margin: auto;
-      margin-bottom: 1.5rem;
-    }
-    .search-field {
-      width: 100%;
-    }
-  }
 }
 
 
@@ -164,20 +151,20 @@ $mobileMenu: 1024px; // 1024px;
 
 
 /* Sets toggle in mobile view */
-@media screen and (min-width: $mobileMenu) {
-    .menu-toggle {
-      display: none;
-    }
-    .main-navigation {
-      order: unset;
-    }
-    .main-navigation ul {
-      display: flex;
-    }
-    .main-navigation .cta-container-menu {
-      display: flex;
-    }
-  }
+// @media screen and (min-width: 600px) {
+//     .menu-toggle {
+//       display: none;
+//     }
+//     .main-navigation {
+//       order: unset;
+//     }
+//     .main-navigation ul {
+//       display: flex;
+//     }
+//     .main-navigation .cta-container-menu {
+//       display: flex;
+//     }
+//   }
   
   @keyframes fadeInMenu {
     0% {
