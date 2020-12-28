@@ -3,23 +3,34 @@ import './Menu.scss';
 
 const Menu = () => {
 
+    const toggleMenu = () => {
+        console.log('hekll'); 
+        let mobileMenu = document.getElementById("nav_menu");
+        mobileMenu.classList.toggle("isToggled");
+    }; 
+
     return (
-        <nav className="main-navigation toggled">
-            <button className="menu-toggle" aria-controls="primary-menu" aria-expanded="false">
+        <nav className="nav" id="nav_menu">   {/* add class --toggled */}
+            <button 
+                className="menu__toggle" 
+                aria-controls="primary-menu" 
+                aria-expanded="false"
+                onClick={toggleMenu}
+            >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            <ul>
-                <li>
-                    <a>Menu</a>
+            <ul className="nav__list">
+                <li className="nav__item">
+                    <a className="nav__link">Menu</a>
                 </li>
-                <li>
-                    <a>Search</a>
+                <li className="nav__item">
+                    <a className="nav__link">Search</a>
                 </li>
-                <li>
-                    <a>Contact</a>
+                <li className="nav__item">
+                    <a className="nav__link">Contact</a>
                 </li>
             </ul>
         </nav>
