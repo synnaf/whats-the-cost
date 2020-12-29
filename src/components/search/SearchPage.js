@@ -12,7 +12,6 @@ const SearchPage = () => {
 
     const [search, setSearch] = useState(false);
     const [results, setResults] = useState([]); 
-
     const [searchValue, setSearchValue] = useState('');  
 
     function getSearchTerm(e) {
@@ -20,9 +19,8 @@ const SearchPage = () => {
         console.log(searchTerm); 
     }
 
-    function loadSearch(e) {
+    function loadSearch() {
         // setSearchValue(); 
-
         //skicka med en sträng hit 
         searchProduct('ketchup')
         .then((req, res)=> {
@@ -33,8 +31,9 @@ const SearchPage = () => {
             return list; 
         })
         .then((test) => {
+            setResults(test);
             console.log(test); 
-            return setResults(test) 
+            return;   
             // console.log('results state', results);  //varför loggas inte den här? n
         })
     }

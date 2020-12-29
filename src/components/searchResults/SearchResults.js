@@ -8,11 +8,11 @@ import './SearchResults.scss';
 const SearchResults = (results) => {
 
     /* destructure props till enbart det vi vill ha   */
-    // const { props } = results; 
+    const { props } = results; 
 
    //results är ett objekt som innehåller en array 
-    console.log(results, 'these are results test'); 
-    let item2 = results.map((item)=> {
+    console.log(props, 'these are results test'); 
+    let item2 = props.map((item)=> {
         console.log(item); 
         return <li className="product-card" key={item.id}>{item}</li>
     }); 
@@ -39,13 +39,27 @@ const SearchResults = (results) => {
             </div>
             <ul className="product-list">
                 { 
-                    results.map((item)=> {
+                    props.map((item)=> {
                         console.log(item); 
-                        return <li className="product-card" key={item.id}>{item}</li>
+                        return (
+                            <li className="product-card" key={item.id}>
+                                <div className="placeholder">
+                                    <img src="https://picsum.photos/200/300"/>
+                                </div>
+                                <div className="product-card-info">
+                                    <h6>{item.name}</h6>
+                                    <span>X X X</span>
+                                    <button type="button"                             
+                                        onClick={(e) => (
+                                            <Product props={e} />
+                                    )}>More</button>
+                                </div> 
+                            </li>
+                        )
                     })  
                 }
 
-                <div className="product-card">
+                {/* <div className="product-card">
                     <div className="placeholder">
                         <img src="https://picsum.photos/200/300"/>
                     </div>
@@ -57,7 +71,7 @@ const SearchResults = (results) => {
                                 <Product props={e} />
                         )}>More</button>
                     </div>
-                </div>
+                </div> */}
             </ul>  
         </section>
       </>
