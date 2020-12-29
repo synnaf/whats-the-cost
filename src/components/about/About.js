@@ -16,21 +16,21 @@ const About = (props) => {
       <>
       {/* ta emot props för vad man klickat på??? */}
         <Header props='About' /> 
-        <section className="page-container">
-            <section className="about-info">
+        <section className="page">
+            <section className="page__about">
             <div className="submenu">
                 {/* add accordion for submenu */}
                 <ul className="accordion">
-                    <li>
-                        <a href="#" onClick={()=> {
+                    <li className="accordion__item">
+                        <a className="accordion__link" href="#" onClick={()=> {
                             setShowNotes(!showNotes);
                         }}>About</a>
                     </li>
-                    <li>
-                        <a href="#">Our values</a>
+                    <li className="accordion__item">
+                        <a href="#" className="accordion__link">Our values</a>
                     </li>
-                    <li>
-                        <a href="#">Contact</a>
+                    <li className="accordion__item">
+                        <a href="#" className="accordion__link">Contact</a>
                     </li>
                 </ul>
                 <button type="button" className={`btn ${props}`}>
@@ -39,7 +39,7 @@ const About = (props) => {
             </div>
             {/* TODO: how should this be displayed? all at once? */}
             { showNotes ? 
-                <div className="submenu-info">
+                <div className="submenu--info">
                 {/* add accordion for submenu */}
                     <span>Some info text</span>
                 </div>

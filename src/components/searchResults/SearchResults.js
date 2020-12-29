@@ -3,24 +3,19 @@ import Header from '../header/Header';
 import Product from '../product/Product';
 import './SearchResults.scss'; 
 
-//load products dynamically
-//static results 
-//create component that is looped and added for every new item 
 
 //recieve props from parent Search component 
 const SearchResults = (results) => {
 
     /* destructure props till enbart det vi vill ha   */
-        const { props } = results; 
-   
+    // const { props } = results; 
 
    //results är ett objekt som innehåller en array 
-    console.log(props, 'these are results test'); 
-    let item2 = props.map((item)=> {
+    console.log(results, 'these are results test'); 
+    let item2 = results.map((item)=> {
         console.log(item); 
         return <li className="product-card" key={item.id}>{item}</li>
     }); 
-
 
     console.log(item2, 'this is var item');  //this is undefined
 
@@ -44,7 +39,7 @@ const SearchResults = (results) => {
             </div>
             <ul className="product-list">
                 { 
-                    props.map((item)=> {
+                    results.map((item)=> {
                         console.log(item); 
                         return <li className="product-card" key={item.id}>{item}</li>
                     })  

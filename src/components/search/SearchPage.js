@@ -11,14 +11,23 @@ import SearchResults from '../searchResults/SearchResults';
 const SearchPage = () => {
 
     const [search, setSearch] = useState(false);
-    const [results, setResults] = useState([]);  
+    const [results, setResults] = useState([]); 
 
-    function loadSearch() {
+    const [searchValue, setSearchValue] = useState('');  
 
+    function getSearchTerm(e) {
+        let searchTerm = e.target.value;
+        console.log(searchTerm); 
+    }
+
+    function loadSearch(e) {
+        // setSearchValue(); 
+
+        //skicka med en sträng hit 
         searchProduct('ketchup')
         .then((req, res)=> {
             let list = [...req.data.data]; //this contains the search results in data-array! 
-            console.log(list);  
+            console.log(list);  //list är en lista med 50 objekt 
 
             setSearch(true);
             return list; 
@@ -42,7 +51,12 @@ const SearchPage = () => {
                     <p className="">
                         Search for a product and find it's current values... 
                     </p>
-                    <input type="text" placeholder="An interesting product" value="" onChange="" /> 
+                    <input 
+                        type="text" 
+                        placeholder="An interesting product" 
+                        value={searchValue} 
+                        onChange={getSearchTerm} 
+                    /> 
                     <button type="button" onClick={loadSearch}>
                         Click
                     </button>

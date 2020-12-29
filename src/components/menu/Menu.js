@@ -4,7 +4,6 @@ import './Menu.scss';
 const Menu = () => {
 
     const toggleMenu = () => {
-        console.log('hekll'); 
         let mobileMenu = document.getElementById("nav_menu");
         mobileMenu.classList.toggle("isToggled");
     }; 
@@ -24,13 +23,13 @@ const Menu = () => {
 
             <ul className="nav__list">
                 <li className="nav__item">
-                    <a className="nav__link">Menu</a>
+                    <a className="nav__link" href="/">Menu</a>
                 </li>
                 <li className="nav__item">
-                    <a className="nav__link">Search</a>
+                    <a className="nav__link" href="/search">Search</a>
                 </li>
                 <li className="nav__item">
-                    <a className="nav__link">Contact</a>
+                    <a className="nav__link" href="/about">About</a>
                 </li>
             </ul>
         </nav>

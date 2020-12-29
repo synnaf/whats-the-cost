@@ -47,8 +47,13 @@ $mobileMenu: 1024px; // 1024px;
         letter-spacing: 1px;
         text-align: center;
         cursor:pointer; 
+        text-decoration: none;
+        color:$cta-orange; 
         &:hover {
         transition: all ease-in 0.2s;
+        }
+        &:visited {
+          text-decoration: none;
         }
     }
   }
@@ -120,7 +125,7 @@ $mobileMenu: 1024px; // 1024px;
   overflow-y: scroll;
   background-color: $cta-orange;
   color: white;
-
+  text-decoration: none;
   .menu__toggle {
     // margin: auto; //aligns to left 
     background-color: transparent;
@@ -166,8 +171,8 @@ $mobileMenu: 1024px; // 1024px;
     text-align: left;
   }
   & .nav__link {
-    // padding-bottom: 1rem;
     text-decoration: none;
+    color: white;
     font-size: 2rem;
   }
 }
