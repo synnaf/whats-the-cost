@@ -59,6 +59,15 @@ body {
             .product-card { 
                 //align first card to left? 
                 width: 100%; 
+                min-height: 50vh;
+                .card-image {
+                    // height:70%;
+                    img {
+                        // max-height:90%; //of it's container
+                        // max-width:90%; //of it's container
+                    }
+                }
+
                 @media screen and (min-width: $mobile) {
                     width:35%;
                     margin:0.5rem;

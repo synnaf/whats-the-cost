@@ -19,7 +19,9 @@ $mobileMenu: 1024px; // 1024px;
     // left:0;
     // width: 100%; 
     // opacity:0.9; 
+    .brand-logo {
 
+    }
     .menu__toggle {
       display: none;
     }
@@ -67,6 +69,7 @@ $mobileMenu: 1024px; // 1024px;
     display: flex;
     flex-direction: row;
     justify-content: right;
+    align-items: center;
     .menu__toggle {
       margin-left: auto; //aligns to left 
       background-color: transparent;
@@ -126,6 +129,9 @@ $mobileMenu: 1024px; // 1024px;
   background-color: $cta-orange;
   color: white;
   text-decoration: none;
+  .brand-logo {
+    display:none;
+  }
   .menu__toggle {
     // margin: auto; //aligns to left 
     background-color: transparent;

@@ -15,14 +15,17 @@ const SearchPage = () => {
     const [searchValue, setSearchValue] = useState('');  
 
     function getSearchTerm(e) {
-        let searchTerm = e.target.value;
-        console.log(searchTerm); 
+        e.preventDefault(); 
+        //vänta in hela ??? 
+        setSearchValue(e.target.value); 
+        // loadSearch(searchValue); 
     }
 
     function loadSearch() {
-        // setSearchValue(); 
+        console.log('a searchterm:', searchValue); 
         //skicka med en sträng hit 
-        searchProduct('ketchup')
+
+        searchProduct(searchValue)
         .then((req, res)=> {
             let list = [...req.data.data]; //this contains the search results in data-array! 
             console.log(list);  //list är en lista med 50 objekt 

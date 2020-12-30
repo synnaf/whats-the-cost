@@ -3,8 +3,7 @@
 
 .page-container.productlist {
     //should be global style for all pages 
-    // border:solid red; 
-    padding-top:4rem; //calc this value? 
+    padding-top:4rem; 
     flex-direction: column;
     //TODO: change flex-direction here, add className .productlist
     // .page-container > .productList
@@ -30,26 +29,37 @@
     }
     .product-list {
         //move page content below menu 
-        // padding-top:4rem;
         margin-top:1rem;
-        width:100%; 
+        margin:auto; 
+        list-style-type: none;
         .product-card {
             background-color: white;
-            box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
-            margin-bottom:1.5rem; 
-            //product image 
-            .placeholder {
-                background-color: gray;
-                // height:auto;
+            box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25); 
+            // max-height:50vh; 
+            min-height:50vh; 
+            .card-image {
+                text-align: center;
+                margin-top:1.5rem; 
+                height:70%;
+                img {
+                    //align image center of container 
+                    margin-top:1.5rem; 
+                    max-height:90%; //of it's container
+                    max-width:90%; //of it's container
+                }
             }
             .product-card-info {
+                max-height:20%;
                 display: flex;
                 flex-wrap: wrap;
                 justify-content:flex-end; 
-                margin-right:0.5rem; 
+                margin-right:0.5rem;
+                padding:0 0 0 0.5rem; 
                 h6 {
                     margin:0; 
-                    width:60%;
+                    padding:0.5rem 0 0 0.5rem; 
+                    width:100%;
+                    font-size:1rem; 
                     color: $forest-green; 
                 }
                 span {
