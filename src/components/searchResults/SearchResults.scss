@@ -6,7 +6,6 @@
     padding-top:4rem; 
     flex-direction: column;
     //TODO: change flex-direction here, add className .productlist
-    // .page-container > .productList
     @media screen and (max-width: $mobile) {
         padding:2rem;//same as card
     }
@@ -80,5 +79,11 @@
         // .product-card:nth-child(5) {
         //     border:solid red; 
         // }
+        padding-bottom:4rem;
+    }
+    .pagination {
+        // padding:2rem;
+        // margin:auto; 
+        text-align: center;
     }
 }

@@ -1,0 +1,27 @@
+@import '../../styles/variables'; 
+
+.pagination {
+    list-style-type: none;
+    padding:0;  
+    font-size: 0.7rem;
+    &__item {
+        text-align: center;
+        display: inline-flex;
+        align-items: center; 
+        justify-content: center;
+        margin:0.1rem; 
+    }
+    &__link {
+        border:solid 1.5px $lilac; 
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center; 
+        justify-content: center;
+        height: 35px;
+        width: 35px;
+        cursor:pointer;
+    }
+    .--active {
+        background-color: $lilac;
+    }
+}

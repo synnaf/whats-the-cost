@@ -12,26 +12,22 @@ import './SearchResults.scss';
 
 //recieve props from parent Search component 
 const SearchResults = (results) => {
-
-    /* destructure props till enbart det vi vill ha   */
-    const { props } = results; 
-
-    //basic state to keep our result 
-    // const [resultList, setResultLIst] = useState([]); 
-
-    //paginatipn
+    //paginati0n
     const [currentPage, setCurrentPage] = useState(1); 
     const [itemsPerPage] = useState(12); 
+    /* destructure props till enbart det vi vill ha   */
+    const { props } = results; 
 
     //get index of the last post 
     const indexOfLastItem = currentPage * itemsPerPage; 
     const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
     const currentList = props.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
-    
-    console.log(currentList); //this is what we map over 
 
     //change page on click 
-    const createPagination = pageNumber => setCurrentPage(pageNumber)
+    const createPagination = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        // console.log(e.target.value); 
+    }; 
 
   return (
       <>
@@ -71,9 +67,14 @@ const SearchResults = (results) => {
                     })  
                 }
             </ul>  
+            <Pagination 
+                itemsPerPage={itemsPerPage} 
+                totalList={props.length} 
+                paginate={createPagination}
+                activePage={currentPage} 
+            />
         </section>
 
-        <Pagination itemsPerPage={itemsPerPage} totalList={props.length} paginate={createPagination} />
       </>
 
   );
