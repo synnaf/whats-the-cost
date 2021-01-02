@@ -3,6 +3,7 @@ import Header from '../header/Header';
 import Product from '../product/Product';
 import Pagination from '../pagination/Pagination'; 
 import './SearchResults.scss'; 
+import defaultimage from '../../assets/default-image.png'; 
 
 // if(results === []) {
 //     return <h2>Loading results...</h2>
@@ -29,6 +30,7 @@ const SearchResults = (results) => {
         // console.log(e.target.value); 
     }; 
 
+
   return (
       <>
         {/* <Header props='Results' />  */}
@@ -49,10 +51,17 @@ const SearchResults = (results) => {
             <ul className="product-list">
                 { 
                     currentList.map((item)=> {
+                        let img_url = item.image_url; 
+                        console.log(item); 
                         return (
                             <li className="product-card" key={item.id}>
                                 <div className="card-image">
-                                    <img src={item.image_url} alt="Product"/>
+                                    <img 
+                                    src={
+                                            (img_url == null) ? `${defaultimage}` : `${img_url}`
+                                        } 
+                                        alt="Product"
+                                    />
                                 </div>
                                 <div className="product-card-info">
                                     <h6>{item.name}</h6>
