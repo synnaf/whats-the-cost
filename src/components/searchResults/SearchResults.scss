@@ -1,24 +1,25 @@
 @import '../../styles/variables'; 
 @import '../../styles/responsive'; 
 
-.page-container.productlist {
+.page.products {
     //should be global style for all pages 
-    padding-top:4rem; 
+    padding-top:1rem; 
     flex-direction: column;
+
     //TODO: change flex-direction here, add className .productlist
     @media screen and (max-width: $mobile) {
         padding:2rem;//same as card
     }
-    .sort-products {
+    .page__sort {
         text-align:right;
-        margin-bottom:0; 
-        margin-top:1rem; 
+        margin-bottom:1rem; 
+        // margin-top:1rem; 
         margin-right:1.2rem; 
         @media screen and (max-width: $mobile) {
            margin-right: 0;
         }
         .sort-options {
-            border:solid $lilac; 
+            border:solid 1.5px $lilac; 
             padding:0.5rem 1rem;  
             width:40%; //same as card 
             @media screen and (min-width: $mobile) {
@@ -26,50 +27,57 @@
             }
         }
     }
-    .product-list {
+    .products__list {
         //move page content below menu 
-        margin-top:1rem;
         margin:auto; 
         list-style-type: none;
-        .product-card {
-            background-color: white;
-            box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25); 
-            // max-height:50vh; 
-            min-height:50vh; 
+        .products__item {
+            // background-color: white;
+            border-radius:1%; 
+            box-shadow: 8px 9px 15px rgba(0, 0, 0, 0.25); 
+            margin-bottom:2rem; 
             .card-image {
-                text-align: center;
-                margin-top:1.5rem; 
-                height:70%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                padding-top:0.5rem; 
+                
                 img {
                     //align image center of container 
                     margin-top:1.5rem; 
-                    max-height:90%; //of it's container
-                    max-width:90%; //of it's container
+                    max-height:70%; //of it's container
+                    max-width:70%; //of it's container
                 }
             }
             .product-card-info {
-                max-height:20%;
                 display: flex;
+                flex-direction: row;
                 flex-wrap: wrap;
-                justify-content:flex-end; 
-                margin-right:0.5rem;
+                // justify-content:flex-end; 
+                // margin-right:0.5rem;
                 padding:0 0 0 0.5rem; 
                 h6 {
                     margin:0; 
-                    padding:0.5rem 0 0 0.5rem; 
-                    width:100%;
-                    font-size:1rem; 
+                    padding-right:0.5rem; 
+                    width:60%;
+                    font-size:0.7rem; 
                     color: $forest-green; 
                 }
                 span {
-                    width:35%;
-                    text-align:right;
+                    // width:20%;
+                    // text-align:right;
                     //add svg illustration?
                 }
                 button {
                     //add button style 
                     width:30%; 
-                    margin-bottom:0.5rem; 
+                    height:30px; 
+                    border:1.5px solid $cta-orange;
+                    transition: all 0.25s; 
+                    text-align: center; 
+                    cursor: pointer; 
+                    color:$cta-orange;
+                    background-color:white;  
                 }
             }
 
@@ -79,7 +87,7 @@
         // .product-card:nth-child(5) {
         //     border:solid red; 
         // }
-        padding-bottom:4rem;
+        padding-bottom:3rem;
     }
     .pagination {
         // padding:2rem;

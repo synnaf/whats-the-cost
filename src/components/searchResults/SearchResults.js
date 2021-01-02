@@ -34,8 +34,8 @@ const SearchResults = (results) => {
   return (
       <>
         {/* <Header props='Results' />  */}
-        <section className="page-container productlist">
-            <div className="sort-products">
+        <section className="page products">
+            <div className="page__sort">
                 <select className="sort-options">
                     <option>
                         Sort A-Z
@@ -48,13 +48,13 @@ const SearchResults = (results) => {
                     </option>
                 </select>
             </div>
-            <ul className="product-list">
+            <ul className="products__list">
                 { 
                     currentList.map((item)=> {
                         let img_url = item.image_url; 
                         console.log(item); 
                         return (
-                            <li className="product-card" key={item.id}>
+                            <li className="products__item" key={item.id}>
                                 <div className="card-image">
                                     <img 
                                     src={

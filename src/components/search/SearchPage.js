@@ -48,7 +48,7 @@ const SearchPage = () => {
 
         {search 
         ?   <SearchResults props={results} />
-        :    <section className="page-container">
+        :    <section className="page">
                 <section className="search-product">
                     <p className="">
                         Search for a product and find it's current values... 
