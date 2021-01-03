@@ -44,11 +44,12 @@ const SearchPage = () => {
   return (
       <>
         {/* skicka med props vilken page det är?  */}
-        {/* <Header props='Search' /> */}
+        
 
         {search 
         ?   <SearchResults props={results} />
         :    <section className="page">
+                <Header props='Search' />
                 <section className="search-product">
                     <p className="">
                         Search for a product and find it's current values... 

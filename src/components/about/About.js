@@ -14,9 +14,8 @@ const About = (props) => {
 
   return (
       <>
-      {/* ta emot props för vad man klickat på??? */}
-        <Header props='About' /> 
         <section className="page">
+            <Header props='About' /> 
             <section className="page__about">
             <div className="submenu">
                 {/* add accordion for submenu */}

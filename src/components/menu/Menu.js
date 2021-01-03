@@ -8,6 +8,18 @@ const Menu = () => {
         mobileMenu.classList.toggle("isToggled");
     }; 
 
+    window.onscroll = () => {
+        //find position x
+        var menu = document.getElementById("nav_menu");
+        var sticky = menu.offsetTop; 
+  
+        if (window.pageYOffset > sticky) {
+          menu.classList.add("--sticky");
+        } else {
+          menu.classList.remove("--sticky");
+        }
+      };
+
     return (
         <nav className="nav" id="nav_menu">   {/* add class --toggled */}
             <div className="brand-logo">

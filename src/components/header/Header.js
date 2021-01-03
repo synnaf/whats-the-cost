@@ -11,10 +11,22 @@ const Header = (title) => {
     const [pageTitle, setPageTitle] = useState(title.props); 
     const pageClasses = classNames({ pageActive: page }); //gets the name pageActive when state is true 
 
+    // window.onscroll = () => {
+    //   //find position x
+
+    //   var header = document.getElementById("myHeader");
+    //   var sticky = header.offsetTop; //152 
+
+    //   if (window.pageYOffset > sticky) {
+    //     header.classList.add("--sticky");
+    //   } else {
+    //     header.classList.remove("--sticky");
+    //   }
+    // }; 
+
   return (
       <>
-        {/* <section className={pageClasses}> */}
-        <section className="page-title">
+        <section className="page__title" id="myHeader">
             <h2 className="subpage-title">{pageTitle}</h2>
         </section>
       </>
