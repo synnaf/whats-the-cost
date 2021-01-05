@@ -3,9 +3,10 @@
 //should have z-index above menu and blur background? 
 
 .product-card-details {
-    border:solid red; 
+    width:40%;
     // position:relative;
-    margin:2rem;
+    padding:2rem; 
+    margin:auto;
     background-color: white;
     box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
     margin-bottom:2rem; 

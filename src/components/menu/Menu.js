@@ -1,4 +1,5 @@
 import React from 'react'; 
+import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import './Menu.scss';  
 
 const Menu = () => {
@@ -8,17 +9,17 @@ const Menu = () => {
         mobileMenu.classList.toggle("isToggled");
     }; 
 
-    window.onscroll = () => {
-        //find position x
-        var menu = document.getElementById("nav_menu");
-        var sticky = menu.offsetTop; 
+    // window.onscroll = () => {
+    //     //find position x
+    //     var menu = document.getElementById("nav_menu");
+    //     var sticky = menu.offsetTop; 
   
-        if (window.pageYOffset > sticky) {
-          menu.classList.add("--sticky");
-        } else {
-          menu.classList.remove("--sticky");
-        }
-      };
+    //     if (window.pageYOffset > sticky) {
+    //       menu.classList.add("--sticky");
+    //     } else {
+    //       menu.classList.remove("--sticky");
+    //     }
+    //   };
 
     return (
         <nav className="nav" id="nav_menu">   {/* add class --toggled */}
@@ -41,13 +42,19 @@ const Menu = () => {
 
             <ul className="nav__list">
                 <li className="nav__item">
-                    <a className="nav__link" href="/">Menu</a>
+                    <NavLink to="/" className="nav__link" activeClassName="active">
+                        Menu
+                    </NavLink>
                 </li>
                 <li className="nav__item">
-                    <a className="nav__link" href="/search">Search</a>
+                    <NavLink to="/search" className="nav__link">
+                        Search
+                    </NavLink>
                 </li>
                 <li className="nav__item">
-                    <a className="nav__link" href="/about">About</a>
+                    <NavLink to="/about" className="nav__link">
+                        About
+                    </NavLink> 
                 </li>
             </ul>
         </nav>

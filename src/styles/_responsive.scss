@@ -24,7 +24,8 @@ body {
     }
     .page { 
         flex: 1 0 auto; 
-        
+        max-width:95%; //even spacing left/right
+        // height:80vh;
         // z-index:2; 
         // height:60%;
         // top:20%; 

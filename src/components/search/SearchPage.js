@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
 import Header from '../header/Header'; 
 import './SearchPage.scss'; 
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect
+  } from "react-router-dom";
 
 
 //create search form Search.js 
@@ -8,47 +15,47 @@ import { searchProduct } from './api';
 import SearchResults from '../searchResults/SearchResults';
 
 
-const SearchPage = () => {
+const SearchPage = (test) => {
 
-    const [search, setSearch] = useState(false);
-    const [results, setResults] = useState([]); 
+    console.log(test); 
+
+    // console.log(t.props); 
+    // const [search, setSearch] = useState(false); //state som kontrollerar vilken komponent som renderas 
+
+    const [results, setResults] = useState([]); //detta state måste upp? 
     const [searchValue, setSearchValue] = useState('');  
 
     function getSearchTerm(e) {
         e.preventDefault(); 
-        //vänta in hela ??? 
         setSearchValue(e.target.value); 
-        // loadSearch(searchValue); 
     }
 
-    function loadSearch() {
-        console.log('a searchterm:', searchValue); 
-        //skicka med en sträng hit 
-
+    function loadSearch(e) {
+       e.preventDefault(); 
         searchProduct(searchValue)
-        .then((req, res)=> {
-            let list = [...req.data.data]; //this contains the search results in data-array! 
-            console.log(list);  //list är en lista med 50 objekt 
-
-            setSearch(true);
-            return list; 
-        })
-        .then((test) => {
-            setResults(test);
-            console.log(test); 
-            return;   
-            // console.log('results state', results);  //varför loggas inte den här? n
-        })
+            .then((req, res)=> {
+                let list = [...req.data.data];  
+                console.log(list); 
+                setResults(list); 
+                // setSearch(true); 
+                return list; 
+            })
+            .then((results) => {
+                //if results is NOT equal to empty arr, redirect, other do null 
+                if(results !== []) {
+                    test.func(results); 
+                    console.log(test); 
+                    //test.match.params.
+                    test.history.push('/search/'+searchValue); 
+                }  else {
+                    alert('No available results'); 
+                } 
+            })  
     }
 
   return (
       <>
-        {/* skicka med props vilken page det är?  */}
-        
-
-        {search 
-        ?   <SearchResults props={results} />
-        :    <section className="page">
+           <section className="page">
                 <Header props='Search' />
                 <section className="search-product">
                     <p className="">
@@ -60,8 +67,9 @@ const SearchPage = () => {
                         value={searchValue} 
                         onChange={getSearchTerm} 
                     /> 
-                    <button type="button" onClick={loadSearch}>
-                        Click
+                    <button type="button" onClick={loadSearch} disabled={searchValue == '' ? true : false} >
+                        {/* <a href="/search/results">Search</a> */}
+                        Search 
                     </button>
                 </section>
                 <section className="yellow-section">
@@ -74,7 +82,6 @@ const SearchPage = () => {
                     </div>
                 </section>
             </section>
-        }
       </>
   );
 }

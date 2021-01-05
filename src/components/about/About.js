@@ -8,9 +8,19 @@ const About = (props) => {
     console.log(props); //props is 'test', same as value in page
     const [showNotes, setShowNotes] = useState(false); 
     
-    // function showInfo() {
-    //     setShowNotes(true);
-    // }
+    function showInfo() {
+        //set timeout 
+        //
+        let menuInfo = document.getElementById('submenu__info'); 
+        setShowNotes(!showNotes);
+
+        if(showNotes == true) {
+            console.log(menuInfo); 
+            menuInfo.classList.add('--show'); 
+        } else {
+            menuInfo.classList.remove('--show');
+        }
+    }
 
   return (
       <>
@@ -21,9 +31,7 @@ const About = (props) => {
                 {/* add accordion for submenu */}
                 <ul className="accordion">
                     <li className="accordion__item">
-                        <a className="accordion__link" href="#" onClick={()=> {
-                            setShowNotes(!showNotes);
-                        }}>About</a>
+                        <a className="accordion__link" href="#" onClick={showInfo}>About</a>
                     </li>
                     <li className="accordion__item">
                         <a href="#" className="accordion__link">Our values</a>
@@ -36,14 +44,14 @@ const About = (props) => {
                     Click
                 </button>
             </div>
+
             {/* TODO: how should this be displayed? all at once? */}
-            { showNotes ? 
-                <div className="submenu--info">
+            
+                <div id="submenu__info">
                 {/* add accordion for submenu */}
                     <span>Some info text</span>
                 </div>
-                : null
-            }
+
             </section>
         </section>
       </>

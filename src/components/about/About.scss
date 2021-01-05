@@ -3,7 +3,7 @@
 .page {
     //global style for all pages 
     // flex-direction: column; //this to important? 
- 
+  
     .page__title {
        
     }
@@ -28,11 +28,7 @@
                         color:$text-color; 
                     }:hover {
                         color:$cta-orange; 
-                    }::after {
-                        content:url('../../assets/method-draw-image.svg');
-                        display:inline;
-                        // background:url('../../assets/method-draw-image.svg'); 
-                    } 
+                    }
                 }
 
             }
@@ -45,13 +41,24 @@
                 padding:0.3rem; 
             }
         }
-        .submenu--info {
-            // display:; 
+
+        #submenu__info {
+            // display:none; 
             font-size:1rem; 
             background-color:$lilac; 
             padding:2rem;
             min-height:20%;
             min-width:30%;
+
         }
+        .--show {
+            border: solid red; 
+            // display:inline;
+        }::before {
+                content:url('../../assets/method-draw-image.svg');
+                display:inline;
+                // background:url('../../assets/method-draw-image.svg'); 
+            }
+        
     }
 }

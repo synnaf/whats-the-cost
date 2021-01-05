@@ -30,7 +30,8 @@
         background:$cta-orange; 
         color: $yellow; 
         padding:0.3rem; 
-
+    }:disabled {
+        opacity:0.5; 
     }
 }
 

@@ -1,33 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../header/Header'; 
-import Product from '../product/Product';
+
 import Pagination from '../pagination/Pagination'; 
 import './SearchResults.scss'; 
 import defaultimage from '../../assets/default-image.png'; 
 
-// if(results === []) {
-//     return <h2>Loading results...</h2>
-// } else {
-//     return(); 
-// }
 
-//recieve props from parent Search component 
 const SearchResults = (results) => {
+
+    console.log('this is results in searchresults', results.list); 
+    //det är ett props-objekt, jag vill ha min lista :(
+
+    const { list } = results; 
+    
     //paginati0n
     const [currentPage, setCurrentPage] = useState(1); 
     const [itemsPerPage] = useState(12); 
-    /* destructure props till enbart det vi vill ha   */
-    const { props } = results; 
 
     //get index of the last post 
     const indexOfLastItem = currentPage * itemsPerPage; 
     const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
-    const currentList = props.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
+    const currentList = list.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
 
     //change page on click 
     const createPagination = (pageNumber) => {
         setCurrentPage(pageNumber);
-        // console.log(e.target.value); 
     }; 
 
 
@@ -66,10 +63,11 @@ const SearchResults = (results) => {
                                 <div className="product-card-info">
                                     <h6>{item.name}</h6>
                                     {/* <span>X X X</span> */}
-                                    <button type="button"                             
+                                    {/* <button type="button"                             
                                         onClick={(e) => (
                                             <Product props={e} />
-                                    )}>More</button>
+                                    )}>test</button> */}
+                                    <a href={'/search/result/'+item.id}> Read more</a>
                                 </div> 
                             </li>
                         )
@@ -78,7 +76,7 @@ const SearchResults = (results) => {
             </ul>  
             <Pagination 
                 itemsPerPage={itemsPerPage} 
-                totalList={props.length} 
+                totalList={list.length} 
                 paginate={createPagination}
                 activePage={currentPage} 
             />
@@ -90,3 +88,9 @@ const SearchResults = (results) => {
 }
 
 export default SearchResults;
+
+// if(results === []) {
+//     return <h2>Loading results...</h2>
+// } else {
+//     return(); 
+// }
