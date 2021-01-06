@@ -3,7 +3,6 @@
 .page {
     //global style for all pages 
     // flex-direction: column; //this to important? 
-  
     .page__title {
        
     }
@@ -17,20 +16,51 @@
         .submenu {
             // height:40vh; //find a way to do this smarter
             // width:50%;
+            width:70%; 
             padding-left:1rem; //1rem for left padding should be global 
             .accordion {
                 list-style-type: none;
                 padding-left:0;
                 color:$text-color; 
+                width:100%; 
+    
                 .accordion__item {
+                    display: flex; 
+                    flex-direction:row; 
+                    margin: 1rem; 
+                    width:100%; 
+
                     .accordion__link {
                         text-decoration: none;
                         color:$text-color; 
-                    }:hover {
-                        color:$cta-orange; 
+                        width:20%;
+                        border-right:solid yellow; 
                     }
+                    .icon {
+                        // position: absolute;
+                        // top: 50%;
+                        // left: 30%;
+                        // transform: translate(-50%,-50%);
+                        width: 50%; //of its container
+                        height: auto; //of its container
+                        cursor: pointer;
+                        .arrow {
+                            content:url('../../assets/method-draw-image.svg'); 
+                            width: 100%; //of its container
+                            height: 10px; //of its container
+                            // box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+                            animation: arrow 700ms linear infinite;
+                        }:hover {
+                            box-shadow: 0 5px 15px rgba(0, 0, 0, .2);
+                        }
+                    }
+                    // :hover {
+                    //     background-color:yellow; 
+                    //     .arrow{
+                    //         background-color:yellow; 
+                    //     }
+                    // }
                 }
-
             }
             //create button style mixin
             button {
@@ -41,24 +71,41 @@
                 padding:0.3rem; 
             }
         }
-
-        #submenu__info {
-            // display:none; 
+        .submenu__info {
             font-size:1rem; 
             background-color:$lilac; 
             padding:2rem;
             min-height:20%;
             min-width:30%;
-
+            // transition: width 2s; transition on width property
         }
-        .--show {
-            border: solid red; 
-            // display:inline;
-        }::before {
-                content:url('../../assets/method-draw-image.svg');
-                display:inline;
-                // background:url('../../assets/method-draw-image.svg'); 
-            }
         
     }
 }
+
+@keyframes example {
+    0%  {width:100%;}
+    25% {width:50%;}
+    100% {width:10%;}
+}
+
+
+// PIL-IKONEN TILL ABOUT SIDAN 
+// .icon {
+// position: absolute;
+// top: 50%;
+// left: 30%;
+// transform: translate(-50%,-50%);
+// width: 80px;
+// height: 60px;
+// cursor: pointer;
+// }
+// .arrow {
+// position: absolute;
+// top: 25px;
+// width: 90%;
+// height: 10px;
+// background-color: #fff;
+// box-shadow: 0 3px 5px rgba(0, 0, 0, .2);
+// animation: arrow 700ms linear infinite;
+// }  

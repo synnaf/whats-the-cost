@@ -1,0 +1,67 @@
+@import '../../styles/variables'; 
+
+//should have z-index above menu and blur background? 
+
+// .product-card-details {
+//     width:40%;
+//     // position:relative;
+//     padding:2rem; 
+//     margin:auto;
+//     background-color: white;
+//     box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
+//     margin-bottom:2rem; 
+        .filter__values {
+            // width:100%; 
+            text-align: center;
+            .filter__list {
+                list-style-type: none;
+                padding-left:0; 
+                // margin:auto;
+                .filter__item {
+                    margin:auto;
+                    margin-bottom:2rem;
+                    width:70%; 
+                    text-align: left;
+                    display:flex; 
+                    flex-direction: row;
+                    justify-content: left;
+                    align-items: center;
+                    label {
+                        font-size:0.7rem;
+                        font-weight: bold; 
+                        // width:100%; 
+                        margin-right:2rem; 
+                    }
+                    input[type=range] {
+                        appearance: none; //remove default mstyle
+                        width:70%; 
+                        height:3px;
+                        background: #d3d3d3;
+                        outline: none;
+                        margin-left:auto; 
+                        // opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+                        // // -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+                        // transition: opacity .2s;
+
+                        &::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: 12px; 
+                            height: 12px;
+                            border-radius: 50%;
+                            background: $cta-orange; //different for diffrente types? 
+                            cursor: pointer; 
+                          }
+                        &::-moz-range-thumb {
+                            width: 12px; /* Set a specific slider handle width */
+                            height: 12px; /* Slider handle height */
+                            background: $cta-orange; /* Green background */
+                            cursor: pointer;
+                          }
+                    }
+                }
+
+            }
+        }
+// }
+

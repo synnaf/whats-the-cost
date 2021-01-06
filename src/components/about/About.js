@@ -10,17 +10,34 @@ const About = (props) => {
     
     function showInfo() {
         //set timeout 
-        //
-        let menuInfo = document.getElementById('submenu__info'); 
+        let menuInfo = document.getElementById('test'); 
         setShowNotes(!showNotes);
 
         if(showNotes == true) {
-            console.log(menuInfo); 
-            menuInfo.classList.add('--show'); 
+            menuInfo.classList.add('test'); 
+            // menu.classList.add('--show');
+            test();  
         } else {
-            menuInfo.classList.remove('--show');
+            menuInfo.classList.remove('test');
+            // menu.classList.remove('--show'); 
         }
     }
+
+        // const icon = document.querySelector('.icon');
+        const arrow = document.querySelector('.arrow');
+
+        const test = () => {
+            console.log('test animation'); 
+            arrow.animate([
+                {width: '100%'},
+                {width: '50%'},
+                {width: '0%'}
+            ],
+            {
+                duration: 700,
+                iterations: Infinity
+            });
+        };
 
   return (
       <>
@@ -30,14 +47,19 @@ const About = (props) => {
             <div className="submenu">
                 {/* add accordion for submenu */}
                 <ul className="accordion">
-                    <li className="accordion__item">
+                    <li className="accordion__item" id="test">
                         <a className="accordion__link" href="#" onClick={showInfo}>About</a>
+                        <div class="icon" onClick={showInfo}>
+                            <div class="arrow"></div>
+                        </div>
                     </li>
                     <li className="accordion__item">
-                        <a href="#" className="accordion__link">Our values</a>
+                        <a href="#" className="accordion__link" onClick={showInfo}>Our values</a>
+
                     </li>
                     <li className="accordion__item">
-                        <a href="#" className="accordion__link">Contact</a>
+                        <a href="#" className="accordion__link" onClick={showInfo}>Contact</a>
+
                     </li>
                 </ul>
                 <button type="button" className={`btn ${props}`}>
@@ -46,12 +68,14 @@ const About = (props) => {
             </div>
 
             {/* TODO: how should this be displayed? all at once? */}
-            
-                <div id="submenu__info">
-                {/* add accordion for submenu */}
+            {
+                showNotes 
+                ? 
+                <div id="submenuInfo" className="submenu__info">
                     <span>Some info text</span>
                 </div>
-
+                : null 
+            }
             </section>
         </section>
       </>
