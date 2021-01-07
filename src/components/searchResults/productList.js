@@ -1,16 +1,32 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import defaultimage from '../../assets/default-image.png'; 
+import Pagination from '../pagination/Pagination'; 
 
 
 const ProductList = (results) => {
     const { products } = results;
 
+    // //pagination
+    const [currentPage, setCurrentPage] = useState(1); 
+    const [itemsPerPage] = useState(12); 
+
+    // //get index of the last post 
+    const indexOfLastItem = currentPage * itemsPerPage; 
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
+    let currentList = products.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
+
+    // //change page on click 
+    const createPagination = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }; 
+
     console.log('this is results from parent', results);
 
     return (
+        <>
         <ul className="products__list">
             { 
-                products.map((item)=> {
+                currentList.map((item)=> {
                     let img_url = item.image_url; 
                 
                     return (
@@ -32,7 +48,17 @@ const ProductList = (results) => {
                     )
                 })  
             }
-        </ul>  
+        </ul>
+        {  products.length > itemsPerPage ?
+            <Pagination 
+                itemsPerPage={itemsPerPage} 
+                totalList={products.length} 
+                paginate={createPagination}
+                activePage={currentPage} 
+            />
+            : null
+        }  
+        </>
     );
 }
 

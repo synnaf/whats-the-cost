@@ -13,51 +13,36 @@ const SearchResults = (results) => {
     //jag måste modifiera list för att skicka den till productList, som renderar ut den
     const { list } = results; 
 
-    // //pagination
+    const [productState, setProductState] = useState(0);
+    const [newProductList, setNewProductList] = useState([]); 
+
+    // // //pagination
     // const [currentPage, setCurrentPage] = useState(1); 
     // const [itemsPerPage] = useState(12); 
 
-    // //get index of the last post 
+    // // //get index of the last post 
     // const indexOfLastItem = currentPage * itemsPerPage; 
     // const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
     // let currentList = list.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
-    // //den här listan är tom från början, visa inte den visa original-listan. 
+    // // //den här listan är tom från början, visa inte den visa original-listan. 
 
-    const [productState, setProductState] = useState(0);
-
-    // //change page on click 
+    // // //change page on click 
     // const createPagination = (pageNumber) => {
     //     setCurrentPage(pageNumber);
     // }; 
 
-    // let newProductList = [];
-    const [newProductList, setNewProductList] = useState([]); 
     //recieve slidervalue from filter-component
     const newList = (sliderValue) => {
         setNewProductList(list.filter(item => item.calculated_consuvalue >= sliderValue));
         console.log('newPL in SR',  newProductList);
-        
-        //jag vill uppdatera LIST utifrån det här värdena, och skicka dem till barnet att rendera 
         setProductState(sliderValue); 
-
-        // if(productState >= 1) {
-        //     //visa nya listan 
-            
-        // } else {
-        //    //visa första listan
-
-        // }; 
-
-        console.log(productState);
     }; 
 
 
- 
   return (
       <>
-        {/* <Header props='Results' />  */}
-
         <section className="page products">
+            <Header props='Results' /> 
             <div className="page__sort">
                 <select className="sort-options">
                     <option>
@@ -74,10 +59,6 @@ const SearchResults = (results) => {
             <div className="page__filter">
                 <FilterProducts func={newList} /> 
             </div>
-            {/* { productState
-                ? <ProductList products={newProductList} state={productState} />
-                : <ProductList products={list} state={productState} /> 
-            } */}
             {productState >= 1
                 ? <ProductList products={newProductList} state={productState} />
                 : <ProductList products={list} state={productState} />

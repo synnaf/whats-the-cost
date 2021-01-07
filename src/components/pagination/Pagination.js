@@ -5,27 +5,29 @@ import './Pagination.scss';
 const Pagination = ({itemsPerPage, totalList, paginate, activePage}) => {
     const pageNumbers = [];
 
+
+
     for(let i = 1; i <= Math.ceil(totalList / itemsPerPage ); i++) {
         pageNumbers.push(i); //gives us the number of pages to create 
     }
 
-    if(pageNumbers.length > 1) {
+    if(pageNumbers.length > 2) {
         let pageLink = document.getElementsByClassName('pagination__link');
+        
         let pageX = pageLink.item(activePage - 1); 
-        console.log(pageX); // är NULL tills man klickar på en link 
+        // console.log(pageX); // är NULL tills man klickar på en link 
         console.log(activePage);
         console.log(pageLink);
 
         if (pageX == null) {
             console.log('null is returned');  
         } else {
-            console.log('hej'); 
             let num = pageX.innerHTML;
             console.log('this is num', num); 
 
             if(num == activePage) {
                 pageX.classList.toggle('--active');
-                console.log('pageX:', pageX); 
+                // console.log('pageX:', pageX); 
             } 
         }
     }
