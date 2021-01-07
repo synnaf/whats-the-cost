@@ -12,32 +12,51 @@ const SearchResults = (results) => {
 
     //jag måste modifiera list för att skicka den till productList, som renderar ut den
     const { list } = results; 
-    
-    //paginati0n
-    const [currentPage, setCurrentPage] = useState(1); 
-    const [itemsPerPage] = useState(12); 
 
-    //get index of the last post 
-    const indexOfLastItem = currentPage * itemsPerPage; 
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
-    let currentList = list.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
+    // //pagination
+    // const [currentPage, setCurrentPage] = useState(1); 
+    // const [itemsPerPage] = useState(12); 
 
-    //change page on click 
-    const createPagination = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }; 
+    // //get index of the last post 
+    // const indexOfLastItem = currentPage * itemsPerPage; 
+    // const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
+    // let currentList = list.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
+    // //den här listan är tom från början, visa inte den visa original-listan. 
 
+    const [productState, setProductState] = useState(0);
+
+    // //change page on click 
+    // const createPagination = (pageNumber) => {
+    //     setCurrentPage(pageNumber);
+    // }; 
+
+    // let newProductList = [];
+    const [newProductList, setNewProductList] = useState([]); 
     //recieve slidervalue from filter-component
     const newList = (sliderValue) => {
-        console.log('this is slidervalue in SR', sliderValue); 
-        let newProductList = currentList.filter(item => item.calculated_consuvalue > sliderValue);
+        setNewProductList(list.filter(item => item.calculated_consuvalue >= sliderValue));
         console.log('newPL in SR',  newProductList);
+        
         //jag vill uppdatera LIST utifrån det här värdena, och skicka dem till barnet att rendera 
-    }
+        setProductState(sliderValue); 
+
+        // if(productState >= 1) {
+        //     //visa nya listan 
+            
+        // } else {
+        //    //visa första listan
+
+        // }; 
+
+        console.log(productState);
+    }; 
+
+
  
   return (
       <>
         {/* <Header props='Results' />  */}
+
         <section className="page products">
             <div className="page__sort">
                 <select className="sort-options">
@@ -53,21 +72,24 @@ const SearchResults = (results) => {
                 </select>
             </div>
             <div className="page__filter">
-                {/* skicka med hela listan till filter */}
                 <FilterProducts func={newList} /> 
             </div>
-            {/* enda uppgiften är att visa listan */}
-            <ProductList products={list} />
-            <Pagination 
+            {/* { productState
+                ? <ProductList products={newProductList} state={productState} />
+                : <ProductList products={list} state={productState} /> 
+            } */}
+            {productState >= 1
+                ? <ProductList products={newProductList} state={productState} />
+                : <ProductList products={list} state={productState} />
+            }
+            {/* <Pagination 
                 itemsPerPage={itemsPerPage} 
                 totalList={list.length} 
                 paginate={createPagination}
                 activePage={currentPage} 
-            />
+            /> */}
         </section>
-
       </>
-
   );
 }
 

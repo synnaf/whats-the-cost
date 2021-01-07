@@ -3,20 +3,14 @@ import defaultimage from '../../assets/default-image.png';
 
 
 const ProductList = (results) => {
+    const { products } = results;
 
     console.log('this is results from parent', results);
-    const { products } = results;
-    const [list, setList] = useState([]); //tom array i state 
-
-    //när results ändras, rendera om komponenten? 
-    useEffect(() => {
-        setList(products)
-    }, [list, products]); 
 
     return (
         <ul className="products__list">
             { 
-                list.map((item)=> {
+                products.map((item)=> {
                     let img_url = item.image_url; 
                 
                     return (
