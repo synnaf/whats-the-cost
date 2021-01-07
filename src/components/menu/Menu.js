@@ -47,12 +47,12 @@ const Menu = () => {
                     </NavLink>
                 </li>
                 <li className="nav__item">
-                    <NavLink to="/search" className="nav__link">
+                    <NavLink to="/search" className="nav__link" activeClassName="active">
                         Search
                     </NavLink>
                 </li>
                 <li className="nav__item">
-                    <NavLink to="/about" className="nav__link">
+                    <NavLink to="/about" className="nav__link" activeClassName="active">
                         About
                     </NavLink> 
                 </li>

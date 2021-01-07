@@ -13,7 +13,7 @@ const ProductList = (results) => {
     // //get index of the last post 
     const indexOfLastItem = currentPage * itemsPerPage; 
     const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
-    let currentList = products.slice(indexOfFirstItem, indexOfLastItem); //the items we limit page to 
+    let currentList = products.slice(indexOfFirstItem, indexOfLastItem); 
 
     // //change page on click 
     const createPagination = (pageNumber) => {

@@ -1,30 +1,22 @@
 import React, {useState} from 'react';
 import { Switch, Route } from 'react-router-dom';
 // import classNames from 'classnames'
-
-import Home from '../home/Home';  //render start page?
-import About from '../about/About'; //about page 
-import SearchPage from '../search/SearchPage'; //create search 
-import NotFound from './NotFound'; 
+import Home from '../home/Home'; 
+import About from '../about/About';
+import SearchPage from '../search/SearchPage';
 import Product from '../product/Product';
 import SearchResults from '../searchResults/SearchResults';
+import NotFound from './NotFound'; 
 
+//TODO: byt namn på main till ngt annat 
 const Main = () => {
+  const [available, setAvailable] = useState([]); 
 
-  //denna komponent syftar till en main-routing för menyn. när man klickar på allmänna saker. 
-  //en annan routing + nested routing kommer finnas för de andra delarna av komponenterna. 
-  // Exempelvis när man gör en sökning och resultaten ska visas, när man går in på enskild produkt. 
-
-  const [available, setAvailable] = useState([]); //empty list   
-  // //vad vi vill ta emot här? här ska vi skapa upp en lista? 
-
-  function aFunction(data) {
+  function searchResult(data) {
       setAvailable(data);
-      console.log(available); 
-  }
+  };
 
-  console.log(available); 
-
+  //TODO: fixa dynamisk routing till :id/searchterm?? 
   return (
     <>
       <Switch> 
@@ -32,7 +24,7 @@ const Main = () => {
         <Route exact path='/about' component={About} />
         <Route exact path='/search' 
             render={(props) => (
-                <SearchPage {...props} func={aFunction} />
+                <SearchPage {...props} redirectSearch={searchResult} />
             )}
         />
         <Route exact path='/search/result/:id' 

@@ -1,34 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useHistory } from "react-router-dom";
+import React, { useState } from 'react';
 import './FilterProducts.scss'; 
-// import { getProduct } from '../search/api'; 
-
-//load product dynamically
 
 const FilterProducts = (props) => {
 
-    //en array av alla objekt från sökningen 
     const [sliderValue, setSliderValue] = useState(0); 
 
-    //vad sker i denna komponent? 
-    //när komponenten renderas så har vi tillgång till listan i föräldern genom props. 
-    //vi tar emot en funktion som ändrar storleken på listan? 
-    //en funktion som 
-
+    //TODO: värden för alla sliders 
     function updateValue(e) {
- 
-        setSliderValue(e.target.value); //dubbelkolla så att man uppdaterar korrekt value med name 
-        // updateList(); 
+        setSliderValue(e.target.value); 
         props.func(sliderValue); 
-    } 
+    };  
 
-  return (
+    return (
         <>
             <div className="filter__values">
                 <ul className="filter__list">
                     <li className="filter__item">
                         <label htmlFor="slide1">ConsuValue</label>
-                        <input type="range" min="0" max="100" value={sliderValue} class="slider" name="slide1" id="myRange" onChange={updateValue} />
+                        <input type="range" min="0" max="100" value={sliderValue} class="slider" name="slide1" id="myRange" 
+                            onChange={updateValue} 
+                        />
                     </li>
                     <li className="filter__item">    
                         <label htmlFor="slide2">Impact on Environment</label>
@@ -41,7 +32,7 @@ const FilterProducts = (props) => {
                 </ul>
             </div>
         </>
-  );
+    );
 }
 
 export default FilterProducts;
