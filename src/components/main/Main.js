@@ -14,6 +14,7 @@ const Main = () => {
 
   function searchResult(data) {
       setAvailable(data);
+      console.log('searchdata', data); 
   };
 
   //TODO: fixa dynamisk routing till :id/searchterm?? 

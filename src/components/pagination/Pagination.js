@@ -13,8 +13,8 @@ const Pagination = ({itemsPerPage, totalList, paginate, activePage}) => {
         
         let pageX = pageLink.item(activePage - 1); 
         // console.log(pageX); // är NULL tills man klickar på en link 
-        console.log(activePage);
-        console.log(pageLink);
+        // console.log(activePage);
+        // console.log(pageLink);
 
         if (pageX == null) {
             console.log('null is returned');  

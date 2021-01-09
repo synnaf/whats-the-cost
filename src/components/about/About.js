@@ -1,41 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import Header from '../header/Header'; 
 import './About.scss'; 
 
 const About = (props) => {    
     console.log(props); //props is 'test', same as value in page
+    let defaultValue =''; 
     const [showNotes, setShowNotes] = useState(false); 
-    
-    function showInfo() {
-        //set timeout 
-        let menuInfo = document.getElementById('test'); 
-        setShowNotes(!showNotes);
+    const [info, setInfo] = useReducer( 
+        (state, newState) => ({ ...state, ...newState}), 
+        defaultValue //startvärdet på vårt state   
+    );  
 
-        if(showNotes == true) {
-            menuInfo.classList.add('test'); 
-            // menu.classList.add('--show');
-            test();  
-        } else {
-            menuInfo.classList.remove('test');
-            // menu.classList.remove('--show'); 
-        }
+    function update(e) { 
+        //detta item måste vara accordion__link med rätt html-value, annars funkar det inte 
+        let clickedItem = e.target.innerHTML; 
+        console.log('clicke ditem', clickedItem); 
+
+        setInfo({['t']: e.target.innerHTML }); //this should be toggled??
+
+        
+        animateArrow(e.target);
     }; 
 
-    // const icon = document.querySelector('.icon');
-    const arrow = document.querySelector('.arrow');
-
-    const test = () => {
-        console.log('test animation'); 
-        arrow.animate([
-            {width: '100%'},
-            {width: '50%'},
-            {width: '0%'}
-        ],
-        {
-            duration: 700,
-            iterations: Infinity
-        });
-    };
+    function animateArrow(el) {
+        console.log('recieve', el); 
+        el.classList.toggle('--active'); 
+    }; 
 
     return (
         <>
@@ -43,39 +33,60 @@ const About = (props) => {
                 <Header props='About' /> 
                 <section className="page__about">
                     <div className="submenu">
-                        {/* add accordion for submenu */}
                         <ul className="accordion">
                             <li className="accordion__item" id="test">
-                                <a className="accordion__link" href="#" onClick={showInfo}>About</a>
-                                <div class="icon" onClick={showInfo}>
-                                    <div class="arrow"></div>
+                                <button className="accordion__link" onClick={update}>
+                                    About
+
+                                </button>
+                                <div className="icon">
+                                        <div className="arrow"></div>
                                 </div>
+                                {
+                                    info.t == 'About' ?
+                                        <div id="submenuInfo" className="submenu__info">
+                                            <span>Some info text 1. 
+                                                And some more info text. And some more info text.
+                                                And some more info text
+                                            </span>
+                                        </div>
+                                    : null
+                                }
+
                             </li>
                             <li className="accordion__item">
-                                <a href="#" className="accordion__link" onClick={showInfo}>Our values</a>
-                                <div class="icon" onClick={showInfo}>
-                                    <div class="arrow"></div>
-                                </div>
+                                <a className="accordion__link" onClick={update}>Our values
+                                    <div className="icon">
+                                        <div className="arrow"></div>
+                                    </div>
+                                </a>
+                                {
+                                    info.t == 'Our values' ?
+                                        <div id="submenuInfo" className="submenu__info">
+                                            <span>Some info text 2</span>
+                                        </div>
+                                    : null
+                                }
                             </li>
                             <li className="accordion__item">
-                                <a href="#" className="accordion__link" onClick={showInfo}>Contact</a>
-                                <div class="icon" onClick={showInfo}>
-                                    <div class="arrow"></div>
+                                <a className="accordion__link" onClick={update}>Contact
+                                <div className="icon">
+                                    <div className="arrow"></div>
                                 </div>
+                                </a>
+                                {
+                                    info.t == 'Contact' ? 
+                                        <div id="submenuInfo" className="submenu__info">
+                                            <span>Some info text 3</span>
+                                        </div>
+                                    : null
+                                }
                             </li>
                         </ul>
-                        <button type="button" className={`btn ${props}`}>
+                        {/* <button type="button" className={`btn ${props}`}>
                             Click
-                        </button>
+                        </button> */}
                     </div>
-                    {/* TODO: how should this be displayed? all at once? */}
-                    {
-                        showNotes ? 
-                        <div id="submenuInfo" className="submenu__info">
-                            <span>Some info text</span>
-                        </div>
-                        : null 
-                    }
                 </section>
             </section>
         </>

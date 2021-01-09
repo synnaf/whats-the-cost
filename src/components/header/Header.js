@@ -5,7 +5,7 @@ import './Header.scss';
 //lägg in classNames här, så att den hämtar in dem automatiskt? 
 
 const Header = (title) => {
-  console.log(title.props); 
+  // console.log(title.props); 
 
     const [page, setPage] = useState(false);     
     const [pageTitle, setPageTitle] = useState(title.props); 
