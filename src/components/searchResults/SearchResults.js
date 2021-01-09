@@ -18,9 +18,46 @@ const SearchResults = (results) => {
 
     //recieve animal value from component 
     const animalList = (sliderValue) => {
-        console.log('sliderValue recieved from animal', sliderValue); 
-        // setNewProductList(list.filter(item => item.calculated_consuvalue >= sliderValue));
-        // setProductState(sliderValue); 
+        console.log('sliderValue recieved from animal', sliderValue); //updates accordingly  
+        /*
+        Skapa en filtrering för om värdet matchar Slidervärdet?
+        Jag vill kunna ta emot två slider-värden, och skicka in i respektive funktion. 
+        OM jag tar emot ett animal-värde, filtrera på det och skicka det som newProductList 
+        */
+       if(sliderValue == 0) {
+            setNewProductList(list.filter(item => item.is_animal === 0 || null));
+            console.log(newProductList); 
+            setProductState(sliderValue); 
+        } else {
+            console.log('meat'); 
+        } 
+       if(sliderValue == 1) {
+            setNewProductList(list.filter(item => item.is_vegetarian === 1));
+            console.log(newProductList); 
+            setProductState(sliderValue); 
+        } else {
+            console.log('vego'); 
+        }
+       if(sliderValue == 2) {
+            setNewProductList(list.filter(item => item.is_vegan === 1));
+            console.log(newProductList); 
+            setProductState(sliderValue); 
+       } else {
+           console.log('vegaN'); 
+       }
+
+
+    //om det är djur, och sliderValue är djur, returnera listan 
+        
+            // //innehåller kött/djur när: 
+            // list.filter(item => item.is_animal === 1 || null); 
+        
+            // //innehåller inget sånt när: 
+            // list.filter(item => item.is_vegan === 1); 
+
+            // //innehåller djurprodukter men inte kött när: 
+            // list.filter(item => item.is_vegetarian === 1);  
+       
     }; 
 
 
