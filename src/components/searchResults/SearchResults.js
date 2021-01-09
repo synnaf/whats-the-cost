@@ -16,7 +16,15 @@ const SearchResults = (results) => {
         setProductState(sliderValue); 
     }; 
 
-    if(list == []) {
+    //recieve animal value from component 
+    const animalList = (sliderValue) => {
+        console.log('sliderValue recieved from animal', sliderValue); 
+        // setNewProductList(list.filter(item => item.calculated_consuvalue >= sliderValue));
+        // setProductState(sliderValue); 
+    }; 
+
+
+    if(list === []) {
         return <h2>Loading results...</h2>
     } else {
         return (
@@ -37,7 +45,7 @@ const SearchResults = (results) => {
                         </select>
                     </div>
                     <div className="page__filter">
-                        <FilterProducts func={newList} /> 
+                        <FilterProducts func={newList} func2={animalList}/> 
                     </div>
                     {productState >= 1
                         ? <ProductList products={newProductList} state={productState} />

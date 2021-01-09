@@ -1,94 +1,93 @@
 @import '../../styles/variables'; 
 
 //should have z-index above menu and blur background? 
-
-        .filter__values {
-            // width:100%; 
-            text-align: center;
-            .filter__list {
-                list-style-type: none;
-                padding-left:0; 
-                margin:auto;
-                .filter__item {
-                    margin:auto;
-                    margin-bottom:2rem;
-                    width:70%; 
-                    text-align: left;
-                    display:flex; 
-                    flex-direction: row;
-                    justify-content: left;
-                    align-items: center;
-                    label {
-                        font-size:0.7rem;
-                        font-weight: bold; 
-                        // width:100%; 
-                        margin-right:2rem; 
+.filter__values {
+    // width:100%; 
+    text-align: center;
+    .filter__list {
+        list-style-type: none;
+        padding-left:0; 
+        margin:auto;
+        .filter__item {
+            margin:auto;
+            margin-bottom:2.5rem;
+            width:70%; 
+            text-align: left;
+            display:flex; 
+            flex-direction: row;
+            justify-content: left;
+            align-items: center;
+            label {
+                font-size:0.7rem;
+                font-weight: bold; 
+                // width:100%; 
+                margin-right:1.5rem; 
+            }
+            input[type=range] {
+                appearance: none; //remove default mstyle
+                width:70%; 
+                height:3px;
+                background: #d3d3d3;
+                outline: none;
+                margin-left:auto; 
+                &::-webkit-slider-thumb {
+                    -webkit-appearance: none;
+                    appearance: none;
+                    width: 22px; 
+                    height: 22px;
+                    border-radius: 50%;
+                    background: $cta-orange; //different for diffrente types? 
+                    cursor: pointer; 
                     }
-                    input[type=range] {
-                        appearance: none; //remove default mstyle
-                        width:70%; 
-                        height:3px;
-                        background: #d3d3d3;
-                        outline: none;
-                        margin-left:auto; 
-                        &::-webkit-slider-thumb {
-                            -webkit-appearance: none;
-                            appearance: none;
-                            width: 22px; 
-                            height: 22px;
-                            border-radius: 50%;
-                            background: $cta-orange; //different for diffrente types? 
-                            cursor: pointer; 
-                          }
-                        &::-moz-range-thumb {
-                            width: 22px; /* Set a specific slider handle width */
-                            height: 22px; /* Slider handle height */
-                            background: $cta-orange; /* Green background */
-                            cursor: pointer;
-                          }
+                &::-moz-range-thumb {
+                    width: 22px; /* Set a specific slider handle width */
+                    height: 22px; /* Slider handle height */
+                    background: $cta-orange; /* Green background */
+                    cursor: pointer;
                     }
-                }
-                .filter__item.--custom {
-                    justify-content: space-between;
-                    .--custom__wrapper {
-                        width: 70%;  
-                        #myRange2 {
-                            margin-left:auto;
-                            width:100%; 
-                            align-items: center;
-                            &::-webkit-slider-thumb {
-                                // -webkit-appearance: auto;
-                                // appearance: auto;
-                                width: 8px; 
-                                height: 22px;
-                                border-radius: 12%;
-                            }
-                            &::-moz-range-thumb {
-                                width: 8px; 
-                                height: 22px;
-                            }
-                        }
-                        datalist {
-                            display:flex; 
-                            flex-direction: row;
-                            justify-content: space-between;
-                            margin-left:auto;
-                            width:100%; 
-                            text-align:center; 
-                            option {
-                                background-color:transparentize($lilac, 0.5); 
-                                padding:0.2rem;
-                                // border-bottom: 5.5px solid $lilac; 
-                                // border-radius: 8%; 
-                                font-size: 0.6rem;
-                                text-align:center; 
-                                width:10%;
-                            }
-                        }
-                    }
-
-                }
-
             }
         }
+        .filter__item.--custom {
+            justify-content: space-between;
+            .--custom__wrapper {
+                width: 70%;  
+                #myRange2 {
+                    margin-left:auto;
+                    width:100%; 
+                    align-items: center;
+                    &::-webkit-slider-thumb {
+                        // -webkit-appearance: auto;
+                        // appearance: auto;
+                        width: 8px; 
+                        height: 22px;
+                        border-radius: 12%;
+                    }
+                    &::-moz-range-thumb {
+                        width: 8px; 
+                        height: 22px;
+                    }
+                }
+                datalist {
+                    display:flex; 
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-left:auto;
+                    width:100%; 
+                    text-align:center; 
+                    option {
+                        background-color:transparentize($lilac, 0.5); 
+                        padding:0.2rem;
+                        // border-bottom: 5.5px solid $lilac; 
+                        // border-radius: 8%; 
+                        font-size: 0.6rem;
+                        text-align:center; 
+                        width:10%;
+                    }
+                }
+            }
+
+        }
+
+    }
+}
 // }

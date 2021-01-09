@@ -41,7 +41,8 @@ const ProductList = (results) => {
                             </div>
                             <div className="product-card-info">
                                 <h6>{item.name}</h6>
-                                <p>{item.calculated_consuvalue}</p>
+                                {/* <p>{item.calculated_consuvalue}</p> */}
+                                <p>{item.is_animal}</p>
                                 <a href={'/search/result/'+item.id}> Read more</a>
                             </div> 
                         </li>

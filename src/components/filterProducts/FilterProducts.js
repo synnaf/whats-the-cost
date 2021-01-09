@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './FilterProducts.scss'; 
 
 
@@ -8,36 +8,24 @@ const FilterProducts = (props) => {
     const [sliderValue2, setSliderValue2] = useState(0); 
     // const [replaceSLider, setReplaceSLider] = useState('Non-vegan'); //toggle three values 
 
-    //TODO: värden för alla sliders 
-    function updateValue(e) {
-        setSliderValue(e.target.value); 
+    useEffect(() => {
+       //code t be executed  
         props.func(sliderValue); 
+        props.func2(sliderValue2);  
+ 
+    }, [sliderValue, sliderValue2]);
+
+
+    const updateValue = (e) => {
+        setSliderValue(e.target.value); 
+        // props.func(sliderValue); 
     }; 
     
-    function updateValue2(e) {
+    const updateValue2 = (e) =>  {
         let rangeValue = e.target.value;
         setSliderValue2(rangeValue); 
-     
-        // let rangeSlider =  document.querySelector('#myRange2');     
-        //switch slider 
-        // eslint-disable-next-line default-case
-        //rangeValue == 0; 
-        //rangeValue == 15;
-        //rangeValue == 30;
+        // props.func2(sliderValue2);  
     }; 
-
-    // function sliderOutputUpdate() {
-    //     let rangeOutput =  document.querySelector('#output');
-    //     if (sliderValue2 == 30) {
-    //         setReplaceSLider('Vegan'); 
-    //     } else {
-    //         setReplaceSLider('Veg'); 
-    //     }
-
-    //     let options = ['Vegan', 'Veg', 'Meats']; 
-
-
-    // }
 
 
     return (
@@ -58,18 +46,17 @@ const FilterProducts = (props) => {
                             <option>Veg.</option>
                             <option>Vegan</option>
                         </datalist>
-                        <input type="range" min="0" max="30" step="15" value={sliderValue2} className="slider" name="slide2" id="myRange2" 
+                        <input type="range" min="0" max="2" step="1" value={sliderValue2} className="slider" name="slide2" id="myRange2" 
                             onChange={updateValue2}
                             list="mR2"
                         />
                         </div>
                         {/* <output htmlFor="slide2" id="output">{replaceSLider}</output> */}
                     </li>
-
-                    <li className="filter__item">
+                    {/* <li className="filter__item">
                         <label htmlFor="slide3">Impact on Democracy</label>
                         <input type="range" min="0" max="100" value="50" className="slider" name="slide3" id="myRange" />
-                    </li>
+                    </li> */}
                 </ul>
             </div>
         </>
