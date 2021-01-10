@@ -132,6 +132,12 @@ body {
             }
         } 
     }
+    .product-card-details {
+        @media screen and (min-width: $padlet) {
+            width:40%;
+            padding:2rem; 
+        }
+    }
     footer {
         height:auto; //height of content 
         //more height? 
