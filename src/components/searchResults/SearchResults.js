@@ -13,32 +13,49 @@ const SearchResults = (results) => {
 
     //what ve can get from our context 
     const {available, setAvailable} = useContext(ListContext);
+    console.log('this is avaliable in SR', available);
+    console.log('this is list in SR', list);
 
     //recieve slidervalue from consuvalue-component
     const newList = (sliderValue) => {
-        console.log('sliderValue recieved from consuvalue', sliderValue);
+        console.log('sliderValue consuvalue', sliderValue);
         setAvailable(list.filter(item => item.calculated_consuvalue >= sliderValue));
         setProductState(sliderValue); 
+
+        // // 
+        // list.some(checkNumber);
+        // let nr = list.map(item => 
+        //     item.calculated_consuvalue
+        // ); 
+        // function checkNumber(nr) {
+        //     return nr >= sliderValue;
+        // };         
+        // for(let i=0; i < list.length; i++) {
+        //     const v = (list[i].calculated_consuvalue); 
+        //     //if this is true
+        //     list.some(checkValue(v)); 
+        // };
+        // const checkValue = (v) => {
+        //     return v >= sliderValue; 
+        // }
     }; 
 
     //recieve slidervalue from animal-component 
     const animalList = (sliderValue) => {
-        console.log('sliderValue recieved from animal', sliderValue);
+        console.log('sliderValue animal', sliderValue);
         if(sliderValue > 0) {
             setAvailable(list.filter(item => item.is_vegetarian == 1));
             setProductState(sliderValue); 
         } else {
-            console.log('vego'); 
+            // console.log('vego'); 
         }
         if(sliderValue > 1) {
             setAvailable(list.filter(item => item.is_vegan == 1));
             setProductState(sliderValue); 
         } else {
-           console.log('vegan'); 
-     
+        //    console.log('vegan'); 
         }
     }; 
-
 
     if(list === []) {
         return <h2>Loading results...</h2>
@@ -50,28 +67,21 @@ const SearchResults = (results) => {
                         <Header props='Results' /> 
                         <div className="page__sort">
                             <select className="sort-options">
+                                {/* array.sort() */}
                                 <option>
-                                    Sort A-Z
+                                    Sort A-Z 
                                 </option>
                                 <option>
+                                    {/* array.sort() => array.reverse();  */}
                                     Sort Z-A
-                                </option>
-                                <option>
-                                    Sort Test
                                 </option>
                             </select>
                         </div>   
                     </div>
                     <div className="page__filter">
                         <FilterProducts func={newList} func2={animalList}/> 
-                    </div>
-                    {/* {productState >= 1
-                        ? <ProductList products={available} state={productState} />
-                        : <ProductList products={list} state={productState} />
-                    } */}
-    
+                    </div>    
                     <ProductList products={available} state={productState} />
-                    
                 </section>
             </>
         );

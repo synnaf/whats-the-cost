@@ -4,7 +4,7 @@ import Pagination from '../pagination/Pagination';
 
 
 const ProductList = (results) => {
-    console.log('RESULTS RECIEVED:', results);
+    console.log('RESULTS RECIEVED PL:', results);
     const { products } = results;
 
     // //pagination
@@ -20,8 +20,6 @@ const ProductList = (results) => {
     const createPagination = (pageNumber) => {
         setCurrentPage(pageNumber);
     }; 
-
-    console.log('this is results from parent', results);
 
     return (
         <>

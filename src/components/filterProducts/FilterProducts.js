@@ -19,7 +19,6 @@ const FilterProducts = (props) => {
     }; 
     
     const updateValue2 = (e) =>  {
-        console.log('animal slide', e.target.value); 
         setSliderValue2(e.target.value); 
     }; 
 

@@ -12,35 +12,38 @@ import NotFound from './NotFound';
 //TODO: byt namn på main till ngt annat 
 const Main = () => {
   const [available, setAvailable] = useState([]); 
+  const [productList, setproductList] = useState([]); 
  
   function searchResult(data) {
-      setAvailable(data);
-      console.log('searchdata', data); 
+    setproductList(data);
   };
 
   //TODO: fixa dynamisk routing till :id/searchterm?? 
   return (
     <>
       <Switch> 
-        <ListContext.Provider value={{available, setAvailable}}>
+       
           <Route exact path='/' component={Home} />
           <Route exact path='/about' component={About} />
           <Route exact path='/search' 
               render={(props) => (
                   <SearchPage {...props} redirectSearch={searchResult} />
               )}
-          />
-          <Route exact path='/search/result/:id' 
-              component={Product} 
-          />
-          <Route exact path='/search/:searchTerm' 
-              render={(props) => (
-                  <SearchResults {...props} list={available} />
-              )}
           /> 
+
+          <ListContext.Provider value={{available, setAvailable}}>
+              <Route exact path='/search/result/:id' 
+                  component={Product} 
+              />
+              <Route exact path='/search/:searchTerm' 
+                  render={(props) => (
+                      <SearchResults {...props} list={productList} />
+                  )}
+              />  
+          </ListContext.Provider>
           
-        </ListContext.Provider>
           <Route component={NotFound} /> 
+
       </Switch>
     </>
   );
