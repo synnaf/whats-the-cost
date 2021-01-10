@@ -1,6 +1,7 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import './Menu.scss';  
+import heartIcon from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg';
 
 const Menu = () => {
 
@@ -43,7 +44,7 @@ const Menu = () => {
             <ul className="nav__list">
                 <li className="nav__item">
                     <NavLink to="/" className="nav__link" activeClassName="active">
-                        Menu
+                        Start
                     </NavLink>
                 </li>
                 <li className="nav__item">
@@ -55,6 +56,9 @@ const Menu = () => {
                     <NavLink to="/about" className="nav__link" activeClassName="active">
                         About
                     </NavLink> 
+                    {/* <NavLink to="/favorites" className="nav__link" activeClassName="active">
+                        {heartIcon}
+                    </NavLink>  */}
                 </li>
             </ul>
         </nav>

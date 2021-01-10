@@ -7,25 +7,19 @@ const Footer = () => {
   return (
       <>
         <footer className="footer-section">
-        <div className="footer-logo">
-              LOGO
-            </div>
-            <div className="footer-contact-info">
-              <h6>Contact</h6>
-              <ul>
-                <li>
-                  Name
-                </li>
-                <li>
-                  Adress
-                </li>
-                <li>
-                  Mail or so
-                </li>
-              </ul>
-            </div>
+          {/* <div className="footer-logo">
+                LOGO
+          </div> */}
+          <div className="footer-contact-info">
+            <h6>Questions?</h6>
+            <p>Fanny Värnbrink Forsman</p>
+            <adress>
+              <a href="mailto:f.vforsman@gmail.com">Mail</a>
+            </adress>
+          </div>
             <div className="copyright">
-              Copyright blablabla 
+              <h6>2021</h6>
+              <a href="www.consupedia.se" target="_blank">www.consupedia.se</a>
             </div>
         </footer>
       </>

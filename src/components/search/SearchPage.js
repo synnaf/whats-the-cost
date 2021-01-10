@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import Header from '../header/Header'; 
-//create search form Search.js 
 import { searchProduct } from './api';
 import './SearchPage.scss'; 
 
@@ -53,7 +52,7 @@ const SearchPage = (props) => {
                         Search 
                     </button>
                 </section>
-                <section className="yellow-section">
+                {/* <section className="yellow-section">
                     <p className="">
                         Or find a full list of registered products...
                     </p>
@@ -61,7 +60,7 @@ const SearchPage = (props) => {
                         <img src="https://picsum.photos/200/300" /> 
                         <button type="button">Click</button> 
                     </div>
-                </section>
+                </section> */}
             </section>
         </>
     );

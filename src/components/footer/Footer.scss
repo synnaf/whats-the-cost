@@ -4,16 +4,18 @@ footer {
     background-color:white; 
     border: 1px solid black; 
     // margin-top:2rem;
-    padding:2rem; 
+    padding:2rem 1rem; 
     font-size:0.7rem; 
     color: $text-color; //global default?  
-    .footer-contact-info {
+    .footer-contact-info, .copyright {
         h6 {
             font-size:0.7rem; 
         }
-        ul {
-            margin:0; 
-            list-style-type: none;
+        a {
+            text-decoration: none;
+            color:inherit; 
+        }a:hover {
+           border-bottom:1.5px solid $lilac; 
         }
     }
 }
