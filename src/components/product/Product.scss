@@ -4,7 +4,6 @@
 
 .product-card-details {
     width:40%;
-    // position:relative;
     padding:2rem; 
     margin:auto;
     background-color: white;
@@ -27,40 +26,16 @@
         }
         .value-wrapper {
             width:100%; 
-            ul {
+            display:flex; 
+            flex-direction: row;
+           .value__list {
                 list-style-type: none;
-                padding-left:0; 
-                li {
-                    margin-bottom:2rem; 
-                    label {
-                        width:100%;
-                    }
-                    input[type=range] {
-                        appearance: none; //remove default mstyle
-                        width:90%; 
-                        height:5px;
-                        background: #d3d3d3;
-                        outline: none;
-                        // opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
-                        // // -webkit-transition: .2s; /* 0.2 seconds transition on hover */
-                        // transition: opacity .2s;
-
-                        &::-webkit-slider-thumb {
-                            -webkit-appearance: none;
-                            appearance: none;
-                            width: 15px; 
-                            height: 15px;
-                            border-radius: 50%;
-                            background: $cta-orange; //different for diffrente types? 
-                            cursor: pointer; 
-                          }
-                        &::-moz-range-thumb {
-                            width: 20px; /* Set a specific slider handle width */
-                            height: 20px; /* Slider handle height */
-                            background: $cta-orange; /* Green background */
-                            cursor: pointer;
-                          }
-                    }
+                padding-left:0.5rem; 
+                border-left:1.5px solid $lilac; 
+                width:50%;
+                .value__item {
+                    margin-bottom:0.3rem;
+                    text-transform: capitalize;
                 }
 
             }
@@ -68,11 +43,13 @@
     }
     .placeholder {
         position:relative; 
-        background-color: rgba(128, 128, 128, 0.365);
+        background-color: rgba(128, 128, 128, 0.137);
+        height:30%;
         img {
             opacity:0.3; 
-            // // height:100%;
             // // width:100%;
+            height:auto;
+            width:20%;
         }
         h5 {
             position:absolute;
