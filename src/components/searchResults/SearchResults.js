@@ -85,19 +85,21 @@ const SearchResults = (results) => {
         return (
             <>
                 <section className="page products">
-                    <Header props='Results' /> 
-                    <div className="page__sort">
-                        <select className="sort-options">
-                            <option>
-                                Sort A-Z
-                            </option>
-                            <option>
-                                Sort Z-A
-                            </option>
-                            <option>
-                                Sort Test
-                            </option>
-                        </select>
+                    <div className="page__header">
+                        <Header props='Results' /> 
+                        <div className="page__sort">
+                            <select className="sort-options">
+                                <option>
+                                    Sort A-Z
+                                </option>
+                                <option>
+                                    Sort Z-A
+                                </option>
+                                <option>
+                                    Sort Test
+                                </option>
+                            </select>
+                        </div>   
                     </div>
                     <div className="page__filter">
                         <FilterProducts func={newList} func2={animalList}/> 

@@ -27,7 +27,7 @@ const Header = (title) => {
   return (
       <>
         <section className="page__title" id="myHeader">
-            <h2 className="subpage-title">{pageTitle}</h2>
+            <h2 className="title">{pageTitle}</h2>
         </section>
       </>
 

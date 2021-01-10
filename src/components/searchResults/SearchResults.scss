@@ -3,20 +3,19 @@
 
 .products {
     //should be global style for all pages 
-    .page__sort {
-        text-align:right;
-        margin-bottom:1rem; 
-        // margin-top:1rem; 
-        margin-right:1.2rem; 
-        @media screen and (max-width: $mobile) {
-           margin-right: 0;
-        }
-        .sort-options {
-            border:solid 1.5px $lilac; 
-            padding:0.5rem 1rem;  
-            width:40%; //same as card 
-            @media screen and (min-width: $mobile) {
-                width:20%; //same as card
+    .page__header {
+        display: flex; 
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom:3rem; 
+        .page__sort {
+            width:30%;
+            margin-top:1rem; 
+            text-align:right;
+            .sort-options {
+                border:solid 1.5px $lilac; 
+                padding:0.5rem 1rem;  
+                width:100%; //same as card 
             }
         }
     }
