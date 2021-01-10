@@ -71,13 +71,13 @@ body {
             @media screen and (min-width: $padlet) {
                 // justify-content: space-evenly;
             }  
-            .products__item { 
+            .product { 
                 //TODO: last items on last page??? 
                 width: 45%; 
                 margin:0.5rem; 
                 max-height:40vh; 
                 min-height:40vh;  
-                .card-image {
+                .product__image {
                     height:60%;
                     // border:solid red; 
                     @media screen and (min-width: $mobile) {
@@ -89,7 +89,7 @@ body {
                         }
                     } 
                 }
-                .product-card-info {
+                .product__info {
                     height:30%;
                 }
                 @media screen and (min-width: $mobile) {

@@ -4,6 +4,7 @@ import Pagination from '../pagination/Pagination';
 
 
 const ProductList = (results) => {
+    console.log('RESULTS RECIEVED:', results);
     const { products } = results;
 
     // //pagination
@@ -30,20 +31,20 @@ const ProductList = (results) => {
                     let img_url = item.image_url; 
                 
                     return (
-                        <li className="products__item" key={item.id}>
-                            <div className="card-image">
+                        <li className="product" key={item.id}>
+                            <div className="product__image">
                                 <img 
-                                src={
-                                        (img_url == null) ? `${defaultimage}` : `${img_url}`
-                                    } 
+                                    src={
+                                            (img_url == null) ? `${defaultimage}` : `${img_url}`
+                                        } 
                                     alt="Product"
                                 />
                             </div>
-                            <div className="product-card-info">
-                                <h6>{item.name}</h6>
+                            <div className="product__info">
+                                <h6 className="product__name">{item.name}</h6>
                                 {/* <p>{item.calculated_consuvalue}</p> */}
-                                <p>{item.is_animal}</p>
-                                <a href={'/search/result/'+item.id}> Read more</a>
+                                {/* <p>{item.is_animal}</p> */}
+                                <a href={'/search/result/'+item.id} className="product__link">More</a>
                             </div> 
                         </li>
                     )

@@ -31,17 +31,15 @@
         //move page content below menu 
         margin:auto; 
         list-style-type: none;
-        .products__item {
-            // background-color: white;
+        .product {
             border-radius:1%; 
-            box-shadow: 8px 9px 15px rgba(0, 0, 0, 0.25); 
-            margin-bottom:2rem; 
-            .card-image {
+            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25); 
+            margin-bottom:2.5rem; 
+            background-color: white; 
+            .product__image {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                padding-top:0.5rem; 
-                
                 img {
                     //align image center of container 
                     margin-top:1.5rem; 
@@ -49,35 +47,33 @@
                     max-width:70%; //of it's container
                 }
             }
-            .product-card-info {
+            .product__info {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
                 // justify-content:flex-end; 
                 // margin-right:0.5rem;
                 padding:0 0 0 0.5rem; 
-                h6 {
+                .product__name {
                     margin:0; 
                     padding-right:0.5rem; 
                     width:60%;
                     font-size:0.7rem; 
                     color: $forest-green; 
                 }
-                span {
-                    // width:20%;
-                    // text-align:right;
-                    //add svg illustration?
-                }
-                button {
+                .product__link {
                     //add button style 
                     width:30%; 
-                    height:30px; 
+                    height:20px; 
                     border:1.5px solid $cta-orange;
                     transition: all 0.25s; 
                     text-align: center; 
+                    font-size:0.7rem;
                     cursor: pointer; 
                     color:$cta-orange;
-                    background-color:white;  
+                    background-color:white;
+                    text-decoration: none; 
+                    line-height: 1.5;
                 }
             }
 

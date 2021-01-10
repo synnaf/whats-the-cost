@@ -8,24 +8,28 @@ const Pagination = ({itemsPerPage, totalList, paginate, activePage}) => {
         pageNumbers.push(i); //gives us the number of pages to create 
     }
 
-    if(pageNumbers.length > 2) {
-        let pageLink = document.getElementsByClassName('pagination__link');
-        
-        let pageX = pageLink.item(activePage - 1); 
-        // console.log(pageX); // är NULL tills man klickar på en link 
-        // console.log(activePage);
-        // console.log(pageLink);
+    // if(pageNumbers.length > 2) {
+    //     let pageLink = document.getElementsByClassName('pagination__link');
+    //     let pageX = pageLink.item(activePage - 1); 
 
-        if (pageX == null) {
-            console.log('null is returned');  
-        } else {
-            let num = pageX.innerHTML;
-            if(num == activePage) {
-                pageX.classList.toggle('--active');
-                // console.log('pageX:', pageX); 
-            } 
-        }
-    }
+    //       while (pageX === !null) {
+    //         // pageX är NULL tills man klickar på en link 
+    //         let num = pageX.innerHTML;
+    //         console.log(num); 
+            
+    //         if (activePage == num) { 
+    //             pageX.classList.toggle('--active');
+    //             // if(num == activePage) {
+    //             //     pageX.classList.toggle('--active');
+    //             //     // console.log('pageX:', pageX); 
+    //             // }  
+    //         } else {
+    //             pageX.classList.remove('--active');
+    //                 // console.log('pageX:', pageX); 
+    //         } 
+    //       }
+
+    // }
 
     return (
         <>

@@ -1,8 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useReducer } from 'react';
 import Header from '../header/Header'; 
 import FilterProducts from '../filterProducts/FilterProducts';
 import ProductList from './ProductList';
 import './SearchResults.scss'; 
+
+//SEBBES REDUCER
+// let defaultValue = []; 
+// const [myFormValues, setMyFormValues] = useReducer( 
+//     //två parametrar skickas med först en anonym funktion, sedan värdet på state  
+//     (state, newState) => ({ ...state, ...newState}), 
+//     defaultValue //startvärdet på vårt state 
+      
+// );   
+
+// upDate(e) { 
+//     let element = e.target.name; //namnet på elementet  
+//     let value = e.target.value; //värdet för elementet 
+     
+//     setMyFormValues({ [element]: value });  
+// }
+    
+
 
 const SearchResults = (results) => {
     const { list } = results; 
@@ -96,3 +114,12 @@ const SearchResults = (results) => {
 
 export default SearchResults;
 
+    //dispatch är det som ska köras i newList och aimalList?? 
+    // const handleChange = todo => {
+    //     dispatch({ type: 'x', id: todo.id });
+    // };   
+
+    // {productState >= 1
+    //     ? <ProductList products={newProductList} state={productState} />
+    //     : <ProductList products={list} state={productState} />
+    // }
