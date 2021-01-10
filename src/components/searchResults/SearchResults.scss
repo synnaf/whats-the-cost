@@ -1,15 +1,8 @@
 @import '../../styles/variables'; 
 @import '../../styles/responsive'; 
 
-.page.products {
+.products {
     //should be global style for all pages 
-    padding-top:1rem; 
-    flex-direction: column;
-
-    //TODO: change flex-direction here, add className .productlist
-    @media screen and (max-width: $mobile) {
-        padding:2rem;//same as card
-    }
     .page__sort {
         text-align:right;
         margin-bottom:1rem; 

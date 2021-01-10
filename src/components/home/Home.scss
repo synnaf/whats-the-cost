@@ -1,13 +1,13 @@
 @import '../../styles/typography'; 
 @import '../../styles/variables';
 
-
-.hero-section {
+.hero {
     // border:solid grey; 
     // max-width:95%; //even spacing left/right
     // height:80vh; //set's height of header 
     margin:auto; //centers section
     padding:1rem; 
+    margin:0; 
     font-family: $font-headline;
     background-color:$light-gray; //animation + background-color transparent
 

@@ -2,11 +2,11 @@
 
 footer {
     background-color:white; 
-    margin-top:2rem;
+    border: 1px solid black; 
+    // margin-top:2rem;
     padding:2rem; 
     font-size:0.7rem; 
     color: $text-color; //global default?  
-    //more height? 
     .footer-contact-info {
         h6 {
             font-size:0.7rem; 

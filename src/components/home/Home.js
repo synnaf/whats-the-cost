@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
       <>
-        <section className="hero-section">
+        <section className="hero">
         <h1 className="main-text animated-hero-text">
             What's
         </h1>

@@ -1,17 +1,18 @@
 @import '../../styles/variables'; 
 
-//should have z-index above menu and blur background? 
 .filter__values {
-    // width:100%; 
+    width:100%; 
     text-align: center;
+    margin-top:2rem; //on mobile
     .filter__list {
         list-style-type: none;
         padding-left:0; 
         margin:auto;
         .filter__item {
+            width:100%;
             margin:auto;
             margin-bottom:2.5rem;
-            width:70%; 
+            width:90%; //on desktop: 70%
             text-align: left;
             display:flex; 
             flex-direction: row;
@@ -26,7 +27,7 @@
             input[type=range] {
                 appearance: none; //remove default mstyle
                 width:70%; 
-                height:3px;
+                height:7px;
                 background: #d3d3d3;
                 outline: none;
                 margin-left:auto; 
@@ -77,11 +78,10 @@
                     option {
                         background-color:transparentize($lilac, 0.5); 
                         padding:0.2rem;
-                        // border-bottom: 5.5px solid $lilac; 
-                        // border-radius: 8%; 
                         font-size: 0.6rem;
                         text-align:center; 
-                        width:10%;
+                        width:auto;
+                        margin-bottom:0.5rem; 
                     }
                 }
             }
