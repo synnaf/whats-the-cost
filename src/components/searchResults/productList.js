@@ -16,7 +16,7 @@ const ProductList = (results) => {
     const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
     let currentList = products.slice(indexOfFirstItem, indexOfLastItem); 
 
-    // //change page on click 
+    //change page on click 
     const createPagination = (pageNumber) => {
         setCurrentPage(pageNumber);
     }; 
@@ -27,7 +27,7 @@ const ProductList = (results) => {
         <>
         <ul className="products__list">
             { 
-                currentList.map((item)=> {
+                products.map((item)=> {
                     let img_url = item.image_url; 
                 
                     return (
@@ -42,7 +42,7 @@ const ProductList = (results) => {
                             </div>
                             <div className="product__info">
                                 <h6 className="product__name">{item.name}</h6>
-                                {/* <p>{item.calculated_consuvalue}</p> */}
+                                <p>{item.calculated_consuvalue}</p>
                                 {/* <p>{item.is_animal}</p> */}
                                 <a href={'/search/result/'+item.id} className="product__link">More</a>
                             </div> 
@@ -51,7 +51,7 @@ const ProductList = (results) => {
                 })  
             }
         </ul>
-        {  products.length > itemsPerPage ?
+        {/* {  products.length > itemsPerPage ?
             <Pagination 
                 itemsPerPage={itemsPerPage} 
                 totalList={products.length} 
@@ -59,7 +59,7 @@ const ProductList = (results) => {
                 activePage={currentPage} 
             />
             : null
-        }  
+        }   */}
         </>
     );
 }

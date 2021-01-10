@@ -5,22 +5,33 @@ import './FilterProducts.scss';
 const FilterProducts = (props) => {
 
     //TODO: destrucutre props och plocka bara ut funktionerna jag vill ha 
+
     const [sliderValue, setSliderValue] = useState(0); 
     const [sliderValue2, setSliderValue2] = useState(0); 
+    // const [replaceSLider, setReplaceSLider] = useState('Non-vegan'); //toggle three values 
 
     useEffect(() => {
+       //code t be executed  
         props.func(sliderValue); 
         props.func2(sliderValue2);  
+ 
     }, [sliderValue, sliderValue2]);
 
 
     const updateValue = (e) => {
-        setSliderValue(e.target.value); 
+        console.log(e); 
+        let range = e.target.name;
+        console.log(range); 
+        setSliderValue(e.target.value, range); 
+        // props.func(sliderValue); 
     }; 
     
     const updateValue2 = (e) =>  {
-        console.log('animal slide', e.target.value); 
-        setSliderValue2(e.target.value); 
+        let range = e.target.name;
+        console.log(range); 
+        let rangeValue = e.target.value;
+        setSliderValue2(rangeValue, range); 
+        // props.func2(sliderValue2);  
     }; 
 
 

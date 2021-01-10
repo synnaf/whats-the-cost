@@ -1,81 +1,42 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useContext } from 'react';
 import Header from '../header/Header'; 
 import FilterProducts from '../filterProducts/FilterProducts';
 import ProductList from './ProductList';
 import './SearchResults.scss'; 
+import { ListContext } from '../main/ListContext';
 
-//SEBBES REDUCER
-// let defaultValue = []; 
-// const [myFormValues, setMyFormValues] = useReducer( 
-//     //två parametrar skickas med först en anonym funktion, sedan värdet på state  
-//     (state, newState) => ({ ...state, ...newState}), 
-//     defaultValue //startvärdet på vårt state 
-      
-// );   
-
-// upDate(e) { 
-//     let element = e.target.name; //namnet på elementet  
-//     let value = e.target.value; //värdet för elementet 
-     
-//     setMyFormValues({ [element]: value });  
-// }
-    
 
 
 const SearchResults = (results) => {
     const { list } = results; 
-
     const [productState, setProductState] = useState(0);
-    const [newProductList, setNewProductList] = useState([]); 
 
-    //recieve slidervalue from filter-component
+    //what ve can get from our context 
+    const {available, setAvailable} = useContext(ListContext);
+
+    //recieve slidervalue from consuvalue-component
     const newList = (sliderValue) => {
-        setNewProductList(list.filter(item => item.calculated_consuvalue >= sliderValue));
+        console.log('sliderValue recieved from consuvalue', sliderValue);
+        setAvailable(list.filter(item => item.calculated_consuvalue >= sliderValue));
         setProductState(sliderValue); 
     }; 
 
-    //recieve animal value from component 
+    //recieve slidervalue from animal-component 
     const animalList = (sliderValue) => {
-        console.log('sliderValue recieved from animal', sliderValue); //updates accordingly  
-        /*
-        Skapa en filtrering för om värdet matchar Slidervärdet?
-        Jag vill kunna ta emot två slider-värden, och skicka in i respektive funktion. 
-        OM jag tar emot ett animal-värde, filtrera på det och skicka det som newProductList 
-        */
-       if(sliderValue == 0) {
-            setNewProductList(list.filter(item => item.is_animal === 0 || null));
-            console.log(newProductList); 
-            setProductState(sliderValue); 
-        } else {
-            console.log('meat'); 
-        } 
-       if(sliderValue == 1) {
-            setNewProductList(list.filter(item => item.is_vegetarian === 1));
-            console.log(newProductList); 
+        console.log('sliderValue recieved from animal', sliderValue);
+        if(sliderValue > 0) {
+            setAvailable(list.filter(item => item.is_vegetarian == 1));
             setProductState(sliderValue); 
         } else {
             console.log('vego'); 
         }
-       if(sliderValue == 2) {
-            setNewProductList(list.filter(item => item.is_vegan === 1));
-            console.log(newProductList); 
+        if(sliderValue > 1) {
+            setAvailable(list.filter(item => item.is_vegan == 1));
             setProductState(sliderValue); 
-       } else {
-           console.log('vegaN'); 
-       }
-
-
-    //om det är djur, och sliderValue är djur, returnera listan 
-        
-            // //innehåller kött/djur när: 
-            // list.filter(item => item.is_animal === 1 || null); 
-        
-            // //innehåller inget sånt när: 
-            // list.filter(item => item.is_vegan === 1); 
-
-            // //innehåller djurprodukter men inte kött när: 
-            // list.filter(item => item.is_vegetarian === 1);  
-       
+        } else {
+           console.log('vegan'); 
+     
+        }
     }; 
 
 
@@ -104,10 +65,13 @@ const SearchResults = (results) => {
                     <div className="page__filter">
                         <FilterProducts func={newList} func2={animalList}/> 
                     </div>
-                    {productState >= 1
-                        ? <ProductList products={newProductList} state={productState} />
+                    {/* {productState >= 1
+                        ? <ProductList products={available} state={productState} />
                         : <ProductList products={list} state={productState} />
-                    }
+                    } */}
+    
+                    <ProductList products={available} state={productState} />
+                    
                 </section>
             </>
         );
@@ -115,13 +79,3 @@ const SearchResults = (results) => {
 }
 
 export default SearchResults;
-
-    //dispatch är det som ska köras i newList och aimalList?? 
-    // const handleChange = todo => {
-    //     dispatch({ type: 'x', id: todo.id });
-    // };   
-
-    // {productState >= 1
-    //     ? <ProductList products={newProductList} state={productState} />
-    //     : <ProductList products={list} state={productState} />
-    // }
