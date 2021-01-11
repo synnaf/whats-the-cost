@@ -131,12 +131,10 @@ body {
     }
     footer {
         height:10%; //height of content 
-        //more height? 
         display: flex; 
         flex-direction: column;
         justify-content: space-evenly;
         @media screen and (min-width: $padlet) {
-            //less height? 
             flex-direction: row;
         }  
     }

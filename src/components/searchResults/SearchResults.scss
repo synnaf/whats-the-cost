@@ -27,15 +27,27 @@
         .product {
             border-radius:1%; 
             box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25); 
-            margin-bottom:3rem; 
-            background-color: white; 
+            margin-bottom:6rem; 
+            background-color: white;
+            .product__like {
+                border:0.2px solid rgba(0, 0, 0, 0); 
+                border-radius:60%; 
+                background: none;
+                position: relative;
+                margin-left: 80%;
+                margin-top:0.5rem; 
+                cursor:pointer; 
+                .icon__like {
+                    width:30px;    
+                }  
+            }
             .product__image {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 img {
                     //align image center of container 
-                    margin-top:1.5rem; 
+                    margin-top:0rem; 
                     max-height:70%; //of it's container
                     max-width:70%; //of it's container
                 }

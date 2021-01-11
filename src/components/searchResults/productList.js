@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import defaultimage from '../../assets/default-image.png'; 
 import Pagination from '../pagination/Pagination';
 import Product from './product/Product'; 
+import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg'; 
+
 
 
 const ProductList = (results) => {
@@ -48,6 +50,9 @@ const ProductList = (results) => {
                 
                     return (
                         <li className="product" key={item.id}>
+                            <button className="product__like">
+                                <img src={heart} alt="heart icon" className="icon__like"/>
+                            </button>
                             <div className="product__image">
                                 <img 
                                     src={
