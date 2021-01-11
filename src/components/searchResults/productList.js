@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import defaultimage from '../../assets/default-image.png'; 
 import Pagination from '../pagination/Pagination';
 import Product from './product/Product'; 
 import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg'; 
-
-
+// import { LikeContext } from '../likeList/LikeContext';
 
 const ProductList = (results) => {
     console.log('RESULTS RECIEVED PL:', results);
@@ -16,6 +15,9 @@ const ProductList = (results) => {
 
     //popup
     const [popup, setPopup] = useState({id: '', state: false}); 
+
+    // //what ve can get from our context 
+    // const {likes, setLikes} = useContext(LikeContext);
 
     // //get index of the last post 
     const indexOfLastItem = currentPage * itemsPerPage; 
@@ -41,6 +43,31 @@ const ProductList = (results) => {
         backg.style.filter = '';
     }; 
 
+    //add new item to localStorage  
+    const addLike = (item) => {
+        let likesArr = []; 
+        let list = window.localStorage.getItem('likes'); 
+
+        //first check current object in localStorage
+        if( list == null) {
+            console.log('if null'); 
+            window.localStorage.setItem('likes', item);
+
+        } else {
+            console.log('else storage'); 
+            //if not empty, get
+            let currentLikes = window.localStorage.getItem('likes');   
+            //just a string 
+            // JSON.parse(currentLikes); 
+            //push liked item to list
+            // currentLikes.push(item);
+            // //set new list 
+            // window.localStorage.setItem('likes', JSON.stringify(currentLikes)); 
+
+        }
+    
+    }; 
+
     return (
         <>
         <ul className="products__list" id="productList">
@@ -50,7 +77,7 @@ const ProductList = (results) => {
                 
                     return (
                         <li className="product" key={item.id}>
-                            <button className="product__like">
+                            <button className="product__like" onClick={() => addLike(item.name)}>
                                 <img src={heart} alt="heart icon" className="icon__like"/>
                             </button>
                             <div className="product__image">

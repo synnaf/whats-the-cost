@@ -1,9 +1,10 @@
-import React, { useState, useReducer, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import Header from '../header/Header'; 
 import FilterProducts from '../filterProducts/FilterProducts';
 import ProductList from './ProductList';
 import './SearchResults.scss'; 
 import { ListContext } from '../main/ListContext';
+import { LikeContext } from '../likeList/LikeContext';
 
 
 
@@ -13,6 +14,7 @@ const SearchResults = (results) => {
 
     //what ve can get from our context 
     const {available, setAvailable} = useContext(ListContext);
+ 
     console.log('this is avaliable in SR', available);
     console.log('this is list in SR', list);
 
@@ -21,23 +23,7 @@ const SearchResults = (results) => {
         console.log('sliderValue consuvalue', sliderValue);
         setAvailable(list.filter(item => item.calculated_consuvalue >= sliderValue));
         setProductState(sliderValue); 
-
         // // 
-        // list.some(checkNumber);
-        // let nr = list.map(item => 
-        //     item.calculated_consuvalue
-        // ); 
-        // function checkNumber(nr) {
-        //     return nr >= sliderValue;
-        // };         
-        // for(let i=0; i < list.length; i++) {
-        //     const v = (list[i].calculated_consuvalue); 
-        //     //if this is true
-        //     list.some(checkValue(v)); 
-        // };
-        // const checkValue = (v) => {
-        //     return v >= sliderValue; 
-        // }
     }; 
 
     //recieve slidervalue from animal-component 
@@ -80,8 +66,10 @@ const SearchResults = (results) => {
                     </div>
                     <div className="page__filter">
                         <FilterProducts func={newList} func2={animalList}/> 
-                    </div>    
-                    <ProductList products={available} state={productState} />
+                    </div> 
+                  
+                        <ProductList products={available} state={productState} />
+               
                 </section>
             </>
         );

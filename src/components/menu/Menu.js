@@ -1,8 +1,8 @@
 import React from 'react'; 
 import { BrowserRouter as Router, Route, NavLink } from "react-router-dom";
 import './Menu.scss';  
-// import heartIcon from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg';
-// import heartIcon from '../../assets/svg/heart.svg';
+import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg';
+
 
 const Menu = () => {
 
@@ -57,9 +57,9 @@ const Menu = () => {
                     <NavLink to="/about" className="nav__link" activeClassName="active">
                         About
                     </NavLink> 
-                    {/* <NavLink to="/favorites" className="nav__link" activeClassName="active">
-                        <img src={heartIcon} alt="heart icon"/>
-                    </NavLink>  */}
+                    <NavLink to="/likes" className="nav__link" activeClassName="active">         
+                        <img src={heart} alt="heart icon" className="icon__like"/>
+                    </NavLink> 
                 </li>
             </ul>
         </nav>
