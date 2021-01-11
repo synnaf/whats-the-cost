@@ -65,8 +65,8 @@
                     color:$cta-orange;
                     background-color:white;
                     text-decoration: none; 
-                    line-height: 1.5;
-                }:hover {
+                    // line-height: 1.5;
+                }.product__link:hover {
                     box-shadow: 5px 5px 1px $lilac;
                 }
             }

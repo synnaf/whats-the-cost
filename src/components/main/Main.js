@@ -5,7 +5,7 @@ import { ListContext } from './ListContext';
 import Home from '../home/Home'; 
 import About from '../about/About';
 import SearchPage from '../search/SearchPage';
-import Product from '../product/Product';
+// import Product from '../product/Product';
 import SearchResults from '../searchResults/SearchResults';
 import NotFound from './NotFound'; 
 
@@ -32,9 +32,9 @@ const Main = () => {
           /> 
 
           <ListContext.Provider value={{available, setAvailable}}>
-              <Route exact path='/search/result/:id' 
+              {/* <Route exact path='/search/result/:id' 
                   component={Product} 
-              />
+              /> */}
               <Route exact path='/search/:searchTerm' 
                   render={(props) => (
                       <SearchResults {...props} list={productList} />

@@ -1,4 +1,4 @@
-@import '../../styles/variables'; 
+@import '../../../styles/variables';  
 $desktop:1224px;
 $padlet:1024px;
 $mobile:800px;
@@ -7,14 +7,16 @@ $mobileXs:600px;
 
 //should have z-index above menu and blur background? 
     .product-card-details {
+        position:fixed;
+        left:calc(100vw - 90%); 
+        // right:90%;  
+        top:20%; 
         width:70%; //mobile
         padding:1rem; //mobile
-
-        margin:auto;
         background-color: white;
         box-shadow: 8px 9px 7px rgba(0, 0, 0, 0.25);
         margin-bottom:2rem; 
-
+        
         .product-card-info {
             display: flex; 
             flex-direction:column; 

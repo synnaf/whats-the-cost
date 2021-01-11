@@ -1,28 +1,22 @@
 import React, { useEffect, useState } from 'react';
-import { getProduct } from '../search/api'; 
+// import { getProduct } from '../../../search/api'; 
+import { getProduct } from '../../search/api'; 
 import './Product.scss'; 
-import defaultimage from '../../assets/default-image.png'; 
+import defaultimage from '../../../assets/default-image.png'; 
 
 const Product = (props) => {
     const [product, setProduct] = useState({}); 
- 
+
     //+props.match.params.id match the id and the object 
     useEffect(()=> {
-        getProduct(props.match.params.id)
+        getProduct(props.product)
         .then(res => {
             setProduct(res.data.data); 
             return;  
         })
         
-    }, [props.match.params.id]); 
- 
-    //TODO: fixa denna funkar ej 
-    const backToSearch = () => {
-        console.log('close'); 
-        props.history.replace('/search/:searchTerm'); 
-    }; 
+    }, [props.product]);
 
-    console.log(product.allergies); 
 
     if(product === {}) {
         return <p>Loading product</p>
@@ -33,7 +27,7 @@ const Product = (props) => {
                 <div className="product-card-info">
                     <div className="card-header">
                         <h6>{product.name}</h6>
-                        <button type="button" onClick={backToSearch}>X</button> 
+                        <button type="button" onClick={props.closePopup}>&times;</button> 
                     </div>
                     <div className="value-wrapper">
                         <ul className="value__list">

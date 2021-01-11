@@ -125,6 +125,8 @@ body {
         @media screen and (min-width: $padlet) {
             width:40%;
             padding:2rem; 
+            left:calc(100vw - 70%);  
+            top:10%; 
         }
     }
     footer {
