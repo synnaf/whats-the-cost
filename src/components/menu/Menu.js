@@ -9,7 +9,14 @@ const Menu = () => {
     const toggleMenu = () => {
         let mobileMenu = document.getElementById("nav_menu");
         mobileMenu.classList.toggle("isToggled");
+        // if (mobileMenu.classList == "isToggled") {
+        //     mobileMenu.classList.remove("isToggled");
+        //   } else {
+        //     mobileMenu.classList.toggle("isToggled");
+        //   }
     }; 
+
+
 
     // window.onscroll = () => {
     //     //find position x
@@ -24,7 +31,7 @@ const Menu = () => {
     //   };
 
     return (
-        <nav className="nav" id="nav_menu">   {/* add class --toggled */}
+        <nav className="nav" id="nav_menu">   {/* add class istoggled */}
             <div className="brand-logo">
                 <svg width="109" height="108" viewBox="0 0 99 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="99" height="48" fill="#29524A"/>
@@ -33,7 +40,7 @@ const Menu = () => {
             </div>
             <button 
                 className="menu__toggle" 
-                aria-controls="primary-menu" 
+                aria-controls="nav_menu" 
                 aria-expanded="false"
                 onClick={toggleMenu}
             >
@@ -43,17 +50,17 @@ const Menu = () => {
             </button>
 
             <ul className="nav__list">
-                <li className="nav__item">
+                <li className="nav__item" onClick={toggleMenu}>
                     <NavLink to="/" className="nav__link" activeClassName="active">
                         Start
                     </NavLink>
                 </li>
-                <li className="nav__item">
+                <li className="nav__item" onClick={toggleMenu}>
                     <NavLink to="/search" className="nav__link" activeClassName="active">
                         Search
                     </NavLink>
                 </li>
-                <li className="nav__item">
+                <li className="nav__item" onClick={toggleMenu}>
                     <NavLink to="/about" className="nav__link" activeClassName="active">
                         About
                     </NavLink> 

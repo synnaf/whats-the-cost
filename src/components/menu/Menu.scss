@@ -2,7 +2,7 @@
 $mobileMenu: 1024px; // 1024px;
 
 @media screen and (min-width: $mobileMenu) {
-  .nav {
+  .nav, .isToggled{
     background-color: transparent; 
     margin:auto;
     display: flex;
@@ -79,7 +79,11 @@ $mobileMenu: 1024px; // 1024px;
   }
 }
 
-
+@media screen and (min-width: $mobileMenu) {
+  .isToggled {
+    // display:none; 
+  }
+}
 /* Mobile menu default look */
 @media screen and (max-width: $mobileMenu) {
   .nav {
@@ -125,86 +129,78 @@ $mobileMenu: 1024px; // 1024px;
     &__list {
       display: none; //toggled on mobile
     }
-    &__item {
-    }
-    &__link {
-
-    }
-    &.isToggled{
-      // opacity:0.7; 
+    /*isToggled is added when menu-button is clicked*/
+    &.isToggled {
+      z-index:999; 
+      background-color: transparent; 
+      padding:1rem; 
+      display: unset;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 100%;
+      flex-direction: column;
+      overflow-y: scroll;
+      background-color: $cta-orange;
+      color: white;
+      text-decoration: none;
+      .brand-logo {
+        display:none;
+      }
+      .menu__toggle {
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+        box-shadow: none;
+        width: 50px;
+        height: 50px;
+        position: relative;
+        z-index: 999;
+        padding: 0;
+        margin:2rem; 
+          & span {
+          opacity: 0;
+          margin: 0;
+          background-color:white; 
+          &:first-child {
+              opacity: 1;
+              width: 100%;
+              transform: translateY(calc(50% + 3px)) rotate(-45deg);
+          }
+          &:last-child {
+              opacity: 1;
+              width: 100%;
+              transform: translateY(calc(-150% + 3px)) rotate(45deg);
+          }
+          }
+      }
+      //menu nav + ul
+      & .nav__list {
+        list-style-type: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        justify-self: center;
+        padding:0; 
+      }
+      & .nav__item {
+        color: white;
+        margin:1rem;
+        width:50%;  
+        text-align: center;
+      }
+      & .nav__link {
+        text-decoration: none;
+        color: white;
+        font-size: 2rem;
+      }
     }
   }
-
 }
 
-/*isToggled is added when menu-button is clicked*/
-.isToggled {
-  z-index:999; 
-  background-color: transparent; 
-  padding:1rem; 
-  display: unset;
-  justify-content: center;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  width: 100%;
-  flex-direction: column;
-  overflow-y: scroll;
-  background-color: $cta-orange;
-  color: white;
-  text-decoration: none;
-  .brand-logo {
-    display:none;
-  }
-  .menu__toggle {
-    background-color: transparent;
-    cursor: pointer;
-    outline: none;
-    box-shadow: none;
-    width: 50px;
-    height: 50px;
-    position: relative;
-    z-index: 999;
-    padding: 0;
-    margin:2rem; 
-      & span {
-      opacity: 0;
-      margin: 0;
-      background-color:white; 
-      &:first-child {
-          opacity: 1;
-          width: 100%;
-          transform: translateY(calc(50% + 3px)) rotate(-45deg);
-      }
-      &:last-child {
-          opacity: 1;
-          width: 100%;
-          transform: translateY(calc(-150% + 3px)) rotate(45deg);
-      }
-      }
-  }
-  //menu nav + ul
-  & .nav__list {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    justify-self: center;
-    padding:0; 
-  }
-  & .nav__item {
-    color: white;
-    margin:1rem;
-    width:50%;  
-    text-align: center;
-  }
-  & .nav__link {
-    text-decoration: none;
-    color: white;
-    font-size: 2rem;
-  }
-}
+
 
   @keyframes fadeInMenu {
     0% {
