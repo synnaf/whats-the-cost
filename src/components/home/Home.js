@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Home.scss';
+import circle from '../../assets/svg/circle.svg'
 
 const Home = () => {
 
@@ -12,7 +13,7 @@ const Home = () => {
       <>
         <section className="hero">
           <div className="circle" id="circle">
-            {/* circle */}
+            <img src={circle} alt="floating circle" />
           </div>
           <h1 className="main-text animated-hero-text">
               What's

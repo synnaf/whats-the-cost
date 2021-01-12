@@ -7,21 +7,19 @@
     margin:0; 
     font-family: $font-headline;
     background-color:$light-gray; //animation + background-color transparent
-
     display: flex;
     flex-direction: column;
     align-items:center;
     
     .circle {
-        background:url('../../assets/svg/circle.svg');
-        background-repeat: no-repeat;
-        background-size: contain;
-        width:80%;
+        width:50vw; 
+        overflow:hidden; 
         height:70%;
         position: absolute;
-        left:45%;
+        left:50%;
         top:50%;
         animation: float 10s infinite; 
+        border:solid red; 
     }
     
     .animated-hero-text {
@@ -46,9 +44,9 @@
 }
 
 @keyframes float {
-    0% { top:40%; left:45%; width:80%; }
-    25% { top:30%; left:40%; width:95%; }
-    50% { top:20%; left:41%; width:92%; }
-    75% { top:30%; left:43%; width:85%; }
-    100% { top:40%; left:45%; width:80%;}
+    0% { top:40%; left:45%;  }
+    25% { top:30%; left:40%;}
+    50% { top:20%; left:41%;  }
+    75% { top:30%; left:43%;  }
+    100% { top:40%; left:45%; }
 }
