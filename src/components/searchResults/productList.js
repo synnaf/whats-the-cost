@@ -43,13 +43,14 @@ const ProductList = (results) => {
         backg.style.filter = '';
     }; 
 
-    //add new item to localStorage  
+    //add new item to localStorage 
+    //TODO: SAVE AS OBJECT 
     const addLike = (item) => {
         let likesArr = []; 
         let list = window.localStorage.getItem('likes'); 
 
         //first check current object in localStorage
-        if( list == null) {
+        if(list == null) {
             console.log('if null'); 
             window.localStorage.setItem('likes', item);
 

@@ -3,6 +3,10 @@ import './Home.scss';
 
 const Home = () => {
 
+  // useEffect(()=> {
+
+  // }, []); 
+
 
   return (
       <>
