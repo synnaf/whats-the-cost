@@ -43,30 +43,26 @@ const ProductList = (results) => {
         backg.style.filter = '';
     }; 
 
-    //add new item to localStorage 
     //TODO: SAVE AS OBJECT 
     const addLike = (item) => {
         let likesArr = []; 
         let list = window.localStorage.getItem('likes'); 
+        let likesInLS = JSON.parse(list); 
 
-        //first check current object in localStorage
         if(list == null) {
-            console.log('if null'); 
-            window.localStorage.setItem('likes', item);
-
+            window.localStorage.setItem('likes', JSON.stringify(item));
+            return; 
         } else {
-            console.log('else storage'); 
-            //if not empty, get
-            let currentLikes = window.localStorage.getItem('likes');   
-            //just a string 
-            // JSON.parse(currentLikes); 
-            //push liked item to list
-            // currentLikes.push(item);
-            // //set new list 
-            // window.localStorage.setItem('likes', JSON.stringify(currentLikes)); 
-
-        }
-    
+            let isArray = Array.isArray(likesInLS); 
+            if(isArray == false) {
+                likesArr.push(likesInLS); //pusha in första opbjekt i tom lista
+                likesArr.push(item); //pusha in nytt opbjekt i tom lista
+                window.localStorage.setItem('likes', JSON.stringify(likesArr));
+            } else {
+                likesInLS.push(item); //är redan en lista, pusha nytt objelt 
+                window.localStorage.setItem('likes', JSON.stringify(likesInLS)); 
+            }
+        }; 
     }; 
 
     return (
@@ -78,7 +74,7 @@ const ProductList = (results) => {
                 
                     return (
                         <li className="product" key={item.id}>
-                            <button className="product__like" onClick={() => addLike(item.name)}>
+                            <button className="product__like" onClick={() => addLike({title: item.name, id: item.id}) }>
                                 <img src={heart} alt="heart icon" className="icon__like"/>
                             </button>
                             <div className="product__image">

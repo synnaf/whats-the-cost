@@ -14,9 +14,7 @@ const SearchResults = (results) => {
 
     //what ve can get from our context 
     const {available, setAvailable} = useContext(ListContext);
- 
     console.log('this is avaliable in SR', available);
-    console.log('this is list in SR', list);
 
     //recieve slidervalue from consuvalue-component
     const newList = (sliderValue) => {
