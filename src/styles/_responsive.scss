@@ -113,13 +113,22 @@ body {
                 }
             }
         }
-
         .search-product {
             @media screen and (min-width: $padlet) {
                 width:50%;
                 margin-left:0; 
             }
-        } 
+        }
+        .likes__list {
+            @media screen and (min-width: $padlet) {
+                width:30%;
+            }
+        }
+        .page__input {
+            @media screen and (min-width: $padlet) {
+                width:50%;
+            }
+        }
     }
     .product-card-details {
         @media screen and (min-width: $padlet) {

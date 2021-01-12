@@ -4,7 +4,7 @@ import FilterProducts from '../filterProducts/FilterProducts';
 import ProductList from './ProductList';
 import './SearchResults.scss'; 
 import { ListContext } from '../main/ListContext';
-import { LikeContext } from '../likeList/LikeContext';
+
 
 
 

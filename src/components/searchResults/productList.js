@@ -43,7 +43,7 @@ const ProductList = (results) => {
         backg.style.filter = '';
     }; 
 
-    //TODO: SAVE AS OBJECT 
+    //SAVE AS OBJECT IN LS 
     const addLike = (item) => {
         let likesArr = []; 
         let list = window.localStorage.getItem('likes'); 
@@ -51,7 +51,6 @@ const ProductList = (results) => {
 
         if(list == null) {
             window.localStorage.setItem('likes', JSON.stringify(item));
-            return; 
         } else {
             let isArray = Array.isArray(likesInLS); 
             if(isArray == false) {
