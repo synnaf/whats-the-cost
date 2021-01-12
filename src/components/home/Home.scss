@@ -2,9 +2,6 @@
 @import '../../styles/variables';
 
 .hero {
-    // border:solid grey; 
-    // max-width:95%; //even spacing left/right
-    // height:80vh; //set's height of header 
     margin:auto; //centers section
     padding:1rem; 
     margin:0; 
@@ -13,7 +10,15 @@
 
     display: flex;
     flex-direction: column;
-    align-items:center; 
+    align-items:center;
+    
+    .circle {
+        background:url('../../assets/svg/circle.svg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        width:100%;
+        height:100%;
+    }
     
     .animated-hero-text {
         font-size:$font-size-hero;

@@ -57,6 +57,8 @@ const Menu = () => {
                     <NavLink to="/about" className="nav__link" activeClassName="active">
                         About
                     </NavLink> 
+                </li>
+                <li className="nav__item">
                     <NavLink to="/likes" className="nav__link" activeClassName="active">         
                         <img src={heart} alt="heart icon" className="icon__like"/>
                     </NavLink> 
