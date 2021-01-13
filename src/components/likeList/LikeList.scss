@@ -4,8 +4,8 @@
 
 .likes__list {
     font-size:0.7rem; //mobile 
-     list-style-type: none;
-     padding-left:0; 
+    list-style-type: none;
+    padding-left:0; 
     width:70%; 
     .likes__item {
          margin-bottom:1rem;
@@ -25,6 +25,9 @@
         text-decoration: none; 
     }button:hover {
         box-shadow: 5px 5px 1px $lilac;
+    }
+    h3 {
+        font-size:1.7rem; 
     }
 }
 .page__input {

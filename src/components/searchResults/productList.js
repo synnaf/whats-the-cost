@@ -71,8 +71,6 @@ const ProductList = (results) => {
                             <div className="product__info">
                                 <h6 className="product__name">{item.name}</h6>
                                 <p>{item.calculated_consuvalue}</p>
-                                {/* <p>{item.is_animal}</p> */}
-                                {/* <a href={'/search/result/'+item.id} className="product__link">More</a> */}
                                 <button 
                                     type="button" 
                                     className="product__link"

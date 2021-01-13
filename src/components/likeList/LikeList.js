@@ -13,6 +13,7 @@ const LikeList = () => {
     const [recipient, setRecipient] = useState('');
     const [mailStatus, setMailStatus] = useState(false); 
     const [update, setUpdate] = useState(''); 
+    const [displayError, setDisplayError] = useState(false); 
 
     useEffect(() => {
         let list = window.localStorage.getItem('likes'); 
@@ -27,8 +28,7 @@ const LikeList = () => {
 
     const removeItem = (e, index) => {
         savedLikes.splice(index, 1);
-        window.localStorage.setItem('likes', JSON.stringify(savedLikes)); 
-        //rendera  
+        window.localStorage.setItem('likes', JSON.stringify(savedLikes));  
         setUpdate(e); 
     }; 
 
@@ -41,19 +41,16 @@ const LikeList = () => {
         // Access Token
         // 89f543c5a453d39bcb8b70b685bda6df
 
-        const myList = () => savedLikes.map((item, index) => {
+        //TODO: fix html for email? how to return the entire list 
+        let templateParams = {
+            to: sendTo, //from input
+            html: savedLikes.map((item, index) => {
                 return( 
                     <li key={index} 
                         className="likes__list"
                     >{item.title}</li>
                 )
-            })
-        console.log(myList); 
-
-        //TODO: fix html for email? how to return the entire list 
-        let templateParams = {
-            to: sendTo, //from input
-            html: `${myList}` //ger tomt 
+            }) //ger tomt 
         }; 
         
         //TODO: 
@@ -62,10 +59,13 @@ const LikeList = () => {
             .then((response) => {
                 
                 console.log('SUCCESS!', response.status, response.text);
-                setMailStatus(!mailStatus); //rendera confirmation  
+                setMailStatus(true); //rendera confirmation  
+                localStorage.clear('likes'); 
+
             }, (error) => {
                
                 console.log('FAILED...', error);
+                setDisplayError(true); 
                 setMailStatus(false); //rendera fail
             });
     };
@@ -80,7 +80,7 @@ const LikeList = () => {
                         <Header props='My likes' /> 
                     </div>
                     <ul className="likes__list">
-                        {
+                        { savedLikes == [] ?
                             savedLikes.map((item, index) => {
                                 let id = item.id; 
                                 return( 
@@ -93,7 +93,7 @@ const LikeList = () => {
                                     </li>
                                 )
                             })
-                        }
+                        : <h3>Your list is empty!</h3> }
                     </ul>
                     <div className="page__input">
                         <form className="email__form">
@@ -101,7 +101,7 @@ const LikeList = () => {
                             <input type="mail" name="mail" onChange={updateRecipient}/>
                             {/* empty input field  */}
                             <input type="submit" value="Send" onClick={submit}/>
-                            { mailStatus 
+                            { displayError 
                                 ? <p>Error! Try another emailadress.</p>
                                 : null
                             } 

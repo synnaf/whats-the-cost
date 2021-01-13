@@ -90,7 +90,6 @@ const SearchResults = (results) => {
         return (
             <>
                 <section className="page products">
-
                     <div className="page__header">
                         <Header props='Results' /> 
                         <div className="page__sort">
