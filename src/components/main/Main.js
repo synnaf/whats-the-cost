@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { ListContext } from './ListContext'; 
+// import { ListContext } from './ListContext';
+import { ValueContext } from '../main/ValueContext'; 
 import Home from '../home/Home'; 
 import About from '../about/About';
 import SearchPage from '../search/SearchPage';
@@ -11,7 +12,8 @@ import NotFound from './NotFound';
 
 //TODO: byt namn på main till ngt annat 
 const Main = () => {
-  const [available, setAvailable] = useState([]); 
+  // const [available, setAvailable] = useState([]); 
+  const [values, setValues] = useState({}); 
   const [productList, setproductList] = useState([]); 
   // const [likes, setLikes] = useState([]); 
  
@@ -31,7 +33,7 @@ const Main = () => {
           <Route exact path='/likes' 
               component={LikeList} 
             />
-          <ListContext.Provider value={{available, setAvailable}}>
+          <ValueContext.Provider value={{values, setValues}}>
               <Route exact path='/search' 
                   render={(props) => (
                       <SearchPage {...props} redirectSearch={searchResult} />
@@ -42,7 +44,7 @@ const Main = () => {
                       <SearchResults {...props} list={productList} />
                   )}
               />  
-          </ListContext.Provider>
+          </ValueContext.Provider>
 
 
           

@@ -8,26 +8,10 @@ import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white
 const ProductList = (results) => {
     console.log('RESULTS RECIEVED PL:', results);
     const { products } = results;
-
-    // //pagination
-    const [currentPage, setCurrentPage] = useState(1); 
-    const [itemsPerPage] = useState(12); 
-
-    //popup
     const [popup, setPopup] = useState({id: '', state: false}); 
 
     // //what ve can get from our context 
     // const {likes, setLikes} = useContext(LikeContext);
-
-    // //get index of the last post 
-    const indexOfLastItem = currentPage * itemsPerPage; 
-    const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
-    let currentList = products.slice(indexOfFirstItem, indexOfLastItem); 
-
-    //change page on click 
-    const createPagination = (pageNumber) => {
-        setCurrentPage(pageNumber);
-    }; 
 
     //ta emot product-id
     const productPopup = (t) => {
@@ -86,7 +70,7 @@ const ProductList = (results) => {
                             </div>
                             <div className="product__info">
                                 <h6 className="product__name">{item.name}</h6>
-                                {/* <p>{item.calculated_consuvalue}</p> */}
+                                <p>{item.calculated_consuvalue}</p>
                                 {/* <p>{item.is_animal}</p> */}
                                 {/* <a href={'/search/result/'+item.id} className="product__link">More</a> */}
                                 <button 

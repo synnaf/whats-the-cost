@@ -131,3 +131,37 @@ export default SearchResults;
     //     ? <ProductList products={newProductList} state={productState} />
     //     : <ProductList products={list} state={productState} />
     // }
+
+
+
+        //recieve slidervalue from animal-component 
+    // const animalList = (sliderValue) => {
+    //     console.log('sliderValue animal', sliderValue);
+        // setValues({animalvalue: sliderValue}); 
+// setAvailable(list.filter(item => item.calculated_consuvalue >= sliderValue));
+        // if(sliderValue > 0) {
+        //     // updateAvailable with new state value
+        //     //available needs to be an object with two values: 
+        //     /* one value for consuValue, one animalValue 
+        //     available = {
+        //         consuvalue: null, 
+        //         animalvalue: null
+        //     }; 
+        //     available.consuvalue = sliderValue from consuValue 
+        //     available.animalvalue = sliderValue from animal  
+        //     */
+        //     setAvailable(list.filter(item => item.is_vegetarian == 1));
+
+
+        //     setProductState(sliderValue); 
+        // } else {
+        //     // console.log('vego'); 
+        // }
+        // if(sliderValue > 1) {
+        //     setAvailable(list.filter(item => item.is_vegan == 1));
+
+
+        //     setProductState(sliderValue); 
+        // } else {
+        // //    console.log('vegan'); 
+        // }

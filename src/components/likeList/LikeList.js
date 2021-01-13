@@ -3,14 +3,15 @@ import Header from '../header/Header';
 import { init } from 'emailjs-com';
 import emailjs from 'emailjs-com'; 
 import './LikeList.scss'; 
+import Confirmation from './Confirmation';
     
 //Save in env
 init("user_UMrGuKNuZujxb66Utvg71");
 
-
 const LikeList = () => {
     const [savedLikes, setSavedLikes] = useState([]); 
-    const [recipient, setRecipient] = useState(''); 
+    const [recipient, setRecipient] = useState('');
+    const [mailStatus, setMailStatus] = useState(false); 
     const [update, setUpdate] = useState(''); 
 
     useEffect(() => {
@@ -19,8 +20,9 @@ const LikeList = () => {
         setSavedLikes(likesInLS); 
     }, [update]); 
 
+    //TODOD: Empty input field value = ''
     const updateRecipient = (e) => {
-        setRecipient(e.target.value); 
+        setRecipient(e.target.value);  
     }; 
 
     const removeItem = (e, index) => {
@@ -39,67 +41,76 @@ const LikeList = () => {
         // Access Token
         // 89f543c5a453d39bcb8b70b685bda6df
 
+        const myList = () => savedLikes.map((item, index) => {
+                return( 
+                    <li key={index} 
+                        className="likes__list"
+                    >{item.title}</li>
+                )
+            })
+        console.log(myList); 
+
         //TODO: fix html for email? how to return the entire list 
         let templateParams = {
             to: sendTo, //from input
-            html: 
-                `
-                ${
-                    savedLikes.map((item, index) => {
-                        return( 
-                            <li key={index} 
-                                className="likes__list"
-                            >{item.title}</li>
-                        )
-                    })
-                }  `
+            html: `${myList}` //ger tomt 
         }; 
         
-        //Save in env
+        //TODO: 
+        //Save templade in env???
         emailjs.send('default_service', 'template_ey9wjk9', templateParams)
-            .then(function (response) {
-                // TODO: send confirmation 
+            .then((response) => {
+                
                 console.log('SUCCESS!', response.status, response.text);
-            }, function (error) {
-                //TODO: send failmessage 
+                setMailStatus(!mailStatus); //rendera confirmation  
+            }, (error) => {
+               
                 console.log('FAILED...', error);
+                setMailStatus(false); //rendera fail
             });
+    };
 
-    }; 
-
-     
-    return (
-        <>
-            <section className="page">
-                <div className="page__header">
-                    <Header props='My likes' /> 
-                </div>
-                <ul className="likes__list">
-                    {
-                        savedLikes.map((item, index) => {
-                            let id = item.id; 
-                            return( 
-                                <li key={index} 
-                                    className="likes__item"
-                                >{item.title}
-                                <button type="button" onClick={() => removeItem(id, index)}>
-                                    Remove
-                                </button>
-                                </li>
-                            )
-                        })
-                    }
-                </ul>
-                <div className="page__input">
-                    <form className="email__form">
-                        <label htmlFor="mail">Email me my list:</label>
-                        <input type="mail" name="mail" value={recipient} onChange={updateRecipient}/>
-                        <input type="submit" value="Send" onClick={submit}/>
-                    </form>
-                </div>
-            </section>
-        </>
-    );
+    if(mailStatus == true) {
+       return <Confirmation props={'test'} />
+    } else {
+        return (
+            <>
+                <section className="page">
+                    <div className="page__header">
+                        <Header props='My likes' /> 
+                    </div>
+                    <ul className="likes__list">
+                        {
+                            savedLikes.map((item, index) => {
+                                let id = item.id; 
+                                return( 
+                                    <li key={index} 
+                                        className="likes__item"
+                                    >{item.title}
+                                    <button type="button" onClick={() => removeItem(id, index)}>
+                                        Remove
+                                    </button>
+                                    </li>
+                                )
+                            })
+                        }
+                    </ul>
+                    <div className="page__input">
+                        <form className="email__form">
+                            <label htmlFor="mail">Email me my list:</label>
+                            <input type="mail" name="mail" onChange={updateRecipient}/>
+                            {/* empty input field  */}
+                            <input type="submit" value="Send" onClick={submit}/>
+                            { mailStatus 
+                                ? <p>Error! Try another emailadress.</p>
+                                : null
+                            } 
+                        </form>
+                    </div>
+                </section>
+            </>
+        );
+    }
 }
 
 export default LikeList;

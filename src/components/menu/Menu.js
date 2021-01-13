@@ -17,7 +17,6 @@ const Menu = () => {
     }; 
 
 
-
     // window.onscroll = () => {
     //     //find position x
     //     var menu = document.getElementById("nav_menu");

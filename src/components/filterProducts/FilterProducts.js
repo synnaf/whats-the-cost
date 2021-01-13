@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { ValueContext } from '../main/ValueContext';
 import './FilterProducts.scss'; 
 
 
@@ -8,9 +9,16 @@ const FilterProducts = (props) => {
     const [sliderValue, setSliderValue] = useState(0); 
     const [sliderValue2, setSliderValue2] = useState(0); 
 
+    const {values, setValues} = useContext(ValueContext); 
+
+
     useEffect(() => {
-        props.func(sliderValue); 
-        props.func2(sliderValue2);  
+        props.func(
+
+            setValues({consuvalue: sliderValue, animalvalue: sliderValue2})
+            
+        ); 
+       
     }, [sliderValue, sliderValue2]);
 
 
@@ -21,6 +29,8 @@ const FilterProducts = (props) => {
     const updateValue2 = (e) =>  {
         setSliderValue2(e.target.value); 
     }; 
+
+    console.log(sliderValue, sliderValue2); 
 
 
     return (
