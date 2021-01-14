@@ -24,12 +24,11 @@ const SearchResults = (results) => {
         setAvailable(list); 
     },[list]); 
 
-
+    //en useeffect för values, som uppdaterar om den uppdaterar values 
 
 
 // if(valueA || valueB || valueC) 
 // då är det som some()
-
 // if(valueA && valueB && valueC)
 // är every()
 
@@ -51,16 +50,13 @@ if(values.consuvalue && values.animalvalue === 0) { }
 
 OM filter nr.1 ELLER filter nr.2 har ändrats från setting 0,  
 if(values.consuvalue || values.animalvalue > 0) { 
-
     //kontrollera vilket av värdena det är
     if(values.consuvalue > 0) {
         lägg på filter 
     } else {
         lägg på ett annat filter 
     }
-
     sätt filtret 
-
 }
 
 
@@ -78,10 +74,8 @@ if(values.consuvalue && values.animalvalue > 0) { }
         // console.log(values.animalvalue); //contains slidervalue 
         // let cv = values.consuvalue; 
         // let av = values.animalvalue; 
-
         // //om någon av filtrena har ändrats så ska en ny lista skapas 
         // if(cv || av > 0) {
-
         // }; 
 
     }; 

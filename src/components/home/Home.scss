@@ -1,25 +1,33 @@
 @import '../../styles/typography'; 
 @import '../../styles/variables';
 
+
 .hero {
     margin:auto; //centers section
     padding:1rem; 
-    margin:0; 
+    // margin:0; 
     font-family: $font-headline;
-    background-color:$light-gray; //animation + background-color transparent
+    // background-color:$light-gray; //animation + background-color transparent
     display: flex;
     flex-direction: column;
     align-items:center;
     
     .circle {
-        width:50vw; 
-        overflow:hidden; 
-        height:70%;
-        position: absolute;
-        left:50%;
-        top:50%;
-        // animation: float 10s infinite; 
-        border:solid red; 
+        // height:calc(100vh - 10%);
+        // margin-left:60%; 
+        // z-index:-1; 
+        // position: relative;
+        // left:50%;
+        // top:2%;
+        // animation: float 2s infinite; 
+        // z-index: 1;
+        height:70%; 
+        overflow: hidden;
+        img {
+            width:70%; 
+            overflow:hidden; 
+       
+        }
     }
     
     .animated-hero-text {
@@ -31,7 +39,7 @@
     } & .main-text {
         margin-bottom: 0;
         margin-top:auto; 
-        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-width: 1.5px;
         -webkit-text-stroke-color: $text-color;
         color: transparent; 
         z-index:9; 
@@ -44,9 +52,6 @@
 }
 
 @keyframes float {
-    0% { top:40%; left:45%;  }
-    25% { top:30%; left:40%;}
-    50% { top:20%; left:41%;  }
-    75% { top:30%; left:43%;  }
-    100% { top:40%; left:45%; }
+    0% { left:50%; top:2%;  }
+    100% { left:50%; top:2.5%; }
 }

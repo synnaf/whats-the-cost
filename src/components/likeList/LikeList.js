@@ -35,21 +35,22 @@ const LikeList = () => {
     const submit = (e) => {
         e.preventDefault(); 
         let sendTo = recipient; 
+        //funktion som returnerar html li-taggar, inte objekt 
+        const sendLikes = () => {
+            //return for main function
+            return savedLikes.map((item) => {
+                //returns sring literal with li's 
+                return `<li>${item.title}</li>`   
+            })
+        }; 
 
-        //TODO: fix html for email? how to return the entire list 
+        console.log(sendLikes()); 
+
         let templateParams = {
             to: sendTo, //from input
-            // html: savedLikes.map((item, index) => {
-            //     return( 
-            //         <li key={index} 
-            //             className="likes__list"
-            //         >{item.title}</li>
-            //     )
-            // }) //ger tomt 
+            html: `${sendLikes()}` //function to return string literals 
         }; 
-        
-        //TODO: 
-        //Save templade in env???
+
         emailjs.send('default_service', 'template_ey9wjk9', templateParams)
             .then((response) => {
                 
