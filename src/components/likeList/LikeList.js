@@ -35,22 +35,17 @@ const LikeList = () => {
     const submit = (e) => {
         e.preventDefault(); 
         let sendTo = recipient; 
-        //Save in env
-        // User ID
-        // user_UMrGuKNuZujxb66Utvg71
-        // Access Token
-        // 89f543c5a453d39bcb8b70b685bda6df
 
         //TODO: fix html for email? how to return the entire list 
         let templateParams = {
             to: sendTo, //from input
-            html: savedLikes.map((item, index) => {
-                return( 
-                    <li key={index} 
-                        className="likes__list"
-                    >{item.title}</li>
-                )
-            }) //ger tomt 
+            // html: savedLikes.map((item, index) => {
+            //     return( 
+            //         <li key={index} 
+            //             className="likes__list"
+            //         >{item.title}</li>
+            //     )
+            // }) //ger tomt 
         }; 
         
         //TODO: 

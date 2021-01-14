@@ -5,7 +5,6 @@ import './FilterProducts.scss';
 
 const FilterProducts = (props) => {
 
-    //TODO: destrucutre props och plocka bara ut funktionerna jag vill ha 
     const [sliderValue, setSliderValue] = useState(0); 
     const [sliderValue2, setSliderValue2] = useState(0); 
 

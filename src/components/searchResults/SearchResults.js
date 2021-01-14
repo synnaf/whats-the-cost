@@ -23,60 +23,65 @@ const SearchResults = (results) => {
     useEffect(()=> {
         setAvailable(list); 
     },[list]); 
-    
 
+
+
+
+// if(valueA || valueB || valueC) 
+// då är det som some()
+
+// if(valueA && valueB && valueC)
+// är every()
+
+/*
+
+Jag vill kontrollera om min array innehåller värden, utifrån filtrena 
+
+Innehåller min array värden ConsuValue? values.consuvalue
+Innehåller min array värden AnimalsValue? values.animalvalue
+
+item.calculated_consuvalue > values.consuvalue
+item.is_animal  --- animalvalue 0
+item.is_vegetarian  --- animalvalue  1
+item.is_vegan --- animalvalue 2
+
+OM filter nr.1 OCH filter nr.2 är på setting 0, visa originallistan 
+if(values.consuvalue && values.animalvalue === 0) { }
+----------------------
+
+OM filter nr.1 ELLER filter nr.2 har ändrats från setting 0,  
+if(values.consuvalue || values.animalvalue > 0) { 
+
+    //kontrollera vilket av värdena det är
+    if(values.consuvalue > 0) {
+        lägg på filter 
+    } else {
+        lägg på ett annat filter 
+    }
+
+    sätt filtret 
+
+}
+
+
+OM filter nr.1 OCH filter nr.2 har ändrats från setting 0, 
+if(values.consuvalue && values.animalvalue > 0) { }
+
+*/
+
+    
+    //den här funktionen borde inte köras om inte ett filter ändras
     const newList = () => {
-        // setProductState(sliderValue); 
-        /* CREATE A FILTER */
-        console.log(values.consuvalue); //contains slidervalue 
-        console.log(values.animalvalue); //contains slidervalue 
 
-        if(values.consuvalue > 0) {
-            //filtrera först bort calculated_consuvalue 
-            let consList = list.filter(item => item.calculated_consuvalue > values.consuvalue);
+        // /* CREATE A FILTER */
+        // console.log(values.consuvalue); //contains slidervalue 
+        // console.log(values.animalvalue); //contains slidervalue 
+        // let cv = values.consuvalue; 
+        // let av = values.animalvalue; 
 
-            //kontrollera sedan vad värdet på animal filter är 
-            if(values.animalvalue === 1) {
-                //filtrera bort de som INTE är animal från consList 
-                let vegoList = consList.filter(item => item.is_vegetarian === 1 & item.is_animal === 0 || 1);
-                
-                if(values.animalvalue === 2) {
-                    //check if vegan! 
-                    let veganList = vegoList.filter(item => item.is_vegan === 1);
-                    setAvailable(veganList); 
-                } else {
-                    //annars, sätt vegetarian list 
-                    setAvailable(vegoList); 
-                }
+        // //om någon av filtrena har ändrats så ska en ny lista skapas 
+        // if(cv || av > 0) {
 
-        } else {
-
-            //om inget ovan, set med ursprungliga listan  
-            setAvailable(consList); 
-        
-        }; 
-    
-            
-        }; 
-
-        // if(values.animalvalue > 0) {
-        //     //filtrera först bort de som har YES på is_animal 
-        //     let aniList = list.filter(item => item.is_animal == 0);
-        //     setAvailable(aniList); 
-        // }; 
-
-        // if(values.animalvalue > 0 && values.consuvalue == 0) {
-        //     setAvailable(list.filter(item => item.is_vegetarian == 1 && item.is_vegan == 0 )); 
-        // }; 
-        // if(values.animalvalue > 0 && values.consuvalue > 0) {
-        //     setAvailable(list.filter(item => 
-        //         item.is_vegetarian == 1 && 
-        //         item.is_vegan == 0 || null && 
-        //         item.calculated_consuvalue >= values.consuvalue)); 
-        // }; 
-        // //find vegan values when other slider is 0 
-        // if(values.animalvalue > 1 && values.consuvalue == 0) {
-        //     setAvailable(list.filter(item => item.is_vegan == 1 && item.calculated_consuvalue >= values.consuvalue)); 
         // }; 
 
     }; 
