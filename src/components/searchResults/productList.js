@@ -57,9 +57,9 @@ const ProductList = (results) => {
                 
                     return (
                         <li className="product" key={item.id}>
-                            <button className="product__like" onClick={() => addLike({title: item.name, id: item.id}) }>
+                            {/* <button className="product__like" onClick={() => addLike({title: item.name, id: item.id}) }>
                                 <img src={heart} alt="heart icon" className="icon__like"/>
-                            </button>
+                            </button> */}
                             <div className="product__image">
                                 <img 
                                     src={
@@ -70,7 +70,6 @@ const ProductList = (results) => {
                             </div>
                             <div className="product__info">
                                 <h6 className="product__name">{item.name}</h6>
-                                <p>{item.calculated_consuvalue}</p>
                                 <button 
                                     type="button" 
                                     className="product__link"

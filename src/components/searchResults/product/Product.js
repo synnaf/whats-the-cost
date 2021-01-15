@@ -23,13 +23,13 @@ const Product = (props) => {
     } else {
     return (
         <>
-            <div className="product-card-details">
-                <div className="product-card-info">
-                    <div className="card-header">
+            <div className="card">
+                <div className="card__info">
+                    <div className="card__title">
                         <h6>{product.name}</h6>
                         <button type="button" onClick={props.closePopup}>&times;</button> 
                     </div>
-                    <div className="value-wrapper">
+                    <div className="card__value">
                         <ul className="value__list">
                             {product.consuvalues 
                                 ? product.consuvalues.map((value) => {

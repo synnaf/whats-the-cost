@@ -27,7 +27,7 @@
         list-style-type: none;
         .product {
             border-radius:1%; 
-            box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.25); 
+            box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25); 
             margin-bottom:6rem; 
             background-color: white;
             .product__like {
@@ -39,18 +39,23 @@
                 margin-top:0.5rem; 
                 cursor:pointer; 
                 .icon__like {
-                    width:30px;    
+                    width:30px;   
+                    opacity:0.3;  
+                }:hover {
+                    opacity:1;
+                    transition: all 0.25s; 
                 }  
             }
             .product__image {
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                height:60%; //of its container 
                 img {
-                    //align image center of container 
                     margin-top:0rem; 
                     max-height:70%; //of it's container
-                    max-width:70%; //of it's container
+                    max-width:95%; 
+                   overflow:clip; 
                 }
             }
             .product__info {
@@ -60,27 +65,26 @@
                 padding:0 0 0 1rem;
                 .product__name {
                     margin:0; 
-                    padding-right:0.5rem; 
                     width:60%;
                     font-size:0.8rem; 
                     font-family: $font-text;
-                    color: $forest-green; 
+                    color: $text-color; 
                 }
                 .product__link {
                     //add button style 
                     width:30%; 
                     height:20px; 
-                    border:1.5px solid $cta-orange;
+                    border:1.5px solid $yellow;
                     transition: all 0.25s; 
                     text-align: center; 
                     font-size:0.7rem;
                     cursor: pointer; 
                     color:$cta-orange;
-                    background-color:white;
+                    background-color:$yellow;
                     text-decoration: none; 
-                    // line-height: 1.5;
+                   
                 }.product__link:hover {
-                    box-shadow: 5px 5px 1px $lilac;
+                    box-shadow: 5px 5px 1px  $cta-orange;
                 }
             }
 

@@ -6,7 +6,7 @@ $mobileXs:600px;
 
 
 //should have z-index above menu and blur background? 
-    .product-card-details {
+    .card {
         position:fixed;
         left:calc(100vw - 90%); 
         // right:90%;  
@@ -17,12 +17,12 @@ $mobileXs:600px;
         box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.25);
         margin-bottom:2rem; 
         
-        .product-card-info {
+        .card__info {
             display: flex; 
             flex-direction:column; 
             align-items:flex-start ;
             margin:0.5rem; 
-            .card-header {
+            .card__title {
                 display: flex;
                 flex-direction: row;
                 justify-content:space-between; 
@@ -30,12 +30,11 @@ $mobileXs:600px;
                 h6 {
                     margin:0;
                     color:$forest-green; 
-                    
                     //mobile
                     font-size:1.5rem; 
                 }
             }
-            .value-wrapper {
+            .card__value {
                 width:100%; 
                 display:flex; 
                 flex-direction: row;

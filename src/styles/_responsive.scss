@@ -77,24 +77,42 @@ body {
                 }  
                 .product { 
                     //TODO: last items on last page??? 
-                    width: 45%; 
+                    width: 80%; 
                     margin:0.5rem; 
-                    max-height:40vh; 
-                    min-height:40vh;  
+                    height:40vh;
+                    
+                    @media screen and (min-width: $padlet) {
+                        width: 45%; 
+                        height:20vh; //desktop   
+                    }
                     .product__image {
-                        height:60%;
+                        // height:60%;
                         // border:solid red; 
                         @media screen and (min-width: $mobile) {
-                            height:60%;
+                            // height:60%;
+                        }
+                        @media screen and (max-width: $mobile) {
+
                         }
                         img {
                             @media screen and (max-width: $mobile) {
-                                width:40%;
+
+                               
                             }
                         } 
                     }
                     .product__info {
-                        height:30%;
+                        width:100%;
+                        overflow-y:clip; 
+                        max-height:30%;
+                        word-break:break-word; 
+                        overflow:hidden; 
+    
+                        button {
+                            @media screen and (max-width: $mobile) {
+                                
+                            }
+                        }
                     }
                     @media screen and (min-width: $mobile) {
                         width:35%;
@@ -130,7 +148,7 @@ body {
             }
         }
     }
-    .product-card-details {
+    .card {
         @media screen and (min-width: $padlet) {
             width:40%;
             padding:2rem; 
