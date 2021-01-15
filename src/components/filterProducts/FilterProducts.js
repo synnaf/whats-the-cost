@@ -12,11 +12,11 @@ const FilterProducts = (props) => {
 
 
     useEffect(() => {
-        props.func(
+     
 
             setValues({consuvalue: sliderValue, animalvalue: sliderValue2})
             
-        ); 
+
        
     }, [sliderValue, sliderValue2]);
 

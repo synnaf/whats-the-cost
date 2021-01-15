@@ -16,8 +16,7 @@
         background-color:transparent; 
         padding-left: 40px;
         &:focus {
-           box-shadow: 2px 2px 10px solid black;
-           border:none; 
+           outline: 1.5px $cta-orange;  
         }
     }
     //cta-search button? 

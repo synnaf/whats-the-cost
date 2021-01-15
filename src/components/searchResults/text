@@ -1,0 +1,228 @@
+
+// if(valueA || valueB || valueC) 
+// då är det som some()
+// if(valueA && valueB && valueC)
+// är every()
+
+/*
+
+Jag vill kontrollera om min array innehåller värden, utifrån filtrena 
+
+Innehåller min array värden ConsuValue? values.consuvalue
+Innehåller min array värden AnimalsValue? values.animalvalue
+
+item.calculated_consuvalue > values.consuvalue
+item.is_animal  --- animalvalue 0
+item.is_vegetarian  --- animalvalue  1
+item.is_vegan --- animalvalue 2
+
+OM filter nr.1 OCH filter nr.2 är på setting 0, visa originallistan 
+if(values.consuvalue && values.animalvalue === 0) { }
+----------------------
+
+OM filter nr.1 ELLER filter nr.2 har ändrats från setting 0,  
+if(values.consuvalue || values.animalvalue > 0) { 
+    //kontrollera vilket av värdena det är
+    if(values.consuvalue > 0) {
+        lägg på filter 
+    } else {
+        lägg på ett annat filter 
+    }
+    sätt filtret 
+}
+
+
+OM filter nr.1 OCH filter nr.2 har ändrats från setting 0, 
+if(values.consuvalue && values.animalvalue > 0) { }
+
+
+--------------
+
+        // /* CREATE A FILTER */
+        // console.log(values.consuvalue); //contains slidervalue 
+        // console.log(values.animalvalue); //contains slidervalue 
+        // let cv = values.consuvalue; 
+        // let av = values.animalvalue; 
+        // //om någon av filtrena har ändrats så ska en ny lista skapas 
+        // if(cv || av > 0) {
+        // }; 
+
+
+-------
+
+
+
+       //sätt upp kravet för filtreringen 
+            //hasValue kollar om värdet i arrayen är större än värdet i slide-object för consuvalue 
+            const hasValue = (item) => 
+                item.calculated_consuvalue >= values.consuvalue; 
+            // let results = list.every(hasValue); //returns false or true 
+            //göra en return här? eller vad ska hända med true/false? 
+            console.log(list.every(hasValue));
+            console.log(item); 
+            testList.push(list.every(hasValue) ? item : null); 
+
+
+
+
+                       let include = true; 
+            if(!item) return false; 
+
+            if(
+                //returns true or false 
+                values.consuvalue !== 0 && 
+                list.includes(item.calculated_consuvalue < values.consuvalue)
+            ) {
+                include = false; 
+                console.log('test'); 
+            }
+            console.log('test'); //körs för varje objekt i listan dvs 100
+            return include; 
+
+
+
+
+                        //filteredList innehåller värden större än consuValue 
+            if(item.calculated_consuvalue > values.consuvalue || 
+                values.animalvalue > 0
+ 
+ 
+ 
+            ) {
+
+
+
+    //en useeffect för values, som uppdaterar om den uppdaterar values 
+    useEffect(()=> {
+
+        //Kontrollera om ett värde finns i en array
+        //returnerar true eller false 
+        let findValue; 
+        const checkAv = (list, val) => {
+            return findValue = list.some(arrVal => val === arrVal); //check if is bigger unstead? if val > arrVal 
+        }
+
+        //värden som vi skickar in och vill kontrollera 
+        checkAv(list, values.consuvalue);
+        console.log('findval', findValue); //true eller false om värdet finns 
+        
+        //om vi får true, dvs. att värdet finns 
+        //filtrera arrayen med nya värden
+        if(findValue === true) {
+
+            console.log(list.filter((item) => {
+                return item.calculated_consuvalue >= values.consuvalue
+            })); 
+
+
+        } else {
+            return findValue; 
+        }
+
+        //om vi får false, dvs. att värdet INTE finns
+        //gå ur loopen, gå vidare, return; 
+         
+    
+        //det som ska pushas in i ett satet och skickas till available skapas här i 
+        let filteredList = available.filter((item) => {
+
+            //filteredList innehåller värden större än consuValue 
+            if(values.animalvalue > 0) {
+                console.log('hej'); 
+                    // if(values.animalvalue > 0) {
+                    //     return list.filter((item) => (
+                    //         item.is_vegetarian === 1
+                    //     )); 
+                    // }
+                    // if(values.animalvalue > 1) {
+                    //     return list.filter((item) => (
+                    //         item.is_vegan === 1 
+                    //     ));  
+                    // }
+
+                //om den är större än noll finns allt i filtered list 
+                return item; 
+            }; 
+            if(item.calculated_consuvalue >= values.consuvalue) {
+                console.log('hej'); 
+
+                //om den är större än noll finns det i filteredList 
+                return item; 
+            }; 
+
+         
+        
+            //returns 
+            //  let value = item.calculated_consuvalue < values.consuvalue; 
+     
+        });
+
+        console.log("filtered list", filteredList);
+       setProductState(filteredList); 
+       console.log('PRODUCTSTATE', productState); 
+
+    },[values]); 
+
+
+
+    -
+
+
+        console.log('findval', findValue); //true eller false om värdet finns 
+        
+        /////////////////////////////////////////////////// 
+        //filtrera arrayen med nya värden
+        if(findValue === true) {
+
+            let newVal = available;
+
+
+            //should return consuvlue update 
+            if(values.consuvalue > 0) {
+                newVal.filter((item) => item.calculated_consuvalue >= values.consuvalue); 
+                 setAvailable(newVal)
+            }
+ 
+ 
+            //should return vegetarian update 
+            if(values.animalvalue > 0) {
+                newVal.filter((item) => item.is_vegetarian == 1); 
+                setAvailable(newVal); 
+            }
+
+
+            //should return vegan update 
+            if(values.animalvalue > 1) {
+               newVal.filter((item) => item.is_vegan == 1); 
+                setAvailable(newVal);
+            }
+
+
+            console.log('NEWVAL', newVal); 
+         
+       
+            // //loggar lista med godkända värden 
+            // console.log(available.filter((item) => {
+            //     if(values.consuvalue > 0) {
+            //         return item.calculated_consuvalue >= values.consuvalue
+            //     }
+            //     //loggar NY lista med godkända värden, kolla mot slider
+            //     if(values.animalvalue > 0) {
+            //         console.log('vag'); //en för varje, men vill basera det på return ovan?  
+            //         return item.is_vegetarian > 0
+            //     }
+            //     //loggar NY lista med godkända värden, kolla mot slider
+            //     if(values.animalvalue > 1) {
+            //         return item.is_vegan > 0
+            //     }
+
+            //     console.log(item); 
+            //     return item; 
+            // }
+            // )
+            // ); 
+            
+
+
+
+
