@@ -14,11 +14,19 @@ const LikeList = () => {
     const [mailStatus, setMailStatus] = useState(false); 
     const [update, setUpdate] = useState(''); 
     const [displayError, setDisplayError] = useState(false); 
+    const [empty, setEmpty] = useState(true); 
 
     useEffect(() => {
         let list = window.localStorage.getItem('likes'); 
         let likesInLS = JSON.parse(list); 
         setSavedLikes(likesInLS); 
+
+        if(likesInLS == undefined) {
+            console.log(savedLikes)
+            setEmpty(true); 
+        } else {
+            setEmpty(false)
+        }
     }, [update]); 
 
     //TODOD: Empty input field value = ''
@@ -36,34 +44,40 @@ const LikeList = () => {
         e.preventDefault(); 
         let sendTo = recipient; 
         //funktion som returnerar html li-taggar, inte objekt 
-        const sendLikes = () => {
-            //return for main function
-            return savedLikes.map((item) => {
-                //returns sring literal with li's 
-                return `<li>${item.title}</li>`   
-            })
-        }; 
 
-        console.log(sendLikes()); 
+        if(empty === false) {
 
-        let templateParams = {
-            to: sendTo, //from input
-            html: `${sendLikes()}` //function to return string literals 
-        }; 
+            const sendLikes = () => {
+                //return for main function
+                return savedLikes.map((item) => {
+                    //returns sring literal with li's 
+                    return `<li>${item.title}</li>`   
+                })
+            }; 
+    
+            let templateParams = {
+                to: sendTo, //from input
+                html: `${sendLikes()}` //function to return string literals 
+            }; 
+    
+            emailjs.send('default_service', 'template_ey9wjk9', templateParams)
+                .then((response) => {
+                    console.log('SUCCESS!', response.status, response.text);
+                    setMailStatus(true); //rendera confirmation  
+                    localStorage.clear('likes'); 
+    
+                }, (error) => {
+                   
+                    console.log('FAILED...', error);
+                    setDisplayError(true); 
+                    setMailStatus(false); //rendera fail
+                });
 
-        emailjs.send('default_service', 'template_ey9wjk9', templateParams)
-            .then((response) => {
-                
-                console.log('SUCCESS!', response.status, response.text);
-                setMailStatus(true); //rendera confirmation  
-                localStorage.clear('likes'); 
 
-            }, (error) => {
-               
-                console.log('FAILED...', error);
-                setDisplayError(true); 
-                setMailStatus(false); //rendera fail
-            });
+        } else {
+            setDisplayError(true); 
+        }
+
     };
 
     if(mailStatus == true) {
@@ -75,22 +89,25 @@ const LikeList = () => {
                     <div className="page__header">
                         <Header props='My likes' /> 
                     </div>
-                    <ul className="likes__list">
-                        { savedLikes == [] ?
-                            savedLikes.map((item, index) => {
-                                let id = item.id; 
-                                return( 
-                                    <li key={index} 
-                                        className="likes__item"
-                                    >{item.title}
-                                    <button type="button" onClick={() => removeItem(id, index)}>
-                                        Remove
-                                    </button>
-                                    </li>
-                                )
-                            })
-                        : <h3>Your list is empty!</h3> }
-                    </ul>
+                        { empty == false && savedLikes.length > 0 ?
+                            <ul className="likes__list">
+                                { 
+                                    savedLikes.map((item, index) => {
+                                        let id = item.id; 
+                                        return( 
+                                            <li key={index} 
+                                                className="likes__item"
+                                            >{item.title}
+                                            <button type="button" onClick={() => removeItem(id, index)}>
+                                                Remove
+                                            </button>
+                                            </li>
+                                        )
+                                    })
+                                }
+                            </ul>
+                            : <h3>Your list is empty!</h3> }
+                  
                     <div className="page__input">
                         <form className="email__form">
                             <label htmlFor="mail">Email me my list:</label>
