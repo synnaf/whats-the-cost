@@ -3,12 +3,8 @@ import Header from '../header/Header';
 import FilterProducts from '../filterProducts/FilterProducts';
 import ProductList from './ProductList';
 import './SearchResults.scss'; 
-// import { ListContext } from '../main/ListContext';
 import { ValueContext } from '../main/ValueContext';
-import get from 'lodash/get';
-import uniqWith from 'lodash/uniqWith';
-import isEqual from 'lodash/isEqual';
-import { add } from 'lodash';
+
 
 
 const SearchResults = (results) => {

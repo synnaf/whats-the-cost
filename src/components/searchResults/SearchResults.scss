@@ -23,7 +23,7 @@
     }
     .products__list {
         //move page content below menu 
-        margin:auto; 
+        // margin:auto; fix layout on uneven pitems per page 
         list-style-type: none;
         .product {
             border-radius:1%; 

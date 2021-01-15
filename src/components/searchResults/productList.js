@@ -3,19 +3,27 @@ import defaultimage from '../../assets/default-image.png';
 import Pagination from '../pagination/Pagination';
 import Product from './product/Product'; 
 import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg'; 
-// import { LikeContext } from '../likeList/LikeContext';
+
 
 const ProductList = (results) => {
-    console.log('RESULTS RECIEVED PL:', results);
     const { products } = results;
     const [popup, setPopup] = useState({id: '', state: false}); 
 
-    // //what ve can get from our context 
-    // const {likes, setLikes} = useContext(LikeContext);
+    // //pagination
+    const [currentPage, setCurrentPage] = useState(1); 
+    const [itemsPerPage] = useState(12);     
+    
+    // //get index of the last post 
+    const indexOfLastItem = currentPage * itemsPerPage; 
+    const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
+    let currentList = products.slice(indexOfFirstItem, indexOfLastItem); 
 
-    //ta emot product-id
+    //change page on click 
+    const createPagination = (pageNumber) => {
+        setCurrentPage(pageNumber);
+    }; 
+
     const productPopup = (t) => {
-        console.log(t); 
         setPopup({id:t, state:true}); 
         let backg = document.getElementById('productList'); 
         backg.style.filter = 'blur(3px)';
@@ -52,7 +60,7 @@ const ProductList = (results) => {
         <>
         <ul className="products__list" id="productList">
             { 
-                products.map((item)=> {
+                currentList.map((item)=> {
                     let img_url = item.image_url; 
                 
                     return (
@@ -87,9 +95,7 @@ const ProductList = (results) => {
                 
             : null
         }
-         
-
-        {/* {  products.length > itemsPerPage ?
+        {  products.length > itemsPerPage ?
             <Pagination 
                 itemsPerPage={itemsPerPage} 
                 totalList={products.length} 
@@ -97,7 +103,7 @@ const ProductList = (results) => {
                 activePage={currentPage} 
             />
             : null
-        }   */}
+        }  
         </>
     );
 }
