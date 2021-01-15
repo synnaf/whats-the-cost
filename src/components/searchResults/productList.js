@@ -8,6 +8,7 @@ import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white
 const ProductList = (results) => {
     const { products } = results;
     const [popup, setPopup] = useState({id: '', state: false}); 
+    const[isLiked, setIsLiked] = useState(false); 
 
     // //pagination
     const [currentPage, setCurrentPage] = useState(1); 
@@ -36,7 +37,14 @@ const ProductList = (results) => {
     }; 
 
     //SAVE AS OBJECT IN LS 
-    const addLike = (item) => {
+    const addLike = (e, item) => {
+
+        let clicked = document.getElementById(`${item.id}`);
+        console.log(clicked); 
+        clicked.classList.add('--liked'); 
+    
+        console.log(e); 
+
         let likesArr = []; 
         let list = window.localStorage.getItem('likes'); 
         let likesInLS = JSON.parse(list); 
@@ -65,9 +73,10 @@ const ProductList = (results) => {
                 
                     return (
                         <li className="product" key={item.id}>
-                            {/* <button className="product__like" onClick={() => addLike({title: item.name, id: item.id}) }>
-                                <img src={heart} alt="heart icon" className="icon__like"/>
-                            </button> */}
+                            <button className="product__like" id={item.id} onClick={(e) => addLike(e, {title: item.name, id: item.id}) }>
+                                <img src={heart} alt="heart icon" className="icon__like" />
+
+                            </button>
                             <div className="product__image">
                                 <img 
                                     src={
