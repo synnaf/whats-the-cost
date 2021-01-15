@@ -4,21 +4,22 @@ $mobile:800px;
 $mobileXs:600px; 
 
 html {
-    height:auto; 
+    height:100%; 
 }
 body {
     margin:0; 
-    scroll-behavior: smooth; //?? 
     .nav {
         margin:0;
+        z-index:999;
         @media screen and (min-width: $padlet) {
             margin:0rem 2rem; 
         }
     }
     .hero{
-        height:80vh;  
+        height:70vh; 
     }
-    .page { 
+    .page {
+        z-index:9; 
         margin:auto;
         margin-top:0; 
         max-width:90%; 
@@ -32,9 +33,13 @@ body {
             width:90%; 
             padding-left:2rem; 
             margin:auto; 
-            display:flex;
-            flex-direction: column; //fix?
-         
+            display: flex;
+            flex-direction:row; 
+            justify-content: space-between;
+            flex-wrap: wrap;
+            .page__header {
+                width:100%;
+            }
             font-size:1.5rem;
         }
         &.products {
@@ -157,7 +162,7 @@ body {
         }
     }
     footer {
-        height:10%; //height of content 
+        height:10%; //height of content         
         display: flex; 
         flex-direction: column;
         justify-content: space-evenly;

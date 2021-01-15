@@ -1,54 +1,48 @@
 @import '../../styles/typography'; 
 @import '../../styles/variables';
 
-
 .hero {
     margin:auto; //centers section
     padding:1rem; 
-    // margin:0; 
     font-family: $font-headline;
-    // background-color:$light-gray; //animation + background-color transparent
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: center;
     align-items:center;
-    
-    .circle {
-        // height:calc(100vh - 10%);
-        // margin-left:60%; 
-        // z-index:-1; 
-        // position: relative;
-        // left:50%;
-        // top:2%;
-        // animation: float 2s infinite; 
-        // z-index: 1;
-        height:70%; 
-        overflow: hidden;
+    .hero__circle { 
+        max-width:80%; 
+        position: absolute; 
+        left:30%;
+        bottom:6%; 
+        text-align: center;
+        z-index:0; 
         img {
-            width:70%; 
-            overflow:hidden; 
-       
+            width:90%; 
         }
     }
-    
-    .animated-hero-text {
-        font-size:$font-size-hero;
-        margin:auto; 
-        margin-top:0; 
-        width:50%; 
-        color:$forest-green; 
-    } & .main-text {
-        margin-bottom: 0;
-        margin-top:auto; 
-        -webkit-text-stroke-width: 1.5px;
-        -webkit-text-stroke-color: $text-color;
-        color: transparent; 
-        z-index:9; 
-    }
-    //doesnt work 
-    .button {
-        width:100px; 
-        @include primarybutton; 
-    }
+    .hero__text{
+        z-index: 9; 
+        width:50%;
+        position: absolute;
+        margin-right:25%; 
+        .animated-hero-text {
+            // border:solid red; 
+            font-size:$font-size-hero;
+            margin:auto; 
+            margin-top:0; 
+            width:100%; 
+            color:$forest-green;
+
+            } & .main-text {
+                margin-bottom: 0;
+                margin-top:auto; 
+                -webkit-text-stroke-width: 1.5px;
+                -webkit-text-stroke-color: $text-color;
+                color: transparent; 
+                z-index:9; 
+            }
+
+    }   
 }
 
 @keyframes float {

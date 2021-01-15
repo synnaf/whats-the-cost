@@ -2,14 +2,15 @@ import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import BGcircle from '../../assets/svg/circle.svg'; 
 
+
 const Home = () => {
   // const [textContent, setTextContent] = useState('The Price'); 
   // let text = document.getElementById('heroText'); 
 
-  useEffect(() => {
-    // text.innerHTML = textContent; 
-    // myMove(); 
-  }, []); 
+  // useEffect(() => {
+  //   text.innerHTML = textContent; 
+  //   myMove(); 
+  // }, []); 
 
   // setTextContent('The Value'); 
   // setTextContent('The Cost'); 
@@ -33,15 +34,18 @@ const Home = () => {
   return (
       <>
         <section className="hero">
-          <div className="circle" id="circle">
+          <div className="hero__text">
+
+            <h1 className="main-text animated-hero-text">
+                What's
+            </h1>
+            <h1 className="animated-hero-text" id="heroText">The Cost</h1>
+          </div>
+
+          <div className="hero__circle" id="circle">
             <img src={BGcircle} alt="floating circle" />
           </div>
-          <h1 className="main-text animated-hero-text">
-              What's
-          </h1>
-          <h1 className="animated-hero-text" id="heroText"></h1>
-          {/* <h1 className="animated-hero-text">The Price</h1>
-          <h1 className="animated-hero-text">The Value</h1> */}
+
         </section>
       </>
 
