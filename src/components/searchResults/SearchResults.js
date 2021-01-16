@@ -12,7 +12,8 @@ const SearchResults = (results) => {
     const [ productState, setProductState ] = useState([]);
     const {values, setValues} = useContext(ValueContext); 
     const [available, setAvailable] = useState([]); 
-    const [filteredList, setfilteredList] = useState([]); 
+    const [filteredList, setfilteredList] = useState([]);
+    const [sortOptions, setSortOptions] = useState(false);  
 
     useEffect(()=> {
         setAvailable(list); 
@@ -21,7 +22,7 @@ const SearchResults = (results) => {
     useEffect(()=> {
 
         //1. inget filter valt gör inget?? denna kommer inte köras då
-        
+
         setfilteredList(available); 
         
         //2. ett filter valt -------------------
@@ -93,20 +94,35 @@ const SearchResults = (results) => {
         }  
     },[values]); 
 
+    // useEffect(()=> {
+
+    //     //sorterar by defsault ?? 
+
+    //     list.sort((a, b) =>  (a.name > b.name) 
+    //         ? 1 //ascrnding
+    //         : -1 //descending 
+    //     ); 
+
+    
+    // }, [sortOptions])
+
+
+
         return (
             <>
                 <section className="page products">
                     <div className="page__header">
                         <Header props='Results' /> 
                         <div className="page__sort">
-                            <select className="sort-options">
-                                {/* array.sort() */}
-                                <option>
-                                    Sort A-Z 
+                            <select className="sort-options" onChange={() => setSortOptions(true)}>
+                                <option value="" selected>
+                                    Sort options 
                                 </option>
-                                <option>
-                                    {/* array.sort() => array.reverse();  */}
-                                    Sort Z-A
+                                <option value="abc">
+                                    Sort A-Ö 
+                                </option>
+                                <option value="cba">
+                                    Sort Ö-A
                                 </option>
                             </select>
                         </div>   

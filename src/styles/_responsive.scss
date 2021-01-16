@@ -26,7 +26,7 @@ body {
 
         @media screen and (min-width: $padlet) {
             width:90%; 
-            padding-left:2rem; 
+            padding:2rem; 
             margin:auto; 
             display: flex;
             flex-direction:row; 
@@ -38,6 +38,7 @@ body {
             font-size:1.5rem;
         }
         &.products {
+            margin:auto; 
             .page__title {
                 width:50%;
                 margin:0;
@@ -56,6 +57,9 @@ body {
                     width:15%;
                 }
             }
+            .page__filter {
+                width:100%; 
+            }
             .filter__list {
                 @media screen and (min-width: $padlet) {
                     // margin-top:2rem; remove on desktop
@@ -68,6 +72,8 @@ body {
             }
             .products__list {
                 padding-left:0; 
+                width:100%; 
+
                 display:flex; 
                 flex-direction: row; 
                 flex-wrap: wrap;
