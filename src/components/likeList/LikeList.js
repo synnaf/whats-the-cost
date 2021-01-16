@@ -5,8 +5,7 @@ import emailjs from 'emailjs-com';
 import './LikeList.scss'; 
 import Confirmation from './Confirmation';
     
-//Save in env
-init("user_UMrGuKNuZujxb66Utvg71");
+init(process.env.EMAIL_USER);
 
 const LikeList = () => {
     const [savedLikes, setSavedLikes] = useState([]); 
