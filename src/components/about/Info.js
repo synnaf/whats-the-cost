@@ -5,9 +5,6 @@ const Info = (props) => {
 
     console.log(props); 
     if(props.info == 'About') {
-        // el.classList.toggle('--active');
-      
-
         return (
             <span>
                 This page is created as an FrontEnd Examproject.

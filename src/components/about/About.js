@@ -10,8 +10,8 @@ const About = (props) => {
         setInfo(e.target.innerHTML); 
         let element = document.getElementById('submenu');
         console.log(element); 
-        element.classList.toggle('hide'); 
-        // element.style.display = 'hidden'; 
+        element.classList.remove('hide'); 
+        //toggle class instead? or do an if/else 
     }; 
 
     return (
