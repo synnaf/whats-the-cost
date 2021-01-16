@@ -12,67 +12,85 @@ const SearchResults = (results) => {
     const [ productState, setProductState ] = useState([]);
     const {values, setValues} = useContext(ValueContext); 
     const [available, setAvailable] = useState([]); 
+    const [filteredList, setfilteredList] = useState([]); 
 
-    //rendera med det som finns i available, för sökningen 
     useEffect(()=> {
         setAvailable(list); 
     },[list]); 
 
-    //en useeffect för values, som uppdaterar om den uppdaterar values 
     useEffect(()=> {
 
-        //1. inget filter valt  gör inget?? denna kommer inte köras då
+        //1. inget filter valt gör inget?? denna kommer inte köras då
         
-        //2. ett filter valt
-            //2.a vilket filter är valt?
-            if(values.consuvalue > 0) {
-                console.log('co!'); 
-                let cvArr = available.filter((item)=> {
-                        return item.calculated_consuvalue >= values.consuvalue; 
-                })
-                //innehåller filtrerade objekten 
-                console.log(cvArr); 
-            }
-            
-            if(values.animalvalue > 0) {
-                console.log('an!'); 
-                //kontrollera is vegan och is vego sen!
-                let cvArr = available.filter((item)=> {
-                    return item.is_vegetarian === 1; 
-                })
-                //innehåller filtrerade objekten 
-                console.log(cvArr); 
-            }
+        setfilteredList(available); 
+        
+        //2. ett filter valt -------------------
 
+        if(values.consuvalue > 0) {
+            console.log('co!'); 
+            let cvArr = available.filter((item)=> {
+                    return item.calculated_consuvalue >= values.consuvalue; 
+            })
+            //innehåller filtrerade objekten 
+            console.log(cvArr); 
+            setfilteredList(cvArr); 
+        }
 
-        //3. båda filter valda
+        if(values.animalvalue > 0) {
+            let cvArr = available.filter((item)=> {
+                return item.is_vegetarian === 1; 
+            })
+            //does this need another value?? 
+            if(values.animalvalue > 1) {
+                cvArr = available.filter((item)=> {
+                    return item.is_vegan === 1; 
+                })
+            } 
+            //innehåller filtrerade objekten 
+            console.log(cvArr); 
+            setfilteredList(cvArr); 
+        }
+
+        //3. båda filter valda --------------------
+
         if(values.animalvalue > 0 && values.consuvalue > 0) {
-            //3a vilket filter fick värdet först?
+            
             //om cv valdes först
             if(values.consuvalue > 0) {
                 let firstArr = available.filter((item)=> {
                     return item.calculated_consuvalue >= values.consuvalue; 
-                    }).filter((item) => {
-                        return item.is_vegetarian === 1;
-                    })
-                console.log(firstArr); 
+                    });
+                    
+                    if(values.animalvalue == 1){
+                        firstArr.filter((item) => {
+                            return item.is_vegetarian === 1;
+                        })
+                    };
+                    if(values.animalvalue == 2){
+                        firstArr.filter((item) => {
+                            return item.is_vegan === 1;
+                        })
+                    };  
+
+                console.log(firstArr);
+                setfilteredList(firstArr); 
             } 
             //om animal valdes först 
             if(values.animalvalue > 0) {
                 let secondArr = available.filter((item)=> {
-                        return item.is_vegetarian === 1;
+                        if(values.animalvalue == 1) {
+                            return item.is_vegetarian === 1;
+                        }
+                        if(values.animalvalue == 2) {
+                            return item.is_vegan === 1;
+                        }
                     }).filter((item)=> {
-                        return item.calculated_consuvalue >= values.consuvalue; 
-                        
+                        return item.calculated_consuvalue >= values.consuvalue;   
                     })    
-                console.log(secondArr);    
+                console.log(secondArr); 
+                setfilteredList(secondArr);   
             }
-
-            
-
-        }
-        
-
+        }  
     },[values]); 
 
         return (
@@ -97,7 +115,7 @@ const SearchResults = (results) => {
                     <div className="page__filter">
                         <FilterProducts /> 
                     </div> 
-                        <ProductList products={available} />
+                        <ProductList products={filteredList} />
                 </section>
             </>
         );
