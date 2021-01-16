@@ -20,14 +20,9 @@ body {
     }
     .page {
         z-index:9; 
-        margin:auto;
+        margin:1rem;
         margin-top:0; 
         max-width:90%; 
-        // height:80vh;
-        // z-index:2; 
-        // height:60%;
-        // top:20%; 
-        // position: fixed; 
 
         @media screen and (min-width: $padlet) {
             width:90%; 
