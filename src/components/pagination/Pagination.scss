@@ -1,9 +1,9 @@
 @import '../../styles/variables'; 
+@import '../../styles/mixins'; 
 
 .pagination {
-    list-style-type: none;
-    padding:0;  
-    font-size: 0.7rem;
+    @include UlListDefault;
+    font-size:0.7rem;  
     margin:auto; 
     &__item {
         text-align: center;

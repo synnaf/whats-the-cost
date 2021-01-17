@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins'; 
 $mobileMenu: 1024px; // 1024px;
 
 @media screen and (min-width: $mobileMenu) {
@@ -177,13 +178,12 @@ $mobileMenu: 1024px; // 1024px;
       }
       //menu nav + ul
       & .nav__list {
-        list-style-type: none;
+        @include UlListDefault; 
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
         justify-self: center;
-        padding:0; 
       }
       & .nav__item {
         color: white;

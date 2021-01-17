@@ -1,4 +1,5 @@
 @import '../../../styles/variables';  
+@import '../../../styles/mixins'; 
 $desktop:1224px;
 $padlet:1024px;
 $mobile:800px;
@@ -39,8 +40,8 @@ $mobileXs:600px;
                 display:flex; 
                 flex-direction: row;
                .value__list {
+                @include UlListDefault; 
                    font-size:0.7rem; //mobile 
-                    list-style-type: none;
                     padding-left:0.5rem; 
                     border-left:1.5px solid $lilac; 
                     width:50%;

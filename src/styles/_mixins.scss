@@ -1,0 +1,40 @@
+@mixin Primarybutton {
+    border:none;
+    font-weight: 400;
+    font-style: normal;
+    transition: all 0.25s; 
+    text-align: center; 
+    cursor: pointer; 
+    background-color:$cta-orange;
+    color:$yellow; 
+}
+@mixin Secondarybutton {
+    width:30%; //? 
+    height:30px; 
+    border:1.5px solid $cta-orange;
+    font-weight: 400;
+    font-style: normal;
+    transition: all 0.25s; 
+    text-align: center; 
+    cursor: pointer; 
+    color:$cta-orange; 
+    background-color:transparent; 
+}
+
+@mixin HoverShadow {
+    box-shadow: 5px 5px 1px $lilac;
+}
+
+@mixin InputField {
+    width: 80%; 
+    border: 1.5px solid $cta-orange; 
+    color: $text-color;  
+    padding:0.6rem; //same as buttons? 
+    background-color:transparent; 
+    padding-left: 40px;
+}
+
+@mixin UlListDefault {
+    list-style-type: none;
+    padding-left:0; 
+}

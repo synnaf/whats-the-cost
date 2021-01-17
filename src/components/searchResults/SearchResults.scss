@@ -1,6 +1,7 @@
 @import '../../styles/variables'; 
 @import '../../styles/typography';
 @import '../../styles/responsive'; 
+@import '../../styles/mixins'; 
 
 .products {
     //should be global style for all pages 
@@ -22,9 +23,8 @@
         }
     }
     .products__list {
-        //move page content below menu 
         // margin:auto; fix layout on uneven pitems per page 
-        list-style-type: none;
+        @include UlListDefault; 
         .product {
             border-radius:1%; 
             box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.25); 
@@ -90,21 +90,13 @@
                    
                 }.product__link:hover {
                     width:32%; 
-                    // box-shadow: 3px 20px 1px $cta-orange;
                 }
             }
 
         }
-        //move last child to align left? 
-        //should align left if xxxx ? how 
-        // .product-card:nth-child(5) {
-        //     border:solid red; 
-        // }
         padding-bottom:3rem;
     }
     .pagination {
-        // padding:2rem;
-        // margin:auto; 
         text-align: center;
     }
 }

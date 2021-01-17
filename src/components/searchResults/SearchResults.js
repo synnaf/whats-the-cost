@@ -155,7 +155,11 @@ const SearchResults = (results) => {
                     <div className="page__filter">
                         <FilterProducts /> 
                     </div> 
-                        <ProductList products={filteredList} />
+                    {available.length == 0 || filteredList.length == 0
+                        ?  <h3>No results</h3>
+                        : <ProductList products={filteredList} />
+                    }
+                        
                 </section>
             </>
         );
