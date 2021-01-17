@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Home.scss';
 import BGcircle from '../../assets/svg/circle.svg'; 
+import BGimg from '../../assets/bg_full.svg'; 
 
 
 const Home = () => {
@@ -42,8 +43,12 @@ const Home = () => {
             <h1 className="animated-hero-text" id="heroText">The Cost</h1>
           </div>
 
-          <div className="hero__circle" id="circle">
+          {/* <div className="hero__circle" id="circle">
             <img src={BGcircle} alt="floating circle" />
+          </div> */}
+
+          <div className="hero__bg" id="bg">
+            <img src={BGimg} alt="geometry" />
           </div>
 
         </section>
