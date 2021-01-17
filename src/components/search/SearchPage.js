@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Header from '../header/Header'; 
 import { searchProduct } from './api';
+import axios from "axios";
 import './SearchPage.scss'; 
 
 const SearchPage = (props) => { 
@@ -11,9 +12,11 @@ const SearchPage = (props) => {
         setSearchValue(e.target.value); 
     }; 
 
+    //search router in backend 
     function loadSearch(e) {
        e.preventDefault(); 
-        searchProduct(searchValue)
+        //add axios request here??? 
+        axios.get(searchProduct(searchValue))
             .then((req, res)=> {
                 let list = [...req.data.data];  
                 return list; 

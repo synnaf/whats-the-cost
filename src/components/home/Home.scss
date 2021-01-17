@@ -9,15 +9,14 @@
     flex-direction: row;
     justify-content: center;
     align-items:center;
-    .hero__circle { 
-        max-width:80%; 
-        position: absolute; 
-        left:30%;
-        bottom:6%; 
+    
+    .hero__bg {
+        width:100%;
+        transform: rotate(90deg);
         text-align: center;
-        z-index:0; 
         img {
-            width:90%; 
+            width:70%;
+            // animation: float 0.25s infinite; 
         }
     }
     .hero__text{
@@ -25,8 +24,7 @@
         width:50%;
         position: absolute;
         margin-right:25%; 
-        .animated-hero-text {
-            // border:solid red; 
+        .animated-hero-text { 
             font-size:$font-size-hero;
             margin:auto; 
             margin-top:0; 
@@ -45,7 +43,8 @@
     }   
 }
 
-@keyframes float {
-    0% { left:50%; top:2%;  }
-    100% { left:50%; top:2.5%; }
-}
+// @keyframes float {
+//     0% { transform: rotate(1deg);}
+//     70% {transform: rotate(1.2deg);}
+//     100% { transform: rotate(0.9deg);}
+// }

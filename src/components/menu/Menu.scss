@@ -9,8 +9,8 @@ $mobileMenu: 1024px; // 1024px;
     display: flex;
     flex-direction: row;
     justify-content: left;    
-    width: 90%; 
-    opacity:0.9; 
+    // width: 100%; 
+    // opacity:0.5; 
     // padding-bottom:0; 
     // z-index:1; //set on top
     // position: fixed;
@@ -89,7 +89,7 @@ $mobileMenu: 1024px; // 1024px;
 @media screen and (max-width: $mobileMenu) {
   .nav {
     width:90%;
-    margin:auto;
+    margin:0;
     background-color: transparent; 
     padding:1rem;
     padding-bottom:0;  
@@ -134,9 +134,7 @@ $mobileMenu: 1024px; // 1024px;
     &.isToggled {
       z-index:999; 
       background-color: transparent; 
-      padding:1rem; 
       display: unset;
-      justify-content: center;
       position: fixed;
       top: 0;
       bottom: 0;
@@ -159,7 +157,8 @@ $mobileMenu: 1024px; // 1024px;
         position: relative;
         z-index: 999;
         padding: 0;
-        margin:2rem; 
+        margin-left:1rem; 
+        margin-top:1rem; 
           & span {
           opacity: 0;
           margin: 0;
@@ -178,19 +177,19 @@ $mobileMenu: 1024px; // 1024px;
       }
       //menu nav + ul
       & .nav__list {
-        @include UlListDefault; 
+        @include UlListDefault;
+        margin:auto;  
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
+        width: 50%;
         justify-self: center;
       }
-      & .nav__item {
+      & .nav__item { 
         color: white;
         margin:1rem;
         width:50%;  
         text-align: center;
-      }
+      } 
       & .nav__link {
         text-decoration: none;
         color: white;

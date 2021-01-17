@@ -14,9 +14,32 @@ body {
         @media screen and (min-width: $padlet) {
             margin:0rem 2rem; 
         }
+        .nav__item {
+        &:nth-child(4) {
+            z-index:9999; 
+            a {
+              img {
+                  @media screen and (max-width: $padlet){
+                    display:none;
+                  }
+              }
+            }::after {
+                @media screen and (max-width: $padlet){
+                    content:'My Likes';
+                  }
+            }
+          }
+        }
     }
     .hero{
-        height:70vh; 
+        height:70vh;
+        overflow:hidden; 
+        .hero__bg {
+            @media screen and (min-width: $mobile) {
+                transform: rotate(0deg);
+      
+            }
+        } 
     }
     .page {
         z-index:9; 
