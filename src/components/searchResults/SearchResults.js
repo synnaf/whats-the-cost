@@ -94,18 +94,42 @@ const SearchResults = (results) => {
         }  
     },[values]); 
 
-    // useEffect(()=> {
+    useEffect(()=> {
 
-    //     //sorterar by defsault ?? 
-
-    //     list.sort((a, b) =>  (a.name > b.name) 
-    //         ? 1 //ascrnding
-    //         : -1 //descending 
-    //     ); 
+        //sorterar by defsault ?? 
+        setSortOptions(false); 
 
     
-    // }, [sortOptions])
+    }, [sortOptions])
 
+
+    const sortArray = (e) => {
+ 
+        setSortOptions(!sortOptions); 
+    
+        if(e.target.value == 'abc') {
+            let sorting = available.sort((a, b) => {
+                if(a.name < b.name) {
+                     return -1;  //ascending 
+                }
+                 return 0; //default 
+             })
+        }  else {
+            let sorting; 
+            if(e.target.value == 'cba') {
+                sorting = available.sort((a, b) => {
+                    if(a.name > b.name) {
+                         return -1;  //ascending 
+                    }
+                     return 0; //default 
+                 })
+
+            }  else {
+                return; 
+            }
+            return sorting; 
+        }
+    }; 
 
 
         return (
@@ -114,8 +138,8 @@ const SearchResults = (results) => {
                     <div className="page__header">
                         <Header props='Results' /> 
                         <div className="page__sort">
-                            <select className="sort-options" onChange={() => setSortOptions(true)}>
-                                <option value="" selected>
+                            <select className="sort-options" onChange={(e) => sortArray(e)}>
+                                <option defaultChecked>
                                     Sort options 
                                 </option>
                                 <option value="abc">
