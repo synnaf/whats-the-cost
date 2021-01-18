@@ -12,14 +12,14 @@ const Footer = () => {
           </div> */}
           <div className="footer-contact-info">
             <h6>Questions?</h6>
-            <p>Fanny Värnbrink Forsman</p>
-            <adress>
+            <a href="www.consupedia.se" target="_blank">www.consupedia.se</a>
+            <p>
               <a href="mailto:f.vforsman@gmail.com">Mail</a>
-            </adress>
+            </p>
           </div>
             <div className="copyright">
               <h6>2021</h6>
-              <a href="www.consupedia.se" target="_blank">www.consupedia.se</a>
+              <p>Fanny Värnbrink Forsman</p>
             </div>
         </footer>
       </>
