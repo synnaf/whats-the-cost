@@ -16,7 +16,7 @@ const SearchPage = (props) => {
     function loadSearch(e) {
        e.preventDefault(); 
         //add axios request here??? 
-        axios.get(searchProduct(searchValue))
+       searchProduct(searchValue)
             .then((req, res)=> {
                 let list = [...req.data.data];  
                 return list; 

@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
-import { Switch, Route } from 'react-router-dom';
-// import { ListContext } from './ListContext';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { ValueContext } from '../main/ValueContext'; 
 import Home from '../home/Home'; 
 import About from '../about/About';
@@ -10,12 +9,9 @@ import SearchResults from '../searchResults/SearchResults';
 import NotFound from './NotFound'; 
 
 
-//TODO: byt namn på main till ngt annat 
 const Main = () => {
-  // const [available, setAvailable] = useState([]); 
   const [values, setValues] = useState({}); 
   const [productList, setproductList] = useState([]); 
-  // const [likes, setLikes] = useState([]); 
  
   function searchResult(data) {
     setproductList(data);
@@ -25,34 +21,44 @@ const Main = () => {
   //TODO: sökbar routing - what should it do? 
   //TODO: Not Found har slutat fungera!!! 
   return (
-    <>
-      <Switch> 
-      {/* <LikeContext.Provider value={{likes, setLikes}}>  */}
-          <Route exact path='/' component={Home} />
-          <Route exact path='/about' component={About} />
-          <Route exact path='/likes' 
-              component={LikeList} 
-            />
-          <ValueContext.Provider value={{values, setValues}}>
-              <Route exact path='/search' 
-                  render={(props) => (
-                      <SearchPage {...props} redirectSearch={searchResult} />
-                  )}
-              /> 
-              <Route exact path='/search/:searchTerm' 
-                  render={(props) => (
-                      <SearchResults {...props} list={productList} />
-                  )}
-              />  
-          </ValueContext.Provider>
-
-          
-          <Route component={NotFound} /> 
-          {/* </LikeContext.Provider> */}
-
+    <> <ValueContext.Provider value={{values, setValues}}>
+      
+      <Switch>
+        <Route exact path='/' component={Home} />  
+        <Route exact path='/about' component={About} />
+        <Route exact path='/likes' 
+            component={LikeList} 
+          />  
+              
+          <Route exact path='/search' 
+            render={(props) => ( 
+              <SearchPage {...props} redirectSearch={searchResult} />
+            )}
+          /> 
+          <Route exact path='/search/:searchTerm' 
+            render={(props) => (
+              <SearchResults {...props} list={productList} />
+            )}
+          />  
+        
+        
+        
+        <Route path="*" component={NotFound} />
+    
+        {/* redirevt option
+        <Route path="*" component={NotFound} />
+        <Redirect to="/404" />   */}
+     
       </Switch>
+      
+      
+      </ValueContext.Provider>  
     </>
   );
 }
 
 export default Main;
+
+
+
+
