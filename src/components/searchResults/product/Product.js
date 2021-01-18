@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from 'react';
-// import { getProduct } from '../../../search/api'; 
+import React, { useEffect, useState } from 'react'; 
 import { getProduct } from '../../search/api'; 
 import './Product.scss'; 
 import defaultimage from '../../../assets/default-image.png'; 
@@ -31,20 +30,22 @@ const Product = (props) => {
                     </div>
                     <div className="card__value">
                         <ul className="value__list">
+                        <h6 className="value__title">ConsuValues Details</h6>
                             {product.consuvalues 
                                 ? product.consuvalues.map((value) => {
                                     return (<li className="value__item"> { value.label }: { value.calculated_value } </li>
                                     ); 
                                 })
-                                :  <p>No value</p>      
+                                :  <p>Getting value...</p>      
                             }
                         </ul>
                         <ul className="value__list">
+                            <h6 className="value__title">Allergy Details</h6>
                             {product.consuvalues 
                                 ? product.allergies.map((value) => {
                                     return (<li className="value__item"> { value.name } </li>); 
                                 })
-                                :  <p>No value</p>      
+                                :  <p>Getting value...</p>      
                             }
                         </ul>
                     </div>
@@ -65,13 +66,3 @@ const Product = (props) => {
 }
 
 export default Product;
-
-// useEffect(()=> {
-//     fetch("api/products/"+props.match.params.id) //hämta med produkt id från den klickade produkten?? 
-//     .then(res => res.json())
-//     .then(
-//         (result) => {
-//             setProduct(result); 
-//         }
-//     ); 
-// }); 

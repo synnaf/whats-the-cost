@@ -6,7 +6,6 @@ $mobile:800px;
 $mobileXs:600px; 
 
 
-//should have z-index above menu and blur background? 
     .card {
         position:fixed;
         left:calc(100vw - 90%); 
@@ -30,9 +29,14 @@ $mobileXs:600px;
                 width:100%; 
                 h6 {
                     margin:0;
-                    color:$forest-green; 
-                    //mobile
-                    font-size:1.5rem; 
+                    font-size:1rem;
+                }
+                button {
+                    border: none; 
+                    background-color:transparent; 
+                    cursor:pointer;
+                    color:$cta-orange;
+                    font-size:2rem;  
                 }
             }
             .card__value {
@@ -43,8 +47,12 @@ $mobileXs:600px;
                 @include UlListDefault; 
                    font-size:0.7rem; //mobile 
                     padding-left:0.5rem; 
-                    border-left:1.5px solid $lilac; 
                     width:50%;
+                    .value__title {
+                        font-size:0.7rem;
+                        border-bottom:1.5px solid $lilac;
+                        margin-bottom:0.5rem; 
+                    }
                     .value__item {
                         margin-bottom:0.3rem;
                         text-transform: capitalize;
