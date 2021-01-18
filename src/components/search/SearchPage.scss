@@ -8,7 +8,7 @@
     padding-top:1rem; 
     input[type=text] {
         @include InputField; 
-        background-image: url('../../assets/searchicon.svg');
+        background-image: url('../../assets/svg/searchicon.svg');
         background-position: 10px 10px;
         background-repeat: no-repeat;
         background-color:transparent; 

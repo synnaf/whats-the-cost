@@ -19,10 +19,11 @@ $mobileMenu: 1024px; // 1024px;
     // left:3%; // move in 
     
     .brand-logo {
-      padding-left:1rem;  
+      padding:1rem;  
+      padding-bottom:0; 
       width:20%;
       svg {
-        width:70%;
+        // width:70%;
       }
     }
     .menu__toggle {
@@ -30,7 +31,6 @@ $mobileMenu: 1024px; // 1024px;
     }
     //list in menu 
     &__list {
-      // display: none; //toggled on mobile
       display: flex;
       list-style: none;
       margin-left: auto;

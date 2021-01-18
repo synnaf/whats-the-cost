@@ -1,15 +1,11 @@
 import React from 'react';
 import './Footer.scss'; 
-import { Instagram } from '../../assets/svg/Icons'; 
-//lägg in classNames här, så att den hämtar in dem automatiskt? 
+import { Instagram, Github} from '../../assets/svg/Icons'; 
 
 const Footer = () => {
   return (
       <>
         <footer className="footer-section">
-          {/* <div className="footer-logo">
-                LOGO
-          </div> */}
           <div className="footer-contact-info">
             <h6>Questions?</h6>
             <a href="www.consupedia.se" target="_blank">www.consupedia.se</a>
@@ -18,16 +14,26 @@ const Footer = () => {
             </p>
           </div>
             <div className="copyright">
-              <h6>2021</h6>
-              <p>Fanny Värnbrink Forsman</p>
+              <h6>Fanny Värnbrink Forsman</h6>
               <a
-                href="instagram-com/synnaf"
+                href="https://www.instagram.com/synnaf"
                 title="Instagram"
                 target="_blank"
-                className="instagram"
+                rel="norefferer"
+                className="social--icon"
               >
                 <Instagram />
               </a>
+              <a
+                href="https://www.github.com/synnaf"
+                title="Github"
+                target="_blank"
+                rel="norefferer"
+                className="social--icon"
+              >
+                <Github />
+              </a>
+  
             </div>
 
           

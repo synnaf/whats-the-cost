@@ -2,21 +2,19 @@
 @import '../../styles/variables';
 
 .hero {
-    margin:auto; //centers section
-    padding:1rem; 
+    margin:auto; 
+    // padding:1rem; 
     font-family: $font-headline;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items:center;
-    
+    align-items:center;    
     .hero__bg {
         width:100%;
         transform: rotate(90deg);
-        text-align: center;
+       
         img {
-            width:70%;
-            // animation: float 0.25s infinite; 
+            width:80%;
         }
     }
     .hero__text{
@@ -42,9 +40,3 @@
 
     }   
 }
-
-// @keyframes float {
-//     0% { transform: rotate(1deg);}
-//     70% {transform: rotate(1.2deg);}
-//     100% { transform: rotate(0.9deg);}
-// }

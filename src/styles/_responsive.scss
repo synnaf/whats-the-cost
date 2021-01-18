@@ -34,10 +34,12 @@ body {
     .hero{
         height:70vh;
         overflow:hidden; 
+        
         .hero__bg {
+            text-align: center;
             @media screen and (min-width: $mobile) {
                 transform: rotate(0deg);
-      
+                text-align: right;
             }
         } 
     }
@@ -126,7 +128,7 @@ body {
                         img {
                             @media screen and (max-width: $mobile) {
 
-                               
+                              
                             }
                         } 
                     }

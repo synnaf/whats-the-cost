@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../header/Header'; 
 import { searchProduct } from './api';
-import axios from "axios";
 import './SearchPage.scss'; 
 
 const SearchPage = (props) => { 
@@ -55,15 +54,6 @@ const SearchPage = (props) => {
                         Search 
                     </button>
                 </section>
-                {/* <section className="yellow-section">
-                    <p className="">
-                        Or find a full list of registered products...
-                    </p>
-                    <div className="placeholder">
-                        <img src="https://picsum.photos/200/300" /> 
-                        <button type="button">Click</button> 
-                    </div>
-                </section> */}
             </section>
         </>
     );
