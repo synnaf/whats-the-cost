@@ -1,4 +1,5 @@
 @import '../../styles/variables'; 
+@import '../../styles/mixins'; 
 
 .search-product {
     display: flex; 
@@ -6,11 +7,8 @@
     margin:1rem;
     padding-top:1rem; 
     input[type=text] {
-        width: 80%; 
-        border: 1.5px solid $cta-orange; 
-        color: $text-color;  
-        padding:0.6rem; //same as buttons? 
-        background-image: url('../../assets/searchicon.svg');
+        @include InputField; 
+        background-image: url('../../assets/svg/searchicon.svg');
         background-position: 10px 10px;
         background-repeat: no-repeat;
         background-color:transparent; 
@@ -19,48 +17,12 @@
            outline: 1.5px $cta-orange;  
         }
     }
-    //cta-search button? 
     button {
-        margin-top:1rem; 
-        width:30%;
-        border:solid 1.5px $cta-orange; 
-        background:$cta-orange; 
-        color: $yellow; 
-        padding:0.3rem; 
+        margin-top:1rem;
+        @include Secondarybutton; 
     }:disabled {
         opacity:0.5; 
+    }button:hover {
+        @include HoverShadow; 
     }
 }
-
-// .yellow-section {
-//     display: flex; 
-//     flex-direction: row;
-//     flex-wrap:wrap; 
-//     margin:1rem;
-//     padding-top:3rem; 
-//     p {
-//     }
-//     .placeholder {
-//         // width:100%;
-//         // overflow:hidden; 
-//         display:flex; 
-//         flex-direction: row;
-//         img {
-//             //width: 60%; 
-//            height:fit-content; 
-//             //should be 100% of its container
-//             // height:100%; 
-//             margin-right:1rem; 
-//         } 
-//         button {
-//             //secondary button style 
-//             min-width:40%; //of its container
-//             height:fit-content; 
-//             border:solid 1.5px $cta-orange; 
-//             background:transparent; 
-//             color: $cta-orange; 
-//             padding:0.3rem; 
-//         }
-
-//     }
-// }

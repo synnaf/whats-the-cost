@@ -1,17 +1,10 @@
-//subpage title ? same for all pages 
 @import '../../styles/variables'; 
 
 .page__title {
     background-color:transparent;
     color:$forest-green;
-    // margin-top:2rem;
     opacity:0.9; 
-    // top:20%; 
-    // position: fixed;
-    // top: 0;
-    // z-index:1; //set on top of content, so scroll goes under  
     title {
         margin:0; 
-        // margin-bottom:0;
     }
 } 

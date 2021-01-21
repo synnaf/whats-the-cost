@@ -1,25 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import defaultimage from '../../assets/default-image.png'; 
 import Pagination from '../pagination/Pagination';
 import Product from './product/Product'; 
 import heart from '../../assets/svg/heart-shape-rounded-edges-variant-with-white-details.svg'; 
 
-
 const ProductList = (results) => {
     const { products } = results;
     const [popup, setPopup] = useState({id: '', state: false}); 
-    const[isLiked, setIsLiked] = useState(false); 
 
-    // //pagination
     const [currentPage, setCurrentPage] = useState(1); 
     const [itemsPerPage] = useState(12);     
     
-    // //get index of the last post 
     const indexOfLastItem = currentPage * itemsPerPage; 
     const indexOfFirstItem = indexOfLastItem - itemsPerPage; 
     let currentList = products.slice(indexOfFirstItem, indexOfLastItem); 
 
-    //change page on click 
     const createPagination = (pageNumber) => {
         setCurrentPage(pageNumber);
     }; 
@@ -36,15 +31,11 @@ const ProductList = (results) => {
         backg.style.filter = '';
     }; 
 
-    //SAVE AS OBJECT IN LS 
     const addLike = (e, item) => {
 
         let clicked = document.getElementById(`${item.id}`);
-        console.log(clicked); 
         clicked.classList.add('--liked'); 
     
-        console.log(e); 
-
         let likesArr = []; 
         let list = window.localStorage.getItem('likes'); 
         let likesInLS = JSON.parse(list); 
@@ -53,12 +44,12 @@ const ProductList = (results) => {
             window.localStorage.setItem('likes', JSON.stringify(item));
         } else {
             let isArray = Array.isArray(likesInLS); 
-            if(isArray == false) {
-                likesArr.push(likesInLS); //pusha in första opbjekt i tom lista
-                likesArr.push(item); //pusha in nytt opbjekt i tom lista
+            if(isArray === false) {
+                likesArr.push(likesInLS); 
+                likesArr.push(item); 
                 window.localStorage.setItem('likes', JSON.stringify(likesArr));
             } else {
-                likesInLS.push(item); //är redan en lista, pusha nytt objelt 
+                likesInLS.push(item); 
                 window.localStorage.setItem('likes', JSON.stringify(likesInLS)); 
             }
         }; 
@@ -69,13 +60,16 @@ const ProductList = (results) => {
         <ul className="products__list" id="productList">
             { 
                 currentList.map((item)=> {
-                    let img_url = item.image_url; 
-                
+                    let img_url = item.image_url;
+
                     return (
                         <li className="product" key={item.id}>
-                            <button className="product__like" id={item.id} onClick={(e) => addLike(e, {title: item.name, id: item.id}) }>
+                            <button 
+                            className="product__like" 
+                            id={item.id} 
+                            onClick={(e) => addLike(e, {title: item.name, id: item.id}) }
+                            >
                                 <img src={heart} alt="heart icon" className="icon__like" />
-
                             </button>
                             <div className="product__image">
                                 <img 
@@ -100,8 +94,7 @@ const ProductList = (results) => {
         </ul>
         {   popup.state 
             ? 
-                    <Product product={popup.id} closePopup={closePopup} />
-                
+                <Product product={popup.id} closePopup={closePopup} /> 
             : null
         }
         {  products.length > itemsPerPage ?

@@ -6,14 +6,20 @@ footer {
     margin-top:2rem;
     padding:2rem 1rem; 
     font-size:0.7rem; 
-    color: $text-color; //global default?  
+    color: $text-color; 
     .footer-contact-info, .copyright {
+        text-align: left;
         h6 {
             font-size:0.7rem; 
         }
-        a {
+        a, .social--icon{
             text-decoration: none;
-            color:inherit; 
+            color:inherit;
+            svg { 
+                width:20px;
+                height:20px; 
+                margin-right:1rem; 
+            } 
         }a:hover {
            border-bottom:1.5px solid $lilac; 
         }

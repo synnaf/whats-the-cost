@@ -10,14 +10,8 @@ const FilterProducts = (props) => {
 
     const {values, setValues} = useContext(ValueContext); 
 
-
     useEffect(() => {
-     
-
-            setValues({consuvalue: sliderValue, animalvalue: sliderValue2})
-            
-
-       
+        setValues({consuvalue: sliderValue, animalvalue: sliderValue2})
     }, [sliderValue, sliderValue2]);
 
 
@@ -29,30 +23,27 @@ const FilterProducts = (props) => {
         setSliderValue2(e.target.value); 
     }; 
 
-    console.log(sliderValue, sliderValue2); 
-
-
     return (
         <>
             <div className="filter__values">
                 <ul className="filter__list">
                     <li className="filter__item">
-                        <label htmlFor="slide1">ConsuValue</label>
-                        <input type="range" min="0" max="100" value={sliderValue} className="slider" name="slide1" id="myRange" 
+                        <label htmlFor="consuv">ConsuValue</label>
+                        <input type="range" min="0" max="100" value={sliderValue} className="slider" name="consuv" id="consuRange" 
                             onChange={updateValue} 
                         />
                     </li>
                     <li className="filter__item --custom">    
-                        <label htmlFor="slide2">Impact on animals</label>
+                        <label htmlFor="animv">Impact on animals</label>
                         <div className="--custom__wrapper">
-                        <datalist id="mR2">
+                        <datalist id="aRange">
                             <option>Unknown</option>
                             <option>Veg.</option>
                             <option>Vegan</option>
                         </datalist>
-                        <input type="range" min="0" max="2" step="1" value={sliderValue2} className="slider" name="slide2" id="myRange2" 
+                        <input type="range" min="0" max="2" step="1" value={sliderValue2} className="slider" name="animv" id="animRange" 
                             onChange={updateValue2}
-                            list="mR2"
+                            list="aRange"
                         />
                         </div>
                     </li>
@@ -63,14 +54,3 @@ const FilterProducts = (props) => {
 }
 
 export default FilterProducts;
-
-
-    // useEffect(()=> {
-    //     fetch("api/products/"+props.match.params.id) //hämta med produkt id från den klickade produkten?? 
-    //     .then(res => res.json())
-    //     .then(
-    //         (result) => {
-    //             setProduct(result); 
-    //         }
-    //     ); 
-    // }); 

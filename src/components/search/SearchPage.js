@@ -6,26 +6,24 @@ import './SearchPage.scss';
 const SearchPage = (props) => { 
     const [searchValue, setSearchValue] = useState('');  
 
-    function getSearchTerm(e) {
+    const getSearchTerm = (e) => {
         e.preventDefault(); 
         setSearchValue(e.target.value); 
     }; 
 
-    function loadSearch(e) {
+    const loadSearch = (e) => {
        e.preventDefault(); 
-        searchProduct(searchValue)
+
+       searchProduct(searchValue)
             .then((req, res)=> {
                 let list = [...req.data.data];  
                 return list; 
             })
             .then((results) => {
-                //if results is NOT equal to empty arr, redirect, other do null 
                 if(results !== []) {
                     props.redirectSearch(results); 
-                    //props.match.params.
                     props.history.push('/search/'+searchValue); 
                 }  else {
-                    //props.match.params.
                     alert('No available results'); 
                 };  
             });   
@@ -36,7 +34,7 @@ const SearchPage = (props) => {
            <section className="page">
                 <Header props='Search' />
                 <section className="search-product">
-                    <p className="">
+                    <p>
                         Search for a product and find it's current values... 
                     </p>
                     <input 
@@ -47,20 +45,11 @@ const SearchPage = (props) => {
                     /> 
                     <button type="button" 
                         onClick={loadSearch} 
-                        disabled={searchValue == '' ? true : false} 
+                        disabled={searchValue === '' ? true : false} 
                     >
                         Search 
                     </button>
                 </section>
-                {/* <section className="yellow-section">
-                    <p className="">
-                        Or find a full list of registered products...
-                    </p>
-                    <div className="placeholder">
-                        <img src="https://picsum.photos/200/300" /> 
-                        <button type="button">Click</button> 
-                    </div>
-                </section> */}
             </section>
         </>
     );

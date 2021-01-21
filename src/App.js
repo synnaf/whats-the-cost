@@ -1,6 +1,6 @@
 import './App.scss';
-import Menu from './components/menu/Menu'; //render menu-component 
-import Main from './components/main/Main'; //render main-component for main content in body 
+import Menu from './components/menu/Menu';
+import Main from './components/main/Main'; 
 import Footer from './components/footer/Footer';
 
 const App = () => {

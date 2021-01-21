@@ -1,80 +1,58 @@
 @import '../../styles/variables'; 
 @import '../../styles/typography';
 @import '../../styles/responsive'; 
+@import '../../styles/mixins'; 
 
-
-
-
-    .likes__list {
-        font-size:0.7rem; //mobile 
-        list-style-type: none;
-        padding-left:0; 
-        width:40%; 
-        .likes__item {
-            margin-bottom:1rem;
-            padding:0.5rem; 
-            background-color:$yellow; 
-        }
-        button {
-            margin-left:100%; 
-            height:20px; 
-            border:1.5px solid $cta-orange;
-            transition: all 0.25s; 
-            text-align: center; 
-            font-size:0.7rem;
-            cursor: pointer; 
-            color:$cta-orange;
-            background-color:white;
-            text-decoration: none; 
-        }button:hover {
-            box-shadow: 5px 5px 1px $lilac;
-        }
-        h3 {
-            font-size:1.7rem; 
-        }
+.likes__list {
+    @include UlListDefault; 
+    font-size:0.7rem;
+    
+    width:40%; 
+    .likes__item {
+        margin-bottom:1rem;
+        padding:0.5rem; 
+        background-color:$yellow; 
     }
-    .page__input {
-        font-size:0.7rem;
-        width:40%; 
-        .email__form {
-            display:flex;
-            flex-direction: column;
-            label {
-                margin-bottom:0.5rem; 
-                font-size:0.9rem;
-            }
-            input[type=mail] {
-                width: 80%; 
-                border: 1.5px solid $cta-orange; 
-                color: $text-color;  
-                padding:0.6rem; //same as buttons? 
-                background-color:transparent; 
-                padding-left: 40px;
-                margin-bottom:1rem; 
-                &:focus {
-                    outline: 1.5px $cta-orange;  
-                }
-            }
-            input[type=submit] {
-                width:30%; 
-                height:20px; 
-                border:1.5px solid $cta-orange;
-                transition: all 0.25s; 
-                text-align: center; 
-                font-size:0.7rem;
-                cursor: pointer; 
-                color:$cta-orange;
-                background-color:white;
-                text-decoration: none; 
-            }input[type=submit]:hover {
-                box-shadow: 5px 5px 1px $lilac;
+    button {
+        @include Secondarybutton; 
+        margin-left:100%; 
+
+    }button:hover {
+        @include HoverShadow;
+    }
+    h3 {
+        font-size:1.7rem; 
+    }
+}
+.page__input {
+    font-size:0.7rem;
+    width:40%; 
+    .email__form {
+        display:flex;
+        flex-direction: column;
+        label {
+            margin-bottom:0.5rem; 
+            font-size:0.9rem;
+        }
+        input[type=mail] {
+            @include InputField; 
+            margin-bottom:1rem; 
+
+            &:focus {
+                outline: 1.5px $cta-orange;  
             }
         }
-        p {
-            color: red; 
+        input[type=submit] {
+            @include Secondarybutton; 
+        }input[type=submit]:hover {
+            @include HoverShadow;
         }
     }
-    .confirmation {
-        text-align:center; 
+    p {
+        color: red; 
     }
+}
+.confirmation {
+    text-align:center; 
+}
 

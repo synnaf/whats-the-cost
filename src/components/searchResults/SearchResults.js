@@ -6,10 +6,8 @@ import './SearchResults.scss';
 import { ValueContext } from '../main/ValueContext';
 
 
-
 const SearchResults = (results) => {
     const { list } = results; 
-    const [ productState, setProductState ] = useState([]);
     const {values, setValues} = useContext(ValueContext); 
     const [available, setAvailable] = useState([]); 
     const [filteredList, setfilteredList] = useState([]);
@@ -20,20 +18,12 @@ const SearchResults = (results) => {
     },[list]); 
 
     useEffect(()=> {
-
-        //1. inget filter valt gör inget?? denna kommer inte köras då
-
         setfilteredList(available); 
-        
-        //2. ett filter valt -------------------
 
         if(values.consuvalue > 0) {
-            console.log('co!'); 
             let cvArr = available.filter((item)=> {
-                    return item.calculated_consuvalue >= values.consuvalue; 
+                return item.calculated_consuvalue >= values.consuvalue; 
             })
-            //innehåller filtrerade objekten 
-            console.log(cvArr); 
             setfilteredList(cvArr); 
         }
 
@@ -41,22 +31,16 @@ const SearchResults = (results) => {
             let cvArr = available.filter((item)=> {
                 return item.is_vegetarian === 1; 
             })
-            //does this need another value?? 
             if(values.animalvalue > 1) {
                 cvArr = available.filter((item)=> {
                     return item.is_vegan === 1; 
                 })
             } 
-            //innehåller filtrerade objekten 
-            console.log(cvArr); 
             setfilteredList(cvArr); 
         }
 
-        //3. båda filter valda --------------------
-
         if(values.animalvalue > 0 && values.consuvalue > 0) {
-            
-            //om cv valdes först
+
             if(values.consuvalue > 0) {
                 let firstArr = available.filter((item)=> {
                     return item.calculated_consuvalue >= values.consuvalue; 
@@ -67,16 +51,15 @@ const SearchResults = (results) => {
                             return item.is_vegetarian === 1;
                         })
                     };
+
                     if(values.animalvalue == 2){
                         firstArr.filter((item) => {
                             return item.is_vegan === 1;
                         })
                     };  
-
-                console.log(firstArr);
                 setfilteredList(firstArr); 
             } 
-            //om animal valdes först 
+
             if(values.animalvalue > 0) {
                 let secondArr = available.filter((item)=> {
                         if(values.animalvalue == 1) {
@@ -88,53 +71,71 @@ const SearchResults = (results) => {
                     }).filter((item)=> {
                         return item.calculated_consuvalue >= values.consuvalue;   
                     })    
-                console.log(secondArr); 
                 setfilteredList(secondArr);   
             }
         }  
     },[values]); 
 
-    // useEffect(()=> {
+    useEffect(()=> {
+        setSortOptions(false); 
+    }, [sortOptions])
 
-    //     //sorterar by defsault ?? 
-
-    //     list.sort((a, b) =>  (a.name > b.name) 
-    //         ? 1 //ascrnding
-    //         : -1 //descending 
-    //     ); 
-
+    const sortArray = (e) => {
+        setSortOptions(!sortOptions); 
     
-    // }, [sortOptions])
-
-
-
-        return (
-            <>
-                <section className="page products">
-                    <div className="page__header">
-                        <Header props='Results' /> 
-                        <div className="page__sort">
-                            <select className="sort-options" onChange={() => setSortOptions(true)}>
-                                <option value="" selected>
-                                    Sort options 
-                                </option>
-                                <option value="abc">
-                                    Sort A-Ö 
-                                </option>
-                                <option value="cba">
-                                    Sort Ö-A
-                                </option>
-                            </select>
-                        </div>   
-                    </div>
-
-                    <div className="page__filter">
-                        <FilterProducts /> 
-                    </div> 
-                        <ProductList products={filteredList} />
-                </section>
-            </>
-        );
+        if(e.target.value == 'abc') {
+            let sorting = available.sort((a, b) => {
+                if(a.name < b.name) {
+                     return -1; 
+                }
+                 return 0; 
+             })
+        }  else {
+            let sorting; 
+            if(e.target.value == 'cba') {
+                sorting = available.sort((a, b) => {
+                    if(a.name > b.name) {
+                         return -1;  
+                    }
+                     return 0; 
+                 })
+            } else {
+                return; 
+            }
+            return sorting; 
+        }
+    }; 
+    
+    return (
+        <>
+            <section className="page products">
+                <div className="page__header">
+                    <Header props='Results' /> 
+                    <div className="page__sort">
+                        <select className="sort-options" onChange={(e) => sortArray(e)}>
+                            <option defaultChecked>
+                                Sort options 
+                            </option>
+                            <option value="abc">
+                                Sort A-Ö 
+                            </option>
+                            <option value="cba">
+                                Sort Ö-A
+                            </option>
+                        </select>
+                    </div>   
+                </div>
+                <div className="page__filter">
+                    <FilterProducts /> 
+                </div> 
+                {available.length == 0 || filteredList.length == 0
+                    ?  <h3>No results</h3>
+                    : <ProductList products={filteredList} />
+                }
+                    
+            </section>
+        </>
+    );
 }
 
 export default SearchResults;

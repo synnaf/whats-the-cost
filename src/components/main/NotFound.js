@@ -1,7 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
 import './NotFound.scss'; 
-// import classNames from 'classnames'
 
 const NotFound = () => {
   return (

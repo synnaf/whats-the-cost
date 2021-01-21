@@ -1,35 +1,23 @@
 @import '../../styles/variables';
-$mobileMenu: 1024px; // 1024px;
+@import '../../styles/mixins'; 
 
-@media screen and (min-width: $mobileMenu) {
+@media screen and (min-width: $padlet) {
   .nav, .isToggled{
     background-color: transparent; 
     margin:auto;
     display: flex;
     flex-direction: row;
     justify-content: left;    
-    width: 90%; 
-    opacity:0.9; 
-    // padding-bottom:0; 
-    // z-index:1; //set on top
-    // position: fixed;
-    // height:20%;
-    // top: 0;
-    // left:3%; // move in 
-    
+  
     .brand-logo {
-      padding-left:1rem;  
+      padding:1rem;  
+      padding-bottom:0; 
       width:20%;
-      svg {
-        width:70%;
-      }
     }
     .menu__toggle {
       display: none;
     }
-    //list in menu 
     &__list {
-      // display: none; //toggled on mobile
       display: flex;
       list-style: none;
       margin-left: auto;
@@ -68,27 +56,13 @@ $mobileMenu: 1024px; // 1024px;
       height: 25px;
     }
   }
-  //stiky scroll om desktop? 
-  //should be sticky on mobile too
-  .nav.--sticky {
-    scroll-behavior: smooth;
-    position: fixed;
-    top: 0;
-    width:90%;
-    left:5%;
-  }
 }
 
-@media screen and (min-width: $mobileMenu) {
-  .isToggled {
-    // display:none; 
-  }
-}
 /* Mobile menu default look */
-@media screen and (max-width: $mobileMenu) {
+@media screen and (max-width: $padlet) {
   .nav {
     width:90%;
-    margin:auto;
+    margin:0;
     background-color: transparent; 
     padding:1rem;
     padding-bottom:0;  
@@ -97,7 +71,7 @@ $mobileMenu: 1024px; // 1024px;
     justify-content: right;
     align-items: center;
     .menu__toggle {
-      margin-left: auto; //aligns to left 
+      margin-left: auto; 
       background-color: transparent;
       cursor: pointer;
       border: 0;
@@ -125,17 +99,14 @@ $mobileMenu: 1024px; // 1024px;
           width: 40%;
       }
     }
-    //list in menu 
     &__list {
-      display: none; //toggled on mobile
+      display: none; 
     }
     /*isToggled is added when menu-button is clicked*/
     &.isToggled {
       z-index:999; 
       background-color: transparent; 
-      padding:1rem; 
       display: unset;
-      justify-content: center;
       position: fixed;
       top: 0;
       bottom: 0;
@@ -158,7 +129,8 @@ $mobileMenu: 1024px; // 1024px;
         position: relative;
         z-index: 999;
         padding: 0;
-        margin:2rem; 
+        margin-left:1rem; 
+        margin-top:1rem; 
           & span {
           opacity: 0;
           margin: 0;
@@ -175,22 +147,20 @@ $mobileMenu: 1024px; // 1024px;
           }
           }
       }
-      //menu nav + ul
       & .nav__list {
-        list-style-type: none;
+        @include UlListDefault;
+        margin:auto;  
         display: flex;
         flex-direction: column;
-        align-items: center;
-        width: 100%;
+        width: 50%;
         justify-self: center;
-        padding:0; 
       }
-      & .nav__item {
+      & .nav__item { 
         color: white;
         margin:1rem;
         width:50%;  
         text-align: center;
-      }
+      } 
       & .nav__link {
         text-decoration: none;
         color: white;

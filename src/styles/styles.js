@@ -1,5 +1,3 @@
-
-//add outline when user tabs
 const handleFirstTab = (e) => {
     if (e.keyCode === 9) { 
         document.body.classList.add('user--tabb');
@@ -8,15 +6,3 @@ const handleFirstTab = (e) => {
 }; 
 
 window.addEventListener('keydown', handleFirstTab);
-
-
-//animate hero text 
-const handleHeroText = () => {
-
-
-};
-
-//animate menu on scroll 
-const handleMenuEffect = () => {
-
-}; 

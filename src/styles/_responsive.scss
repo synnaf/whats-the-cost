@@ -1,7 +1,4 @@
-$desktop:1224px;
-$padlet:1024px;
-$mobile:800px;
-$mobileXs:600px; 
+@import '../styles/variables'; 
 
 html {
     height:100%; 
@@ -14,16 +11,39 @@ body {
         @media screen and (min-width: $padlet) {
             margin:0rem 2rem; 
         }
+        .nav__item {
+        &:nth-child(4) {
+            z-index:9999; 
+            a {
+              img {
+                  @media screen and (max-width: $padlet){
+                    display:none;
+                  }
+              }
+            }::after {
+                @media screen and (max-width: $padlet){
+                    content:'My Likes';
+                  }
+            }
+          }
+        }
     }
     .hero{
-        height:70vh; 
+        height:70vh;
+        overflow:hidden; 
+        .hero__bg {
+            text-align: center;
+            @media screen and (min-width: $mobile) {
+                transform: rotate(0deg);
+                text-align: right;
+            }
+        } 
     }
     .page {
         z-index:9; 
         margin:1rem;
         margin-top:0; 
         max-width:90%; 
-
         @media screen and (min-width: $padlet) {
             width:90%; 
             padding:2rem; 
@@ -45,12 +65,6 @@ body {
                 .title {
                     margin:0;
                 }
-                &.--sticky {
-                    border:solid blue; 
-                    position: fixed;
-                    top: 0;
-                    //remove jump of content on scroll + add smooth scroll
-                }
             }
             .page__sort {
                 @media screen and (min-width: $padlet) {
@@ -61,51 +75,26 @@ body {
                 width:100%; 
             }
             .filter__list {
-                @media screen and (min-width: $padlet) {
-                    // margin-top:2rem; remove on desktop
-                }
                 .filter__item {
                     @media screen and (min-width: $padlet) {
-                        width:70%; //on desktop
+                        width:70%; 
                     }
                 }
             }
             .products__list {
                 padding-left:0; 
                 width:100%; 
-
                 display:flex; 
                 flex-direction: row; 
                 flex-wrap: wrap;
-                justify-content: center;
-                @media screen and (min-width: $padlet) {
-                    // justify-content: space-evenly;
-                }  
+                justify-content: center; 
                 .product { 
-                    //TODO: last items on last page??? 
                     width: 80%; 
                     margin:0.5rem; 
                     height:40vh;
-                    
                     @media screen and (min-width: $padlet) {
                         width: 45%; 
-                        height:28vh; //desktop   
-                    }
-                    .product__image {
-                        // height:60%;
-                        // border:solid red; 
-                        @media screen and (min-width: $mobile) {
-                            // height:60%;
-                        }
-                        @media screen and (max-width: $mobile) {
-
-                        }
-                        img {
-                            @media screen and (max-width: $mobile) {
-
-                               
-                            }
-                        } 
+                        height:28vh; 
                     }
                     .product__info {
                         width:100%;
@@ -113,12 +102,6 @@ body {
                         max-height:30%;
                         word-break:break-word; 
                         overflow:hidden; 
-    
-                        button {
-                            @media screen and (max-width: $mobile) {
-                                
-                            }
-                        }
                     }
                     @media screen and (min-width: $mobile) {
                         width:35%;
@@ -130,7 +113,6 @@ body {
                 }
                 .pagination {
                     @media screen and (min-width: $padlet) {
-                        // justify-content: space-evenly; 
                         padding:2rem;
                         margin:auto; 
                     }  
@@ -153,6 +135,11 @@ body {
                 width:50%;
             }
         }
+        .page__about {
+            @media screen and (min-width: $padlet) {
+                flex-direction: row;
+            }
+        }
     }
     .card {
         @media screen and (min-width: $padlet) {
@@ -163,7 +150,7 @@ body {
         }
     }
     footer {
-        height:10%; //height of content         
+        height:10%;     
         display: flex; 
         flex-direction: column;
         justify-content: space-evenly;
