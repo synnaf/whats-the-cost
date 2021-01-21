@@ -46,7 +46,7 @@ const Menu = () => {
                         About
                     </NavLink> 
                 </li>
-                <li className="nav__item">
+                <li className="nav__item" onClick={toggleMenu}>
                     <NavLink to="/likes" className="nav__link" activeClassName="active">         
                         <img src={heart} alt="heart icon" className="icon__like"/>
                     </NavLink> 
