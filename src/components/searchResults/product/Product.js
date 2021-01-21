@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'; 
-import { getProduct } from '../../search/api'; 
+import { getProduct } from '../../search/consuApi'; 
 import './Product.scss'; 
 import defaultimage from '../../../assets/default-image.png'; 
 
