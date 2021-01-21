@@ -5,7 +5,7 @@ import emailjs from 'emailjs-com';
 import './LikeList.scss'; 
 import Confirmation from './Confirmation';
     
-init(process.env.EMAIL_USER);
+init('user_UMrGuKNuZujxb66Utvg71');
 
 const LikeList = () => {
     const [savedLikes, setSavedLikes] = useState([]); 
@@ -20,15 +20,13 @@ const LikeList = () => {
         let likesInLS = JSON.parse(list); 
         setSavedLikes(likesInLS); 
 
-        if(likesInLS == undefined) {
-            console.log(savedLikes)
+        if(likesInLS === undefined) {
             setEmpty(true); 
         } else {
             setEmpty(false)
         }
     }, [update]); 
 
-    //TODOD: Empty input field value = ''
     const updateRecipient = (e) => {
         setRecipient(e.target.value);  
     }; 
@@ -42,44 +40,32 @@ const LikeList = () => {
     const submit = (e) => {
         e.preventDefault(); 
         let sendTo = recipient; 
-        //funktion som returnerar html li-taggar, inte objekt 
 
         if(empty === false) {
-
             const sendLikes = () => {
-                //return for main function
                 return savedLikes.map((item) => {
-                    //returns sring literal with li's 
                     return `<li>${item.title}</li>`   
                 })
             }; 
-    
             let templateParams = {
-                to: sendTo, //from input
-                html: `${sendLikes()}` //function to return string literals 
+                to: sendTo,
+                html: `${sendLikes()}`
             }; 
-    
             emailjs.send('default_service', 'template_ey9wjk9', templateParams)
                 .then((response) => {
-                    console.log('SUCCESS!', response.status, response.text);
-                    setMailStatus(true); //rendera confirmation  
+                    setMailStatus(true); 
                     localStorage.clear('likes'); 
-    
                 }, (error) => {
-                   
-                    console.log('FAILED...', error);
                     setDisplayError(true); 
-                    setMailStatus(false); //rendera fail
+                    setMailStatus(false);
                 });
-
-
         } else {
             setDisplayError(true); 
         }
 
     };
 
-    if(mailStatus == true) {
+    if(mailStatus === true) {
        return <Confirmation props={'test'} />
     } else {
         return (
@@ -88,7 +74,7 @@ const LikeList = () => {
                     <div className="page__header">
                         <Header props='My likes' /> 
                     </div>
-                        { empty == false && savedLikes.length > 0 ?
+                        { empty === false && savedLikes.length > 0 ?
                             <ul className="likes__list">
                                 { 
                                     savedLikes.map((item, index) => {
@@ -111,7 +97,6 @@ const LikeList = () => {
                         <form className="email__form">
                             <label htmlFor="mail">Email me my list:</label>
                             <input type="mail" name="mail" onChange={updateRecipient}/>
-                            {/* empty input field  */}
                             <input type="submit" value="Send" onClick={submit}/>
                             { displayError 
                                 ? <p>Error! Try another emailadress.</p>

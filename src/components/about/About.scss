@@ -4,9 +4,8 @@
     .page__about {
         width:100%; 
         display: flex; 
-        flex-direction: row;
+        flex-direction: column;
         justify-content: left;
-
         .submenu {
             width:100%;
             .accordion {
@@ -18,19 +17,16 @@
                 .accordion__item {
                     display: flex; 
                     flex-direction:row; 
-                    width:100%;
+                    width:90%;
                     border-bottom:1.5px solid $lilac; 
                     margin-bottom:1rem; 
                     .accordion__link {
                         text-decoration: none;
                         color:$text-color;
-                        cursor:pointer;
-        
-                        &.--active {
-                            // border-bottom:solid $lilac; 
-                            // animation: arrow 700ms linear;
-                        }
-
+                        cursor:pointer;  
+                        border: none; 
+                        background-color: transparent;
+                        font-size:2rem;  
                     }
                     .submenu__info {
                         font-size:0.5rem; 
@@ -40,15 +36,14 @@
                         height:20%;
                         margin-left:auto;
                         width:40%; 
-                        // animation: boxes 900ms linear;
                     }
 
                 }
             }
         }
         .submenu--active {
-            display:visible; //toggle 
-            width:100%;
+            display:visible; 
+            width:90%;
             background-color:$lilac;
             font-size:0.7rem;  
             padding:1rem;

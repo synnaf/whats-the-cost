@@ -53,13 +53,11 @@
             justify-content: space-between;
             .--custom__wrapper {
                 width: 70%;  
-                #myRange2 {
+                #animRange {
                     margin-left:auto;
                     width:100%; 
                     align-items: center;
                     &::-webkit-slider-thumb {
-                        // -webkit-appearance: auto;
-                        // appearance: auto;
                         width: 8px; 
                         height: 22px;
                         border-radius: 12%;

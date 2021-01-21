@@ -3,7 +3,6 @@
 
 .hero {
     margin:auto; 
-    // padding:1rem; 
     font-family: $font-headline;
     display: flex;
     flex-direction: row;
@@ -12,7 +11,6 @@
     .hero__bg {
         width:100%;
         transform: rotate(90deg);
-       
         img {
             width:80%;
         }

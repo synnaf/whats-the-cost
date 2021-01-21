@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import { ValueContext } from '../main/ValueContext'; 
 import Home from '../home/Home'; 
 import About from '../about/About';
@@ -7,7 +7,6 @@ import SearchPage from '../search/SearchPage';
 import LikeList from '../likeList/LikeList';
 import SearchResults from '../searchResults/SearchResults';
 import NotFound from './NotFound'; 
-
 
 const Main = () => {
   const [values, setValues] = useState({}); 
@@ -17,19 +16,15 @@ const Main = () => {
     setproductList(data);
   };
 
-  //TODO: fixa så att routing + meny fungerar ihop
-  //TODO: sökbar routing - what should it do? 
-  //TODO: Not Found har slutat fungera!!! 
   return (
-    <> <ValueContext.Provider value={{values, setValues}}>
-      
-      <Switch>
-        <Route exact path='/' component={Home} />  
-        <Route exact path='/about' component={About} />
-        <Route exact path='/likes' 
-            component={LikeList} 
-          />  
-              
+    <> 
+      <ValueContext.Provider value={{values, setValues}}>
+        <Switch>
+          <Route exact path='/' component={Home} />  
+          <Route exact path='/about' component={About} />
+          <Route exact path='/likes' 
+              component={LikeList} 
+            />       
           <Route exact path='/search' 
             render={(props) => ( 
               <SearchPage {...props} redirectSearch={searchResult} />
@@ -40,18 +35,8 @@ const Main = () => {
               <SearchResults {...props} list={productList} />
             )}
           />  
-        
-        
-        
-        <Route path="*" component={NotFound} />
-    
-        {/* redirevt option
-        <Route path="*" component={NotFound} />
-        <Redirect to="/404" />   */}
-     
-      </Switch>
-      
-      
+          <Route path="*" component={NotFound} />
+        </Switch>
       </ValueContext.Provider>  
     </>
   );

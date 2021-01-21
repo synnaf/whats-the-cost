@@ -13,14 +13,12 @@ const Menu = () => {
     }; 
 
     return (
-        <nav className="nav" id="nav_menu">   {/* add class istoggled */}
-        
+        <nav className="nav" id="nav_menu"> 
             <div className="brand-logo">
                 <a href="/">
                     <LogoIcon />
                 </a>
             </div>
-          
             <button 
                 className="menu__toggle" 
                 aria-controls="nav_menu" 

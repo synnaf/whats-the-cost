@@ -1,35 +1,12 @@
 import React from 'react';
 import './Pagination.scss'; 
 
-const Pagination = ({itemsPerPage, totalList, paginate, activePage}) => {
+const Pagination = ({itemsPerPage, totalList, paginate}) => {
     const pageNumbers = [];
 
     for(let i = 1; i <= Math.ceil(totalList / itemsPerPage ); i++) {
-        pageNumbers.push(i); //gives us the number of pages to create 
+        pageNumbers.push(i);
     }
-
-    // if(pageNumbers.length > 2) {
-    //     let pageLink = document.getElementsByClassName('pagination__link');
-    //     let pageX = pageLink.item(activePage - 1); 
-
-    //       while (pageX === !null) {
-    //         // pageX är NULL tills man klickar på en link 
-    //         let num = pageX.innerHTML;
-    //         console.log(num); 
-            
-    //         if (activePage == num) { 
-    //             pageX.classList.toggle('--active');
-    //             // if(num == activePage) {
-    //             //     pageX.classList.toggle('--active');
-    //             //     // console.log('pageX:', pageX); 
-    //             // }  
-    //         } else {
-    //             pageX.classList.remove('--active');
-    //                 // console.log('pageX:', pageX); 
-    //         } 
-    //       }
-
-    // }
 
     return (
         <>

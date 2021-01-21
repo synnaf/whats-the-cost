@@ -1,10 +1,8 @@
 import React from 'react';
 
-
 const Info = (props) => { 
-
-    console.log(props); 
-    if(props.info == 'About') {
+ 
+    if(props.info === 'About') {
         return (
             <span>
                 This page is created as an FrontEnd Examproject.
@@ -14,7 +12,7 @@ const Info = (props) => {
             </span>
         ); 
     } 
-    if(props.info == 'The ConsuValue') {
+    if(props.info === 'The ConsuValue') {
         return (
             <>
             <span>
@@ -47,7 +45,7 @@ const Info = (props) => {
         </> 
         ); 
     } 
-    if(props.info == 'Contact') {
+    if(props.info === 'Contact') {
         return(
             <span>
                 Reach out if you have any questions!
@@ -58,7 +56,7 @@ const Info = (props) => {
                     </li>
                     <li>
                         If you have questions to the page creator:
-                        <a href="#">My email</a>
+                        <a href="mailto:f.vforsman@gmail.com">My email</a>
                     </li>
                     <li>
                         General life questions:
@@ -68,7 +66,6 @@ const Info = (props) => {
             </span>
         );
     }
-
     return( null ); 
 }
 

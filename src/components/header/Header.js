@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import classNames from 'classnames';
 import './Header.scss'; 
 
 const Header = (title) => {
   
-    const [page, setPage] = useState(false);     
-    const [pageTitle, setPageTitle] = useState(title.props); 
+  const [pageTitle] = useState(title.props); 
 
   return (
       <>

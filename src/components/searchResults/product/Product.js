@@ -6,14 +6,12 @@ import defaultimage from '../../../assets/default-image.png';
 const Product = (props) => {
     const [product, setProduct] = useState({}); 
 
-    //+props.match.params.id match the id and the object 
     useEffect(()=> {
         getProduct(props.product)
         .then(res => {
             setProduct(res.data.data); 
             return;  
-        })
-        
+        })  
     }, [props.product]);
 
 
@@ -33,7 +31,10 @@ const Product = (props) => {
                         <h6 className="value__title">ConsuValues Details</h6>
                             {product.consuvalues 
                                 ? product.consuvalues.map((value) => {
-                                    return (<li className="value__item"> { value.label }: { value.calculated_value } </li>
+                                    return (
+                                        <li className="value__item"> 
+                                            { value.label }: { value.calculated_value }
+                                        </li>
                                     ); 
                                 })
                                 :  <p>Getting value...</p>      

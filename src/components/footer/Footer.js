@@ -8,7 +8,12 @@ const Footer = () => {
         <footer className="footer-section">
           <div className="footer-contact-info">
             <h6>Questions?</h6>
-            <a href="www.consupedia.se" target="_blank">www.consupedia.se</a>
+            <a 
+              href="www.consupedia.se" 
+              target="_blank" 
+              rel="norefferer noopener">
+                www.consupedia.se
+            </a>
             <p>
               <a href="mailto:f.vforsman@gmail.com">Mail</a>
             </p>
@@ -19,7 +24,7 @@ const Footer = () => {
                 href="https://www.instagram.com/synnaf"
                 title="Instagram"
                 target="_blank"
-                rel="norefferer"
+                rel="norefferer noopener"
                 className="social--icon"
               >
                 <Instagram />
@@ -28,7 +33,7 @@ const Footer = () => {
                 href="https://www.github.com/synnaf"
                 title="Github"
                 target="_blank"
-                rel="norefferer"
+                rel="norefferer noopener"
                 className="social--icon"
               >
                 <Github />

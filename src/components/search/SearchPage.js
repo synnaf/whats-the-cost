@@ -6,28 +6,24 @@ import './SearchPage.scss';
 const SearchPage = (props) => { 
     const [searchValue, setSearchValue] = useState('');  
 
-    function getSearchTerm(e) {
+    const getSearchTerm = (e) => {
         e.preventDefault(); 
         setSearchValue(e.target.value); 
     }; 
 
-    //search router in backend 
-    function loadSearch(e) {
+    const loadSearch = (e) => {
        e.preventDefault(); 
-        //add axios request here??? 
+
        searchProduct(searchValue)
             .then((req, res)=> {
                 let list = [...req.data.data];  
                 return list; 
             })
             .then((results) => {
-                //if results is NOT equal to empty arr, redirect, other do null 
                 if(results !== []) {
                     props.redirectSearch(results); 
-                    //props.match.params.
                     props.history.push('/search/'+searchValue); 
                 }  else {
-                    //props.match.params.
                     alert('No available results'); 
                 };  
             });   
@@ -38,7 +34,7 @@ const SearchPage = (props) => {
            <section className="page">
                 <Header props='Search' />
                 <section className="search-product">
-                    <p className="">
+                    <p>
                         Search for a product and find it's current values... 
                     </p>
                     <input 
@@ -49,7 +45,7 @@ const SearchPage = (props) => {
                     /> 
                     <button type="button" 
                         onClick={loadSearch} 
-                        disabled={searchValue == '' ? true : false} 
+                        disabled={searchValue === '' ? true : false} 
                     >
                         Search 
                     </button>

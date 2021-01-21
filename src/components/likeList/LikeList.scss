@@ -3,58 +3,56 @@
 @import '../../styles/responsive'; 
 @import '../../styles/mixins'; 
 
+.likes__list {
+    @include UlListDefault; 
+    font-size:0.7rem;
+    
+    width:40%; 
+    .likes__item {
+        margin-bottom:1rem;
+        padding:0.5rem; 
+        background-color:$yellow; 
+    }
+    button {
+        @include Secondarybutton; 
+        margin-left:100%; 
 
-
-    .likes__list {
-        @include UlListDefault; 
-        font-size:0.7rem; //mobile 
-        
-        width:40%; 
-        .likes__item {
-            margin-bottom:1rem;
-            padding:0.5rem; 
-            background-color:$yellow; 
+    }button:hover {
+        @include HoverShadow;
+    }
+    h3 {
+        font-size:1.7rem; 
+    }
+}
+.page__input {
+    font-size:0.7rem;
+    width:40%; 
+    .email__form {
+        display:flex;
+        flex-direction: column;
+        label {
+            margin-bottom:0.5rem; 
+            font-size:0.9rem;
         }
-        button {
-            @include Secondarybutton; 
-            margin-left:100%; 
+        input[type=mail] {
+            @include InputField; 
+            margin-bottom:1rem; 
 
-        }button:hover {
+            &:focus {
+                outline: 1.5px $cta-orange;  
+            }
+        }
+        input[type=submit] {
+            @include Secondarybutton; 
+        }input[type=submit]:hover {
             @include HoverShadow;
         }
-        h3 {
-            font-size:1.7rem; 
-        }
     }
-    .page__input {
-        font-size:0.7rem;
-        width:40%; 
-        .email__form {
-            display:flex;
-            flex-direction: column;
-            label {
-                margin-bottom:0.5rem; 
-                font-size:0.9rem;
-            }
-            input[type=mail] {
-                @include InputField; 
-                margin-bottom:1rem; 
-
-                &:focus {
-                    outline: 1.5px $cta-orange;  
-                }
-            }
-            input[type=submit] {
-                @include Secondarybutton; 
-            }input[type=submit]:hover {
-                @include HoverShadow;
-            }
-        }
-        p {
-            color: red; 
-        }
+    p {
+        color: red; 
     }
-    .confirmation {
-        text-align:center; 
-    }
+}
+.confirmation {
+    text-align:center; 
+}
 

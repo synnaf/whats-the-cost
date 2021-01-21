@@ -8,8 +8,10 @@
     background-color:$cta-orange;
     color:$yellow; 
 }
+
 @mixin Secondarybutton {
-    width:30%; //? 
+    min-width:30%; 
+    max-width: 40%;
     height:30px; 
     border:1.5px solid $cta-orange;
     font-weight: 400;
@@ -29,7 +31,7 @@
     width: 80%; 
     border: 1.5px solid $cta-orange; 
     color: $text-color;  
-    padding:0.6rem; //same as buttons? 
+    padding:0.6rem;
     background-color:transparent; 
     padding-left: 40px;
 }

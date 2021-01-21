@@ -9,9 +9,7 @@ const About = (props) => {
     function displayInfo(e) { 
         setInfo(e.target.innerHTML); 
         let element = document.getElementById('submenu');
-        console.log(element); 
         element.classList.remove('hide'); 
-        //toggle class instead? or do an if/else 
     }; 
 
     return (
@@ -22,25 +20,25 @@ const About = (props) => {
                     <div className="submenu">
                         <ul className="accordion">
                             <li className="accordion__item">
-                                <a className="accordion__link" 
+                                <button className="accordion__link" 
                                     onClick={(e) => displayInfo(e)}
                                 >
                                     About
-                                </a>
+                                </button>
                             </li>
                             <li className="accordion__item">
-                                <a className="accordion__link" 
+                                <button className="accordion__link" 
                                     onClick={(e) => displayInfo(e)}
                                 >
                                     The ConsuValue
-                                </a>
+                                </button>
                             </li>
                             <li className="accordion__item">
-                                <a className="accordion__link" 
+                                <button className="accordion__link" 
                                     onClick={(e) => displayInfo(e)}
                                 >
                                     Contact
-                                </a>
+                                </button>
                             </li>
                         </ul>
                     </div>

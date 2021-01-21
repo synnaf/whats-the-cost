@@ -1,83 +1,76 @@
 @import '../../../styles/variables';  
 @import '../../../styles/mixins'; 
-$desktop:1224px;
-$padlet:1024px;
-$mobile:800px;
-$mobileXs:600px; 
 
-
-    .card {
-        position:fixed;
-        left:calc(100vw - 90%); 
-        // right:90%;  
-        top:20%; 
-        width:70%; //mobile
-        padding:1rem; //mobile
-        background-color: white;
-        box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.25);
-        margin-bottom:2rem; 
-        
-        .card__info {
-            display: flex; 
-            flex-direction:column; 
-            align-items:flex-start ;
-            margin:0.5rem; 
-            .card__title {
-                display: flex;
-                flex-direction: row;
-                justify-content:space-between; 
-                width:100%; 
-                h6 {
-                    margin:0;
-                    font-size:1rem;
-                }
-                button {
-                    border: none; 
-                    background-color:transparent; 
-                    cursor:pointer;
-                    color:$cta-orange;
-                    font-size:2rem;  
-                }
-            }
-            .card__value {
-                width:100%; 
-                display:flex; 
-                flex-direction: row;
-               .value__list {
-                @include UlListDefault; 
-                   font-size:0.7rem; //mobile 
-                    padding-left:0.5rem; 
-                    width:50%;
-                    .value__title {
-                        font-size:0.7rem;
-                        border-bottom:1.5px solid $lilac;
-                        margin-bottom:0.5rem; 
-                    }
-                    .value__item {
-                        margin-bottom:0.3rem;
-                        text-transform: capitalize;
-                    }
+.card {
+    position:fixed;
+    left:calc(100vw - 90%); 
+    top:20%; 
+    width:70%;
+    padding:1rem; 
+    background-color: white;
+    box-shadow: 2px 3px 9px rgba(0, 0, 0, 0.25);
+    margin-bottom:2rem; 
     
-                }
+    .card__info {
+        display: flex; 
+        flex-direction:column; 
+        align-items:flex-start ;
+        margin:0.5rem; 
+        .card__title {
+            display: flex;
+            flex-direction: row;
+            justify-content:space-between; 
+            width:100%; 
+            h6 {
+                margin:0;
+                font-size:1rem;
+            }
+            button {
+                border: none; 
+                background-color:transparent; 
+                cursor:pointer;
+                color:$cta-orange;
+                font-size:2rem;  
             }
         }
-        .placeholder {
-            position:relative; 
-            background-color: rgba(128, 128, 128, 0.137);
-            height:40%;
-            img {
-                opacity:0.3; 
-                // // width:100%;
-                height:auto;
-                width:40%;
-            }
-            h5 {
-                position:absolute;
-                right:1rem; 
-                top:1rem; 
-                margin:0;
-                color: $cta-orange;             
-                z-index:999; //put text over img 
+        .card__value {
+            width:100%; 
+            display:flex; 
+            flex-direction: row;
+            .value__list {
+            @include UlListDefault; 
+                font-size:0.7rem;
+                padding-left:0.5rem; 
+                width:50%;
+                .value__title {
+                    font-size:0.7rem;
+                    border-bottom:1.5px solid $lilac;
+                    margin-bottom:0.5rem; 
+                }
+                .value__item {
+                    margin-bottom:0.3rem;
+                    text-transform: capitalize;
+                }
+
             }
         }
     }
+    .placeholder {
+        position:relative; 
+        background-color: rgba(128, 128, 128, 0.137);
+        height:40%;
+        img {
+            opacity:0.3; 
+            height:auto;
+            width:40%;
+        }
+        h5 {
+            position:absolute;
+            right:1rem; 
+            top:1rem; 
+            margin:0;
+            color: $cta-orange;             
+            z-index:999;
+        }
+    }
+}
