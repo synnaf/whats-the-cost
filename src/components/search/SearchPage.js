@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../header/Header'; 
-import { searchProduct } from './api';
+import { searchProduct } from './consuApi';
 import './SearchPage.scss'; 
 
 const SearchPage = (props) => { 
